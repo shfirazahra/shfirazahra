@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shafira Zahra | Portofolio IT</title>
+    <title>Shafira Zahra</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -18,30 +18,33 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* HEADER & HAMBURGER MENU */
+        /* Ini buat biar gak kelihatan link biru mwehehehe */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* Menu Hamburger SpongeBob */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: var(--white); position: sticky; top: 0;
             z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         
-        .hamburger { cursor: pointer; display: block; z-index: 1001; }
-        .hamburger div { width: 25px; height: 3px; background: var(--rose-gold); margin: 5px; transition: 0.3s; }
+        .hamburger { cursor: pointer; display: block; z-index: 1001; padding: 10px; }
+        .hamburger div { width: 25px; height: 3px; background: var(--rose-gold); margin: 5px; transition: 0.3s; border-radius: 3px; }
 
-        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; color: var(--text-color); }
         .logo span { color: var(--rose-gold); }
 
         /* SIDEBAR NAVIGATION */
         .sidebar {
-            position: fixed; top: 0; left: -250px; width: 250px; height: 100%;
-            background: var(--white); box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            transition: 0.4s; z-index: 999; padding-top: 80px;
+            position: fixed; top: 0; left: -280px; width: 250px; height: 100%;
+            background: var(--white); box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+            transition: 0.4s ease-in-out; z-index: 999; padding-top: 100px;
         }
         .sidebar.active { left: 0; }
-        .sidebar ul { list-style: none; padding: 20px; }
-        .sidebar ul li { margin: 20px 0; }
-        .sidebar ul li a { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 18px; display: block; }
-        .sidebar ul li a:hover { color: var(--rose-gold); }
+        .sidebar ul { list-style: none; padding: 0 30px; }
+        .sidebar ul li { margin: 25px 0; border-bottom: 1px solid var(--pink-bg); padding-bottom: 10px; }
+        .sidebar ul li a { font-weight: 600; font-size: 18px; color: var(--text-color); }
+        .sidebar ul li a:hover { color: var(--rose-gold); padding-left: 5px; }
 
         /* HERO SECTION */
         .hero { 
@@ -54,21 +57,36 @@
             border: 6px solid var(--white); box-shadow: 0 10px 25px rgba(229, 164, 180, 0.3);
             margin-bottom: 25px;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 10px; }
-        .hero h1 span { color: var(--rose-gold); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 50px; }
+        .hero h1 span { color: var(--rose-gold); border-bottom: 2px solid var(--rose-gold); }
 
         /* SECTION STYLES */
         .section { padding: 60px 8%; text-align: center; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 40px; color: var(--rose-gold); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 40px; color: var(--text-color); position: relative; display: inline-block; }
+        .section-title::after { content: ''; width: 50%; height: 2px; background: var(--rose-gold); position: absolute; bottom: -5px; left: 25%; }
         
-        .card { background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); text-align: left; border-left: 4px solid var(--rose-gold); }
+        /* CARD STYLES BIAR INI KAYAK PREMIUM GITU 😂 */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { 
+            background: white; padding: 30px; border-radius: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; 
+            border: 1px solid #fce4ec; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--rose-gold); }
+        .card h3 { color: var(--rose-gold); margin-bottom: 12px; font-size: 20px; }
+        .card p { font-size: 14px; line-height: 1.6; margin-bottom: 15px; color: var(--text-color); }
+        .card-link { font-size: 12px; font-weight: 600; color: var(--rose-gold); text-transform: uppercase; }
 
-        /* TIMELINE (About) */
-        .timeline-item { border-left: 2px dashed var(--rose-gold); padding-left: 20px; margin-left: 10px; position: relative; padding-bottom: 20px; text-align: left; }
-        .timeline-item::before { content: ''; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; background: var(--rose-gold); border-radius: 50%; }
+        /* TIMELINE (Pendidikan) */
+        .timeline-container { max-width: 600px; margin: 0 auto; }
+        .timeline-item { border-left: 2px dashed var(--rose-gold); padding-left: 30px; margin-left: 20px; position: relative; padding-bottom: 30px; text-align: left; }
+        .timeline-item::before { content: '✨'; position: absolute; left: -12px; top: 0; font-size: 14px; background: var(--pink-soft); }
 
-        footer { padding: 40px; background: #333; color: white; text-align: center; }
-        .social-links a { color: var(--rose-gold); text-decoration: none; margin: 0 10px; font-size: 14px; }
+        /* FOOTER */
+        footer { padding: 50px; background: #2d2d2d; color: white; text-align: center; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: var(--rose-gold); margin: 0 15px; font-size: 15px; }
+        .footer-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -78,71 +96,74 @@
             <div></div><div></div><div></div>
         </div>
         <div class="logo">Shafira<span>.</span></div>
-        <div style="width: 25px;"></div> </nav>
+        <div style="width: 45px;"></div>
+    </nav>
 
     <div class="sidebar" id="sidebar">
         <ul>
             <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#about" onclick="toggleMenu()">Biodata</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Proyek</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Kontak</a></li>
         </ul>
     </div>
 
     <header class="hero" id="home">
         <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img">
-        <p style="color: var(--rose-gold); font-weight: 600; letter-spacing: 1px;">PORTFOLIO</p>
+        <p style="color: var(--rose-gold); font-weight: 600; letter-spacing: 2px; font-size: 12px; margin-bottom: 10px;">D3 TEKNIK INFORMATIKA</p>
         <h1>Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-        <p style="max-width: 600px; margin-top: 15px;">Lulusan D3 Teknik Informatika UDINUS (IPK 3.51) yang ahli dalam mengelola data secara akurat.</p>
+        <p style="max-width: 600px; line-height: 1.8;">
+            Lulusan <b>UDINUS (IPK 3.51)</b>. Ahli dalam Administrasi Data dan System Administration dengan akurasi tinggi.
+        </p>
     </header>
 
     <section id="about" class="section">
         <h2 class="section-title">Biodata & Pendidikan</h2>
-        <div class="card">
-            <p>Saya adalah individu yang teliti dengan akurasi data 99% dan terampil dalam System Administration.</p>
-        </div>
-        <div class="timeline-item">
-            <p><b>Universitas Dian Nuswantoro</b></p>
-            <small>D3 Teknik Informatika | IPK 3.51</small>
-        </div>
-        <div class="timeline-item">
-            <p><b>SMA Negeri 10 Semarang</b></p>
-            <small>Jurusan MIPA | 2017-2020</small>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <p style="font-weight: 600;">Universitas Dian Nuswantoro</p>
+                <small>D3 Teknik Informatika | 2021 - 2024</small><br>
+                <small style="color: var(--rose-gold);">Lulus dengan IPK 3.51</small>
+            </div>
+            <div class="timeline-item">
+                <p style="font-weight: 600;">Asal Sekolah Kamu</p>
+                <small>SMA 10 Semarang Jurusan MIPA | 2017 - 2020</small>
+            </div>
         </div>
     </section>
 
-   <section id="projects" class="section" style="background-color: var(--pink-bg);">
+    <section id="projects" class="section" style="background-color: var(--pink-bg);">
         <h2 class="section-title">Proyek Unggulan</h2>
         <div class="grid">
-            <a href="https://github.com/shfirazhraa" target="_blank" class="card-link">
+            <a href="https://github.com/shfirazhraa" target="_blank">
                 <div class="card">
                     <h3>SI-INKA</h3>
-                    <p>Sistem Inventaris Barang berbasis Website & Mobile untuk efisiensi pelacakan aset kantor.</p>
-                    <small style="margin-top:10px; color: var(--rose-gold);">Klik untuk lihat detail proyek →</small>
+                    <p>Sistem Inventaris Barang berbasis Web & Mobile untuk efisiensi aset kantor.</p>
+                    <span class="card-link">Lihat Detail Proyek →</span>
                 </div>
             </a>
-            <a href="https://github.com/shfirazhraa" target="_blank" class="card-link">
+            <a href="https://github.com/shfirazhraa" target="_blank">
                 <div class="card">
                     <h3>WebGIS Pneumonia</h3>
-                    <p>Visualisasi peta persebaran data kesehatan penderita pneumonia balita di Kota Jambi.</p>
-                    <small style="margin-top:10px; color: var(--rose-gold);">Klik untuk lihat detail proyek →</small>
+                    <p>Peta digital persebaran data penderita pneumonia balita di Kota Jambi.</p>
+                    <span class="card-link">Lihat Detail Proyek →</span>
                 </div>
             </a>
         </div>
     </section>
 
-
     <footer id="contact">
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/shfiraazhraa/">LinkedIn</a>
-            <a href="https://instagram.com/shfiraazhraa._">Instagram</a>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/shfiraazhraa._" target="_blank">Instagram</a>
         </div>
-        <p style="margin-top: 20px; font-size: 12px; opacity: 0.5;">&copy; 2024 Shafira Zahra ✨</p>
+        <p style="font-size: 11px; opacity: 0.5; letter-spacing: 1px;">&copy; 2024 SHAFIRA ZAHRA. Build with Love ✨</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
         }
     </script>
 </body>
