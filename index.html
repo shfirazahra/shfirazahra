@@ -58,10 +58,38 @@
         .skill-bar { width: 100%; height: 10px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
         .skill-per { height: 100%; background: var(--rose-gold); border-radius: 10px; width: 0; transition: 1.5s ease-in-out; }
 
-        /* JOURNEY TIMELINE */
+        /* JOURNEY TIMELINE INTERAKTIF */
         .journey-container { max-width: 600px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; position: relative; }
-        .journey-item { position: relative; margin-bottom: 40px; text-align: left; }
-        .journey-item::before { content: '🌸'; position: absolute; left: -42px; top: 0; font-size: 18px; background: var(--pink-soft); }
+        .journey-item { position: relative; margin-bottom: 30px; text-align: left; cursor: pointer; padding: 5px 10px; border-radius: 12px; transition: 0.3s; }
+        .journey-item:hover { background: rgba(229, 164, 180, 0.05); }
+        .journey-item::before { content: '🌸'; position: absolute; left: -43px; top: 5px; font-size: 18px; background: var(--pink-soft); }
+        
+        .journey-item .year { font-weight: 600; color: var(--rose-gold); margin-bottom: 2px; display: block; }
+        .journey-item h3 { font-size: 17px; margin-bottom: 2px; }
+        .journey-item .short-desc { margin: 0; font-size: 14px; }
+
+        /* Detail tersembunyi yang akan muncul saat diklik */
+        .journey-detail { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: all 0.5s ease-in-out; 
+            opacity: 0; 
+        }
+        .journey-item.active .journey-detail { 
+            max-height: 1000px; 
+            opacity: 1; 
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+        .journey-detail img { 
+            width: 100%; 
+            max-width: 400px; 
+            border-radius: 15px; 
+            margin-top: 10px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            display: block;
+        }
+        .journey-detail .full-desc { font-size: 13px; margin-top: 8px; line-height: 1.6; color: #777; }
 
         /* PROJECT GRID & CARDS WITH SHINE */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
@@ -70,7 +98,6 @@
             text-align: left; transition: 0.4s; height: 100%; position: relative; overflow: hidden;
         }
         .card:hover { transform: translateY(-10px); border-color: var(--rose-gold); box-shadow: 0 15px 30px rgba(229,164,180,0.2); }
-        /* Efek Berkilau (Shine) */
         .card::after {
             content: ''; position: absolute; top: -50%; left: -150%; width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
@@ -144,46 +171,72 @@
 
     <section id="journey" class="section" style="background-color: var(--pink-bg);">
         <h2 class="section-title" data-aos="fade-down">My Journey</h2>
-           <div class="journey-container">
-            <div class="journey-item" data-aos="fade-left">
-                <p style="font-weight: 600; color: var(--rose-gold);">2025-2026</p>
+        <p style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
+        <div class="journey-container">
+            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
+                <span class="year">2025-2026</span>
                 <h3>PT Bumen Redja Abadi</h3>
-                <p>Warranty Service Claim Administrator</p>
+                <p class="short-desc">Warranty Service Claim Administrator</p>
+                <div class="journey-detail">
+                    <img src="journey1.jpg" alt="Dokumentasi PT BRA">
+                    <p class="full-desc">Bertanggung jawab dalam pengelolaan klaim garansi servis kendaraan secara administratif dan sistematis.</p>
+                </div>
             </div>
-           <div class="journey-item" data-aos="fade-left" data-aos-delay="100">
-                <p style="font-weight: 600; color: var(--rose-gold);">2024-2025</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="100" onclick="this.classList.toggle('active')">
+                <span class="year">2024-2025</span>
                 <h3>Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
-                <p>Karyawan Koperasi</p>
+                <p class="short-desc">Karyawan Koperasi</p>
+                <div class="journey-detail">
+                    <img src="journey2.jpg" alt="Dokumentasi ATR BPN">
+                </div>
             </div>
-            <div class="journey-item" data-aos="fade-left" data-aos-delay="200">
-                <p style="font-weight: 600; color: var(--rose-gold);">2024-2024</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="200" onclick="this.classList.toggle('active')">
+                <span class="year">2024-2024</span>
                 <h3>PT Swakarya Insan Mandiri</h3>
-                <p>Data Entry</p>
+                <p class="short-desc">Data Entry</p>
+                <div class="journey-detail">
+                    <img src="journey3.jpg" alt="Dokumentasi SIM">
+                </div>
             </div>
-             <div class="journey-item" data-aos="fade-left" data-aos-delay="300">
-                <p style="font-weight: 600; color: var(--rose-gold);">2023-2024</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="300" onclick="this.classList.toggle('active')">
+                <span class="year">2023-2024</span>
                 <h3>Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
-                <p>Data Engineer | Data Center</p>
+                <p class="short-desc">Data Engineer | Data Center</p>
+                <div class="journey-detail">
+                    <img src="journey4.jpg" alt="Dokumentasi Data Engineer">
+                </div>
             </div>
-                <div class="journey-item" data-aos="fade-left" data-aos-delay="400">
-                <p style="font-weight: 600; color: var(--rose-gold);">2022-2022</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+                <span class="year">2022-2022</span>
                 <h3>Milkshake Idola & Seblak Seuhah</h3>
-                <p>F&B Stand Operator</p>
+                <p class="short-desc">F&B Stand Operator</p>
+                <div class="journey-detail">
+                    <img src="journey5.jpg" alt="Dokumentasi F&B">
+                </div>
             </div>
-                 <div class="journey-item" data-aos="fade-left" data-aos-delay="400">
-                <p style="font-weight: 600; color: var(--rose-gold);">2021-2024</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+                <span class="year">2021-2024</span>
                 <h3>Universitas Dian Nuswantoro</h3>
-                <p>D3 Teknik Informatika | IPK 3,51</p>
+                <p class="short-desc">D3 Teknik Informatika | IPK 3,51</p>
+                <div class="journey-detail">
+                    <img src="journey6.jpg" alt="Dokumentasi UDINUS">
+                </div>
             </div>
-                 <div class="journey-item" data-aos="fade-left" data-aos-delay="400">
-                <p style="font-weight: 600; color: var(--rose-gold);">2017-2020</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+                <span class="year">2017-2020</span>
                 <h3>SMA N 10 Semarang</h3>
-                <p>Jurusan MIPA | 82,60</p>
+                <p class="short-desc">Jurusan MIPA | 82,60</p>
+                <div class="journey-detail">
+                    <img src="journey7.jpg" alt="Dokumentasi SMA">
+                </div>
             </div>
-               <div class="journey-item" data-aos="fade-left" data-aos-delay="400">
-                <p style="font-weight: 600; color: var(--rose-gold);">2014-2017</p>
+            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+                <span class="year">2014-2017</span>
                 <h3>SMP N 6 Semarang</h3>
-                <p>84,00</p>
+                <p class="short-desc">84,00</p>
+                <div class="journey-detail">
+                    <img src="journey8.jpg" alt="Dokumentasi SMP">
+                </div>
             </div>
         </div>
     </section>
@@ -271,9 +324,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
-
         function createParticles() {
             const container = document.getElementById('particles');
             const icons = ['🌸', '✨', '🤍'];
