@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shafira Zahra | Portofolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Shafira Zahra | Portofolio IT</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -13,52 +13,85 @@
         <ul>
             <li><a href="#about">Tentang</a></li>
             <li><a href="#projects">Proyek</a></li>
-            <li><a href="#certificate">Sertifikat</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#contact">Kontak</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
+            <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img">
             <h1>Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-            <p>Lulusan D3 Teknik Informatika UDINUS (IPK 3.51) yang berfokus pada pengembangan Front-End, UI/UX Design, dan Administrasi Data.</p>
-            <a href="mailto:shfirazhraa@gmail.com" class="btn">Mari Berdiskusi!</a>
+            <p class="subtitle">D3 Teknik Informatika | UI/UX Designer | Admin Specialist</p>
+            <p class="description">
+                Lulusan <b>Universitas Dian Nuswantoro (IPK 3.51)</b>. Saya ahli dalam mengelola data secara akurat dan membangun solusi digital yang user-friendly.
+            </p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn">Hubungi Saya</a>
+                <a href="CV_SHAFIRA_INDO.pdf" target="_blank" class="btn btn-outline">Download CV</a>
+            </div>
         </div>
     </header>
 
     <section id="about" class="section">
         <h2 class="section-title">Tentang Saya</h2>
-        <p>Saya adalah individu yang teliti dan kreatif dengan pengalaman sebagai System Administrator dan Data Entry. Memiliki akurasi data hingga 99% dan terampil dalam mengelola inventaris kantor.</p>
+        <div class="about-container">
+            <p>
+                Saya memiliki pengalaman kuat sebagai <b>System Administrator</b> dan <b>Admin Data</b>. 
+                Terbiasa mengelola ribuan data dengan akurasi 99% dan memiliki kemampuan teknis dalam pemrograman web, mobile, hingga GIS.
+            </p>
+        </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section gray-bg">
         <h2 class="section-title">Proyek Unggulan</h2>
         <div class="grid">
             <div class="card">
+                <div class="card-icon">💻</div>
                 <h3>SI-INKA</h3>
-                <p>Sistem Inventaris Barang Berbasis Website & Mobile untuk efisiensi aset kantor di ATR/BPN Jateng.</p>
+                <p>Sistem Inventaris Barang (Web & Mobile) untuk efisiensi aset kantor di ATR/BPN Jateng.</p>
             </div>
             <div class="card">
+                <div class="card-icon">📍</div>
                 <h3>WebGIS Pneumonia</h3>
-                <p>Visualisasi peta persebaran penderita pneumonia balita di Kota Jambi menggunakan MobileGIS.</p>
+                <p>Visualisasi peta persebaran penderita pneumonia balita di Kota Jambi dengan sistem informasi geografis.</p>
             </div>
             <div class="card">
+                <div class="card-icon">🛍️</div>
                 <h3>E-Commerce Toko Sejati</h3>
-                <p>Platform penjualan online untuk memudahkan pengelolaan transaksi dan stok produk.</p>
+                <p>Aplikasi pengelolaan penjualan online terintegrasi untuk meningkatkan transaksi UMKM.</p>
             </div>
         </div>
     </section>
 
-    <section id="certificate" class="section">
-        <h2 class="section-title">Lisensi & Sertifikasi</h2>
-        <div class="grid">
-            <div class="card-mini">✨ Sertifikat Kompetensi Pemrograman Mobile Pratama (BNSP)</div>
-            <div class="card-mini">📝 TOEFL Preparation - Score: 490</div>
-            <div class="card-mini">💻 Sertifikat Keahlian Pemrograman Web</div>
+    <section id="skills" class="section">
+        <h2 class="section-title">Keahlian & Lisensi</h2>
+        <div class="skills-wrapper">
+            <div class="skills-column">
+                <h3>Technical Skills</h3>
+                <div class="skill-tag">PHP & MySQL</div>
+                <div class="skill-tag">UI/UX Design</div>
+                <div class="skill-tag">Microsoft Excel (Expert)</div>
+                <div class="skill-tag">Mobile Programming</div>
+            </div>
+            <div class="skills-column">
+                <h3>Certifications</h3>
+                <div class="cert-item">🎀 Sertifikat BNSP Pemrograman Mobile</div>
+                <div class="cert-item">📝 TOEFL Score: 490</div>
+                <div class="cert-item">📜 Sertifikat Pelatihan GIS</div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Shafira Zahra. Dibuat dengan ✨ untuk masa depan yang cerah.</p>
+    <footer id="contact">
+        <h2>Mari Terhubung!</h2>
+        <p>Saya terbuka untuk peluang kerja sebagai Admin, Web Developer, atau UI/UX Designer.</p>
+        <div class="social-links">
+            <a href="mailto:shfirazhraa@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/shfiraazhraa/">LinkedIn</a>
+            <a href="https://instagram.com/shfiraazhraa">Instagram</a>
+        </div>
+        <p class="copyright">&copy; 2024 Shafira Zahra. Build with ✨ and Love.</p>
     </footer>
 </body>
 </html>
