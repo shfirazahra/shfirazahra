@@ -14,25 +14,23 @@
             --rose-gold: #e5a4b4;
             --text-color: #5d4037;
             --white: #ffffff;
-            /* Warna Amplop Putih Aesthetic */
-            --env-paper: #ffffff;
-            --env-border: #f0f0f0;
+            --env-color: #f4d0d9;
+            --env-dark: #e5a4b4;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
         
-        /* Mencegah scroll saat amplop belum dibuka */
         body.no-scroll { overflow: hidden; height: 100vh; }
 
-        /* --- STYLES AMPLOP (INTRO) --- */
+        /* --- STYLES AMPLOP VINTAGE --- */
         .envelope-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fcfcfc;
+            background-color: #fef6f8;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,15 +44,13 @@
             transform: scale(1.1);
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .envelope-wrapper:hover { transform: scale(1.15); }
 
         .envelope {
             position: relative;
             width: 300px;
             height: 200px;
-            background: var(--env-paper);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border: 1px solid var(--env-border);
+            background: var(--env-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             border-radius: 4px;
         }
 
@@ -63,12 +59,11 @@
             position: absolute;
             top: 0;
             z-index: 4;
-            border-top: 110px solid #ffffff;
+            border-top: 110px solid var(--env-dark);
             border-left: 150px solid transparent;
             border-right: 150px solid transparent;
             transform-origin: top;
             transition: transform 0.7s ease-in-out 0.2s;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.02));
         }
 
         .envelope::after {
@@ -78,9 +73,37 @@
             bottom: 0;
             width: 0;
             height: 0;
-            border-bottom: 100px solid #fafafa;
-            border-left: 150px solid #ffffff;
-            border-right: 150px solid #ffffff;
+            border-bottom: 100px solid #f9dae2;
+            border-left: 150px solid var(--env-color);
+            border-right: 150px solid var(--env-color);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 100px;
+            left: 130px;
+            width: 40px;
+            height: 40px;
+            background: #d46a81;
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.5s;
+        }
+
+        .open-me-text {
+            position: absolute;
+            top: -40px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--rose-gold);
         }
 
         .letter {
@@ -98,25 +121,18 @@
             justify-content: center;
             padding: 15px;
             text-align: center;
-            border: 1px solid #f9f9f9;
+            border: 1px solid #eee;
         }
 
-        .letter img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 3px solid var(--pink-bg);
-        }
-
-        .letter p { font-size: 11px; letter-spacing: 1px; color: #aaa; text-transform: uppercase; }
+        .letter img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid var(--pink-bg); }
+        .letter p { font-size: 12px; font-family: 'Playfair Display', serif; color: #888; }
 
         .envelope-overlay.open .envelope::before { transform: rotateX(180deg); z-index: 1; }
         .envelope-overlay.open .letter { transform: translateY(-130px); }
+        .envelope-overlay.open .wax-seal { opacity: 0; transform: scale(0); }
         .envelope-overlay.fade-out { opacity: 0; visibility: hidden; }
 
-        /* --- SISA CSS ORIGINAL KAMU --- */
+        /* --- CSS ORIGINAL --- */
         .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
         .particle { position: absolute; opacity: 0.4; animation: float 15s infinite linear; }
         @keyframes float {
@@ -127,30 +143,24 @@
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         .hamburger { cursor: pointer; z-index: 1001; padding: 10px; }
         .hamburger div { width: 25px; height: 3px; background: var(--rose-gold); margin: 5px; transition: 0.3s; border-radius: 3px; }
-        
         .sidebar { position: fixed; top: 0; left: -280px; width: 250px; height: 100%; background: var(--white); transition: 0.4s ease-in-out; z-index: 999; padding-top: 100px; box-shadow: 2px 0 15px rgba(0,0,0,0.05); }
         .sidebar.active { left: 0; }
         .sidebar ul { list-style: none; padding: 0 30px; }
         .sidebar ul li { margin: 25px 0; border-bottom: 1px solid var(--pink-bg); padding-bottom: 10px; }
         .sidebar ul li a { font-weight: 600; font-size: 16px; }
-
         .hero { display: flex; flex-direction: column; align-items: center; padding: 80px 10%; text-align: center; background: linear-gradient(135deg, #fdf2f5 0%, #fffafa 100%); }
         .profile-img-hero { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 6px solid white; box-shadow: 0 10px 25px rgba(229,164,180,0.25); margin-bottom: 25px; transition: 0.5s; }
         .profile-img-hero:hover { transform: scale(1.05) rotate(5deg); }
         .hero h1 span { color: var(--rose-gold); border-bottom: 2px solid var(--rose-gold); }
-
         .section { padding: 80px 8%; text-align: center; }
         .section-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 40px; color: var(--text-color); }
-
         .skill-container { max-width: 600px; margin: 0 auto; text-align: left; }
         .skill-name { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
         .skill-bar { width: 100%; height: 10px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
         .skill-per { height: 100%; background: var(--rose-gold); border-radius: 10px; width: 0; transition: 1.5s ease-in-out; }
-
         .journey-container { max-width: 600px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; position: relative; }
         .journey-item { position: relative; margin-bottom: 30px; text-align: left; cursor: pointer; padding: 5px 10px; border-radius: 12px; transition: 0.3s; }
         .journey-item:hover { background: rgba(229, 164, 180, 0.05); }
@@ -162,17 +172,14 @@
         .journey-item.active .journey-detail { max-height: 1000px; opacity: 1; padding-top: 15px; padding-bottom: 10px; }
         .journey-detail img { width: 100%; max-width: 400px; border-radius: 15px; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: block; }
         .journey-detail .full-desc { font-size: 13px; margin-top: 8px; line-height: 1.6; color: #777; }
-
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #fce4ec; text-align: left; transition: 0.4s; height: 100%; position: relative; overflow: hidden; }
         .card:hover { transform: translateY(-10px); border-color: var(--rose-gold); box-shadow: 0 15px 30px rgba(229,164,180,0.2); }
         .card h3 { color: var(--rose-gold); margin-bottom: 10px; font-size: 18px; }
-
         .cert-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; font-size: 13px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); margin-top: 20px; }
         .cert-table th { background: var(--rose-gold); color: white; padding: 12px; }
         .cert-table td { padding: 12px; border-bottom: 1px solid var(--pink-bg); text-align: left; }
         .cert-table tr:hover { background-color: var(--pink-soft); cursor: pointer; }
-
         footer { padding: 60px; background: #2d2d2d; color: white; text-align: center; }
         .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
     </style>
@@ -181,10 +188,12 @@
 
     <div class="envelope-overlay" id="envelopeOverlay">
         <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="open-me-text">Open Me</div>
             <div class="envelope">
+                <div class="wax-seal">❤</div>
                 <div class="letter">
                     <img src="foto-profil.jpeg" alt="Shafira">
-                    <p>Click to open ✨</p>
+                    <p>Welcome to my Portfolio ✨</p>
                 </div>
             </div>
         </div>
@@ -239,7 +248,7 @@
         </div>
     </section>
 
-       <section id="journey" class="section" style="background-color: var(--pink-bg);">
+    <section id="journey" class="section" style="background-color: var(--pink-bg);">
         <h2 class="section-title" data-aos="fade-down">My Journey</h2>
         <p style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
         <div class="journey-container">
@@ -305,7 +314,7 @@
                     <p class="full-desc">• Bertanggung jawab atas stock management dan kerapian operasional untuk memastikan kualitas layanan yang tinggi.</p>
                 </div>
             </div>
-            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
                 <span class="year">2021-2024</span>
                 <h3>Universitas Dian Nuswantoro</h3>
                 <p class="short-desc">D3 Teknik Informatika | IPK 3,51</p>
@@ -316,7 +325,7 @@
                     <p class="full-desc">• Menjadi Anggota dan ikut serta aktif dalam kegiatan HMDTI.</p>
                 </div>
             </div>
-            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
                 <span class="year">2020-2020</span>
                 <h3>BBPLK Semarang</h3>
                 <p class="short-desc">Pelatihan Kerja Menjahit Pakaian Pria | A</p>
@@ -327,7 +336,7 @@
                     <p class="full-desc">• Mengikuti Prosedur Keselamatan & Kesehatan di Tempat Kerja (K3).</p>
                 </div>
             </div>
-            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
                 <span class="year">2017-2020</span>
                 <h3>SMA N 10 Semarang</h3>
                 <p class="short-desc">Jurusan MIPA | 82,60</p>
@@ -338,7 +347,7 @@
                     <p class="full-desc">• Mengikuti Lomba di Sakura No Matsuri Hino Tahun 2017, lomba OSN Ekonomi, lomba Mural Art.</p>
                 </div>
             </div>
-            <div class="journey-item" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
                 <span class="year">2014-2017</span>
                 <h3>SMP N 6 Semarang</h3>
                 <p class="short-desc">84,00</p>
@@ -352,7 +361,7 @@
         </div>
     </section>
 
-   <section id="projects" class="section">
+    <section id="projects" class="section">
         <h2 class="section-title" data-aos="fade-down">Featured Projects</h2>
         <div class="grid">
              <a href="http://tokosejatikosmetik.42web.io/" target="_blank" data-aos="fade-up">
@@ -396,31 +405,18 @@
                     <tr><th>No</th><th>Nama Sertifikat (Klik untuk Lihat)</th><th>Penyelenggara</th></tr>
                 </thead>
                 <tbody>
-                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760859698058/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')">
-                        <td>1</td><td>Sertifikat Kompetensi Keahlian Pemrograman Web</td><td>APTI - Asosiasi Profesi Teknik Indonesia</td>
-                    </tr>
-                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1526445942/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1760315554072', '_blank')">
-                        <td>2</td><td>Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>Badan Nasional Sertifikasi Profesi (BNSP)</td>
-                    </tr>
-                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1725187934552/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')">
-                        <td>3</td><td>TOEFL PREPARATION</td><td>Universitas Dian Nuswantoro</td>
-                    </tr>
-                     <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760863888459/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')">
-                        <td>4</td><td>Sertifikat Seminar Nasional Teknik Informatika</td><td>Universitas Dian Nuswantoro</td>
-                    </tr>
-                     <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/2072209637/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1760862315506', '_blank')">
-                        <td>5</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>Kementerian Ketenagakerjaan Republik Indonesia</td>
-                    </tr>
-                     <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/381982047/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1761318574457', '_blank')">
-                        <td>6</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>Badan Nasional Sertifikasi Profesi (BNSP)</td>
-                    </tr>
-                     <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760867368077/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')">
-                        <td>7</td><td>Sertifikat Finalis 8 Besar Business Plan</td><td>Universitas PGRI Semarang</td>
-                    </tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760859698058/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')"><td>1</td><td>Sertifikat Kompetensi Keahlian Pemrograman Web</td><td>APTI</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1526445942/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1760315554072', '_blank')"><td>2</td><td>Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>BNSP</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1725187934552/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')"><td>3</td><td>TOEFL PREPARATION</td><td>UDINUS</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760863888459/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')"><td>4</td><td>Sertifikat Seminar Nasional Teknik Informatika</td><td>UDINUS</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/2072209637/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1760862315506', '_blank')"><td>5</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>Kemenaker RI</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/381982047/multiple-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA&treasuryMediaId=1761318574457', '_blank')"><td>6</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>BNSP</td></tr>
+                    <tr onclick="window.open('https://www.linkedin.com/in/shfiraazhraa/details/certifications/1760867368077/single-media-viewer/?profileId=ACoAAFC4SmIBb-62FvH21V-HxVq989RTyXeibxA', '_blank')"><td>7</td><td>Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
+
     <footer id="contact">
         <h2 data-aos="fade-up">Get In Touch</h2>
         <div class="footer-links">
