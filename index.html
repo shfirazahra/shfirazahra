@@ -1,62 +1,96 @@
-<header class="hero" id="home">
-    <div class="hero-content">
-        <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in">
-        <h1 data-aos="fade-up">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-        <p class="tagline" data-aos="fade-up" data-aos-delay="200">
-            D3 Teknik Informatika @ UDINUS | <b>Full-Stack Developer & UI/UX Enthusiast</b>
-        </p>
-        <p data-aos="fade-up" data-aos-delay="300" style="max-width: 600px; margin: 15px auto; font-size: 14px; opacity: 0.8;">
-            Seseorang yang menjembatani logika pemrograman dengan keindahan seni visual. Berpengalaman dalam manajemen data dan pengembangan sistem informasi.
-        </p>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafira Zahra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pink-soft: #fffafa;
+            --pink-bg: #fdf2f5;
+            --rose-gold: #e5a4b4;
+            --text-color: #5d4037;
+            --white: #ffffff;
+            --env-color: #f4d0d9;
+            --env-dark: #e5a4b4;
+        }
 
-<section id="skills" class="section">
-    <h2 class="section-title" data-aos="fade-down">Expertise & Skills</h2>
-    <div class="skill-container">
-        <div class="skill-tags" data-aos="fade-up">
-            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
-            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">UI/UX Design</span>
-            <span class="tag">Data Entry</span><span class="tag">System Arch</span>
-        </div>
+        * { box-sizing: border-box; margin: 0; padding: 0; …
+[06:38, 2/15/2026] Shafira Zahra: STYLE.CSS 
+
+:root {
+    --pink-soft: #fffafa;
+    --pink-bg: #fdf2f5;
+    --rose-gold: #e5a4b4;
+    --text-color: #5d4037;
+    --white: #ffffff;
+    /* Warna Amplop Putih Aesthetic */
+    --env-paper: #ffffff;
+    --env-border: #f0f0f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
+
+/* Mencegah scroll saat amplop belum dibuka */
+body.no-scroll { overflow: hidden; height: 100vh; }
+
+/* --- STYLES AMPLOP (INTRO) --- */
+.envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-cont…
+[06:39, 2/15/2026] Shafira Zahra: SCRIPT.JS
+
+// Inisialisasi AOS (Animate on Scroll)
+AOS.init({ 
+    duration: 1000, 
+    once: true 
+});
+
+// FUNGSI UNTUK MEMBUKA AMPLOP
+function openEnvelope() {
+    const overlay = document.getElementById('envelopeOverlay');
+    
+    // 1. Tambahkan class 'open' untuk memicu animasi tutup amplop & surat naik
+    overlay.classList.add('open');
+    
+    // 2. Tunggu sebentar (sampai surat naik maksimal), lalu hilangkan overlay-nya
+    setTimeout(() => {
+        overlay.classList.add('fade-out'); // Efek menghilang halus
         
-        <div style="margin-top: 30px;">
-            <div class="skill-name"><span>Computational Logic</span><span>96%</span></div>
-            <div class="skill-bar"><div class="skill-per" style="width: 96%;"></div></div>
-            <div class="skill-name"><span>Human-Centric Interaction (UI/UX)</span><span>88%</span></div>
-            <div class="skill-bar"><div class="skill-per" style="width: 88%;"></div></div>
-        </div>
-    </div>
-</section>
+        // 3. Aktifkan kembali scroll pada body agar web bisa dijelajahi
+        document.body.classList.remove('no-scroll');
+    }, 2500); // 2.5 detik (waktu tunggu yang pas)
+}
 
-<section id="projects" class="section">
-    <h2 class="section-title" data-aos="fade-down">Featured Projects</h2>
-    <div class="grid">
-        <a href="http://tokosejatikosmetik.42web.io/" target="_blank" class="card-link" data-aos="fade-up">
-            <div class="card">
-                <div class="card-category">E-Commerce</div>
-                <h3>Toko Sejati Cosmetics</h3>
-                <p>Website belanja kosmetik berbasis web.</p>
-                <div class="tech-stack"><span>PHP</span><span>CSS</span><span>MySQL</span></div>
-            </div>
-        </a>
-        
-        <a href="https://appinventorykanwilbpn.42web.io/?i=1" target="_blank" class="card-link" data-aos="fade-up">
-            <div class="card">
-                <div class="card-category">Inventory System</div>
-                <h3>SI-INKA</h3>
-                <p>Sistem inventaris Kanwil ATR/BPN berbasis Web & Mobile.</p>
-                <div class="tech-stack"><span>Web-Based</span><span>Mobile</span><span>Database</span></div>
-            </div>
-        </a>
+// Fungsi Sidebar
+function toggleMenu() { 
+    document.getElementById('sidebar').classList.toggle('active'); 
+}
 
-        <a href="https://lyferaa.github.io/Lyfera/" target="_blank" class="card-link" data-aos="fade-up">
-            <div class="card art-card">
-                <div class="card-category">Creative Art</div>
-                <h3>Lyfera's Art Portfolio</h3>
-                <p>Kumpulan karya seni visual dan mural interaktif.</p>
-                <div class="tech-stack"><span>UI/UX</span><span>Illustration</span><span>Interactive</span></div>
-            </div>
-        </a>
-    </div>
-</section>
+// Efek Partikel (🌸, ✨, 🤍)
+function createParticles() {
+    const container = document.getElementById('particles');
+    const icons = ['🌸', '✨', '🤍'];
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        container.appendChild(p);
+    }
+}
+
+// Jalankan partikel saat web dimuat
+createParticles();
