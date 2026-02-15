@@ -44,12 +44,13 @@ function openEnvelope() {
         overlay.classList.add('fade-out');
         document.body.classList.remove('no-scroll');
         
-        // PENTING: Paksa browser kembali ke paling atas
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'instant' // Gunakan instant agar tidak ada jeda loncat
-        });
+        // PENTING: Supaya tidak lompat ke skill, kunci ke paling atas
+        window.scrollTo(0, 0); 
+        
+        // Hilangkan overlay total agar tidak menghalangi klik di bawahnya
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 1000);
     }, 2500);
 }
 
