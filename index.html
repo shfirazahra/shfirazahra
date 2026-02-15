@@ -214,18 +214,13 @@
 
     <div class="particles" id="particles"></div>
 
-
-  <nav>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-
-    <div class="logo">Shafira<span>Zahra</span></div>
-
-    <div class="nav-controls">
-        <button id="darkModeToggle" class="nav-btn">🌙</button>
-        <button id="langToggle" class="nav-btn">EN</button>
-    </div>
-</nav>
-
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div><div></div><div></div>
+        </div>
+        <div class="logo" data-aos="fade-right">Shafira<span>Zahra</span></div>
+        <div style="width: 40px;"></div>
+    </nav>
 
     <div class="sidebar" id="sidebar">
         <ul>
@@ -445,11 +440,35 @@
         <p style="font-size: 11px; opacity: 0.5; margin-top: 30px;">&copy; 2024 Shafira Zahra ✨ Built with Passion</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script> 
-</body>
+        function openEnvelope() {
+            const overlay = document.getElementById('envelopeOverlay');
+            overlay.classList.add('open');
+            setTimeout(() => {
+                overlay.classList.add('fade-out');
+                document.body.classList.remove('no-scroll');
+            }, 2500);
+        }
 
-</html>
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+        
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const icons = ['🌸', '✨', '🤍'];
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerText = icons[Math.floor(Math.random() * icons.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+    </script>
 </body>
 </html> 
