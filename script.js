@@ -1,3 +1,5 @@
+AOS.init({ duration: 1000, once: true });
+
 // 1. Dark Mode
 const btnDark = document.getElementById('darkModeToggle');
 btnDark.addEventListener('click', () => {
