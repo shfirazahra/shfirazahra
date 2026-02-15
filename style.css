@@ -207,15 +207,7 @@ body.dark-mode td {
 
 /* --- REVISI FLOATING CONTROLS --- */
 /* Taruh di paling bawah agar tidak tertutup elemen lain */
-.floating-controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999; /* Pastikan angka ini paling tinggi */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+
 
 .floating-controls button, #backToTop {
     width: 45px;
@@ -239,14 +231,6 @@ body.dark-mode td {
     right: 20px;
     display: none; /* Muncul lewat JS */
 }
-/* Menjamin tombol floating terlihat di atas semua elemen */
-.floating-controls {
-    display: flex !important; /* Memastikan tidak tersembunyi */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10001; /* Harus lebih tinggi dari z-index amplop (10000) */
-}
 
 /* Supaya Dark Mode merubah background section yang putih */
 body.dark-mode .section, 
@@ -255,14 +239,7 @@ body.dark-mode #home {
     background-color: #1a1a1a !important;
     background: #1a1a1a !important;
 }
-/* Pastikan tombol ada di paling depan */
-.floating-controls {
-    display: flex !important;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99999 !important; /* Angka super tinggi */
-}
+
 
 /* Memperbaiki Dark Mode agar menimpa warna putih di section */
 body.dark-mode, 
@@ -281,4 +258,46 @@ body.dark-mode .journey-item,
 body.dark-mode .cert-table {
     background-color: #2d2d2d !important;
     color: white !important;
+}
+/* Nav Controls di Pojok Kanan Atas */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-btn {
+    background: var(--pink-bg);
+    border: 1px solid var(--rose-gold);
+    color: var(--rose-gold);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--rose-gold);
+    color: white;
+}
+
+/* DARK MODE OVERRIDE - PENTING agar warna berubah */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode nav, 
+body.dark-mode .sidebar, 
+body.dark-mode .card, 
+body.dark-mode .journey-item {
+    background-color: #252525 !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .section, body.dark-mode .hero {
+    background-color: #1a1a1a !important;
 }
