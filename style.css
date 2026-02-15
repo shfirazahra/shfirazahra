@@ -171,31 +171,71 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 footer { padding: 60px; background: #2d2d2d; color: white; text-align: center; }
 .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
 
-/* Container Tombol di pojok */
+/* --- DARK MODE SETTINGS --- */
+/* Menambahkan transisi halus saat ganti tema */
+body {
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Warna saat Dark Mode aktif */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+}
+
+/* Elemen spesifik yang harus berubah warna di dark mode */
+body.dark-mode nav, 
+body.dark-mode .sidebar,
+body.dark-mode .card,
+body.dark-mode .journey-item,
+body.dark-mode .cert-table {
+    background-color: #2d2d2d !important;
+    color: #f0f0f0 !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .hero,
+body.dark-mode .section {
+    background-color: #1a1a1a !important;
+}
+
+body.dark-mode .hero-desc, 
+body.dark-mode .job-desc,
+body.dark-mode td {
+    color: #bbb !important;
+}
+
+/* --- REVISI FLOATING CONTROLS --- */
+/* Taruh di paling bawah agar tidak tertutup elemen lain */
 .floating-controls {
-    position: fixed; bottom: 20px; right: 20px; z-index: 999;
-    display: flex; flex-direction: column; gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Pastikan angka ini paling tinggi */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .floating-controls button, #backToTop {
-    width: 45px; height: 45px; border-radius: 50%; border: none;
-    background: var(--rose-gold); color: white; cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: var(--rose-gold);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
+#backToTop {
+    position: fixed;
+    bottom: 130px; /* Di atas tombol dark mode */
+    right: 20px;
+    display: none; /* Muncul lewat JS */
 }
-body.dark-mode .card, body.dark-mode nav, body.dark-mode .journey-card {
-    background-color: #2d2d2d;
-    color: #f0f0f0;
-    border-color: #444;
-}
-body.dark-mode .hero-desc, body.dark-mode .job-desc {
-    color: #bbb;
-}
-
-/* Back to Top muncul saat scroll */
-#backToTop { display: none; position: fixed; bottom: 80px; right: 20px; }
