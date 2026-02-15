@@ -39,13 +39,20 @@ btnLang.addEventListener('click', () => {
 function openEnvelope() {
     const overlay = document.getElementById('envelopeOverlay');
     overlay.classList.add('open');
+    
     setTimeout(() => {
         overlay.classList.add('fade-out');
         document.body.classList.remove('no-scroll');
-        // Pastikan posisi scroll balik ke atas setelah buka
-        window.scrollTo(0,0);
+        
+        // PENTING: Paksa browser kembali ke paling atas
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant' // Gunakan instant agar tidak ada jeda loncat
+        });
     }, 2500);
 }
+
 
 // 6. Sidebar & Particles
 function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
