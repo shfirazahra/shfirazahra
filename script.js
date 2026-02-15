@@ -42,3 +42,34 @@ function createParticles() {
 
 // Jalankan partikel saat web dimuat
 createParticles();
+
+// 1. LOGIKA DARK MODE
+const btnDark = document.getElementById('darkModeToggle');
+btnDark.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    // Ganti ikon bulan/matahari
+    btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// 2. LOGIKA TRANSLATE (Sederhana)
+const btnLang = document.getElementById('langToggle');
+btnLang.addEventListener('click', () => {
+    const isEN = btnLang.innerText === "EN";
+    
+    // Ambil elemen yang ingin diganti bahasanya (tambah id/class jika perlu)
+    const aboutTitle = document.querySelector('#about h2');
+    const skillTitle = document.querySelector('#skills h2');
+    const heroText = document.querySelector('.hero-desc');
+
+    if (isEN) {
+        if(aboutTitle) aboutTitle.innerText = "About Me";
+        if(skillTitle) skillTitle.innerText = "Technical Skills";
+        if(heroText) heroText.innerText = "Informatics Engineering student focused on technology and creative design.";
+        btnLang.innerText = "ID";
+    } else {
+        if(aboutTitle) aboutTitle.innerText = "Tentang Saya";
+        if(skillTitle) skillTitle.innerText = "Keahlian Teknis";
+        if(heroText) heroText.innerText = "Mahasiswa Teknik Informatika yang berfokus pada pengembangan teknologi dan desain kreatif.";
+        btnLang.innerText = "EN";
+    }
+});
