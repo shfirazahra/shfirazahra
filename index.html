@@ -441,36 +441,7 @@
         <p style="font-size: 11px; opacity: 0.5; margin-top: 30px;">&copy; 2024 Shafira Zahra ✨ Built with Passion</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-
-        function openEnvelope() {
-            const overlay = document.getElementById('envelopeOverlay');
-            overlay.classList.add('open');
-            setTimeout(() => {
-                overlay.classList.add('fade-out');
-                document.body.classList.remove('no-scroll');
-            }, 2500);
-        }
-
-        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
-        
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const icons = ['🌸', '✨', '🤍'];
-            for (let i = 0; i < 15; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.innerText = icons[Math.floor(Math.random() * icons.length)];
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDelay = Math.random() * 15 + 's';
-                p.style.fontSize = (Math.random() * 10 + 10) + 'px';
-                container.appendChild(p);
-            }
-        }
-        createParticles();
-    </script>
+   
     <div class="floating-controls">
         <button id="darkModeToggle" title="Tukar Tema">🌙</button>
         <button id="langToggle">EN</button>
@@ -479,7 +450,9 @@
 
  
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script (1).js"></script> </body>
+    <script src="script (2).js"></script> 
+</body>
+
 </html>
 </body>
 </html> 
