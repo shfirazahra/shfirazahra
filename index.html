@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shafira Zahra | Portfolio ✨</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
+        /* --- VARIABLE & RESET --- */
         :root {
             --pink-soft: #fffafa;
             --pink-bg: #fdf2f5;
@@ -18,80 +20,76 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); overflow-x: hidden; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--pink-soft); 
+            color: var(--text-color); 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
         body.no-scroll { overflow: hidden; height: 100vh; position: fixed; width: 100%; }
 
-        /* --- ENVELOPE DESIGN (Kembali ke versi Cantik) --- */
+        /* --- ENVELOPE INTRO (FIXED & STABLE) --- */
         .envelope-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #fef6f8; display: flex; justify-content: center; align-items: center;
             z-index: 10000; transition: opacity 0.8s ease;
         }
-
         .envelope-wrapper {
             position: relative; width: 300px; height: 200px; cursor: pointer;
             perspective: 1000px; transition: transform 0.3s;
         }
-        .envelope-wrapper:hover { transform: translateY(-5px); }
-
+        .envelope-wrapper:hover { transform: scale(1.02); }
         .envelope {
             position: relative; width: 100%; height: 100%;
             background: var(--env-color); border-radius: 5px;
             box-shadow: 0 15px 35px rgba(229,164,180,0.3);
         }
-
-        /* Tutup Amplop Atas */
-        .envelope::before {
+        .envelope::before { /* Flap Atas */
             content: ""; position: absolute; top: 0; left: 0; z-index: 4;
-            border-top: 115px solid var(--env-dark); 
-            border-left: 150px solid transparent; 
-            border-right: 150px solid transparent;
+            border-top: 115px solid var(--env-dark); border-left: 150px solid transparent; border-right: 150px solid transparent;
             transform-origin: top; transition: transform 0.7s ease-in-out;
         }
-
-        /* Lipatan Depan Amplop */
-        .envelope::after {
+        .envelope::after { /* Kantong Depan */
             content: ""; position: absolute; bottom: 0; left: 0; z-index: 3;
-            border-bottom: 110px solid #f9dae2; 
-            border-left: 150px solid var(--env-color); 
-            border-right: 150px solid var(--env-color);
+            border-bottom: 110px solid #f9dae2; border-left: 150px solid var(--env-color); border-right: 150px solid var(--env-color);
             border-radius: 0 0 5px 5px;
         }
-
         .wax-seal {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -10%);
             width: 50px; height: 50px; background: #d46a81; border-radius: 50%;
             z-index: 5; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: 0.5s; pointer-events: none;
+            color: white; font-size: 22px; pointer-events: none; transition: 0.5s;
         }
-
         .letter {
             position: absolute; bottom: 10px; left: 25px; width: 250px; height: 160px;
             background: white; z-index: 2; transition: transform 0.8s ease-in-out;
             padding: 20px; text-align: center; border: 1px solid #f0f0f0;
-            box-shadow: 0 0 10px rgba(0,0,0,0.02);
         }
-
-        .letter img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
-
+        .letter img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-bottom: 5px; }
+        
         /* Animasi Buka */
         .envelope-overlay.open .envelope::before { transform: rotateX(180deg); z-index: 1; }
         .envelope-overlay.open .letter { transform: translateY(-130px); }
-        .envelope-overlay.open .wax-seal { opacity: 0; scale: 0; }
-        .envelope-overlay.fade-out { opacity: 0; visibility: hidden; }
+        .envelope-overlay.open .wax-seal { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        .envelope-overlay.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* --- CONTENT FIXES --- */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: white; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text-color); }
+        /* --- NAVBAR --- */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 8%; background: white; position: sticky; top: 0; z-index: 999; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
         .logo span { color: var(--rose-gold); }
+        .nav-links a { text-decoration: none; color: var(--text-color); margin-left: 20px; font-size: 13px; font-weight: 600; }
 
+        /* --- HERO (FIXED FOTO RAKSASA) --- */
         .hero { padding: 80px 10%; text-align: center; background: linear-gradient(135deg, #fffafa, #fdf2f5); }
         
-        /* FIX FOTO: Ukuran Dikunci */
         .profile-img-hero { 
-            width: 160px !important; 
-            height: 160px !important; 
+            width: 170px !important; /* Ukuran dikunci */
+            height: 170px !important; 
             border-radius: 50%; 
             object-fit: cover; 
             border: 6px solid white; 
@@ -100,15 +98,30 @@
             display: inline-block;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 10px; }
-        h1 span { color: var(--rose-gold); border-bottom: 2px solid var(--rose-gold); }
-        .desc { max-width: 650px; margin: 15px auto; color: #777; line-height: 1.7; font-size: 14px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 10px; }
+        .hero h1 span { color: var(--rose-gold); border-bottom: 3px solid var(--rose-gold); }
+        .hero-desc { max-width: 650px; margin: 15px auto; color: #777; line-height: 1.7; font-size: 15px; }
 
+        /* --- SKILLS --- */
         .section { padding: 80px 10%; text-align: center; }
+        .skill-container { max-width: 700px; margin: 40px auto; text-align: left; }
+        .skill-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        .skill-per { height: 100%; background: var(--rose-gold); width: 0; transition: 1.5s ease; }
+
+        /* --- JOURNEY (ACCORDION) --- */
+        .journey-item { 
+            background: white; margin-bottom: 15px; border-radius: 12px; 
+            overflow: hidden; border: 1px solid var(--pink-bg); cursor: pointer; text-align: left;
+        }
+        .journey-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .journey-content { max-height: 0; overflow: hidden; transition: 0.5s ease; padding: 0 20px; background: #fafafa; }
+        .journey-item.active .journey-content { max-height: 500px; padding: 20px; }
+
+        /* --- GRID & CARDS --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .card { background: white; padding: 30px; border-radius: 15px; border: 1px solid #fce4ec; text-align: left; transition: 0.3s; }
+        .card { background: white; padding: 30px; border-radius: 15px; text-align: left; transition: 0.3s; border: 1px solid #fce4ec; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(229,164,180,0.2); }
-        
+
         footer { padding: 50px; background: #2d2d2d; color: white; text-align: center; font-size: 13px; }
     </style>
 </head>
@@ -116,12 +129,12 @@
 
     <div class="envelope-overlay" id="envelopeOverlay">
         <div class="envelope-wrapper" onclick="openEnvelope()">
-            <div style="position:absolute; top:-40px; width:100%; text-align:center; color:var(--rose-gold); font-style:italic;">Open Me ✨</div>
+            <div style="position:absolute; top:-40px; width:100%; text-align:center; color:var(--rose-gold); font-weight:bold;">Open Me ✨</div>
             <div class="envelope">
                 <div class="wax-seal">❤</div>
                 <div class="letter">
                     <img src="foto-profil.jpeg" alt="Shafira">
-                    <p style="font-size: 12px; color: #888;">Welcome to My Story</p>
+                    <p style="font-size: 12px; color: #888;">Welcome to My Portfolio</p>
                     <p style="font-weight: 600; color: var(--rose-gold);">Shafira Zahra</p>
                 </div>
             </div>
@@ -130,49 +143,102 @@
 
     <nav>
         <div class="logo">Shafira<span>Zahra</span></div>
-        <div style="font-size: 10px; letter-spacing: 2px;">EST. 2024</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+        </div>
     </nav>
 
-    <header class="hero">
+    <section class="hero" id="home">
         <img src="foto-profil.jpeg" alt="Shafira" class="profile-img-hero" data-aos="zoom-in">
         <h1 data-aos="fade-up">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-        <p class="desc" data-aos="fade-up" data-aos-delay="200">
-            D3 Teknik Informatika @ UDINUS. Seseorang yang menjembatani logika pemrograman dengan keindahan seni visual. 
-            Berpengalaman dalam manajemen data dan IT support.
+        <p style="font-weight: 600; color: var(--rose-gold); margin-top: 10px;" data-aos="fade-up">D3 Teknik Informatika @ UDINUS</p>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
+            Full-Stack Developer & UI/UX Enthusiast. Seseorang yang menjembatani logika pemrograman dengan keindahan seni visual. Berpengalaman dalam manajemen data dan IT support.
         </p>
-    </header>
+    </section>
 
-    <section class="section">
-        <h2 style="font-family: 'Playfair Display', serif;" data-aos="fade-down">My Projects</h2>
+    <section class="section" id="skills" style="background: white;">
+        <h2 style="font-family: 'Playfair Display', serif;" data-aos="fade-down">Expertise</h2>
+        <div class="skill-container">
+            <p style="font-size: 13px; margin-bottom: 5px;">Web Development (PHP, MySQL, JS)</p>
+            <div class="skill-bar"><div class="skill-per" style="width: 85%;"></div></div>
+            
+            <p style="font-size: 13px; margin-bottom: 5px;">UI/UX Design (Figma, Aesthetic Logic)</p>
+            <div class="skill-bar"><div class="skill-per" style="width: 90%;"></div></div>
+
+            <p style="font-size: 13px; margin-bottom: 5px;">Data Engineering & Management</p>
+            <div class="skill-bar"><div class="skill-per" style="width: 80%;"></div></div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--pink-bg);">
+        <h2 style="font-family: 'Playfair Display', serif;" data-aos="fade-down">My Journey</h2>
+        <div style="max-width: 700px; margin: 40px auto;">
+            
+            <div class="journey-item" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                <div class="journey-header">
+                    <strong>PT Bumen Redja Abadi</strong>
+                    <span style="font-size: 12px; color: var(--rose-gold);">2025 - 2026</span>
+                </div>
+                <div class="journey-content">
+                    <p style="font-size: 14px; line-height: 1.6;">Warranty Service Claim Administrator. Mengelola input data klaim kendaraan, arsip digital, dan koordinasi teknisi.</p>
+                </div>
+            </div>
+
+            <div class="journey-item" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="100">
+                <div class="journey-header">
+                    <strong>ATR/BPN Jawa Tengah</strong>
+                    <span style="font-size: 12px; color: var(--rose-gold);">2023 - 2024</span>
+                </div>
+                <div class="journey-content">
+                    <p style="font-size: 14px; line-height: 1.6;">Data Engineer di Data Center. Bertanggung jawab atas pemeliharaan server, storage data, dan integrasi sistem inventaris.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 style="font-family: 'Playfair Display', serif;" data-aos="fade-down">Featured Projects</h2>
         <div class="grid">
             <div class="card" data-aos="fade-up">
-                <span style="font-size: 10px; color: #aaa;">WEB DEVELOPMENT</span>
-                <h3 style="margin: 10px 0; color: var(--rose-gold);">Toko Sejati Cosmetics</h3>
-                <p style="font-size: 13px; color: #777;">Sistem belanja kosmetik online berbasis web dengan integrasi database MySQL.</p>
+                <h3 style="color: var(--rose-gold);">Toko Sejati Cosmetics</h3>
+                <p style="font-size: 13px; margin-top: 10px;">Sistem belanja online berbasis web yang memadukan manajemen database dengan interface yang user-friendly.</p>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="150">
-                <span style="font-size: 10px; color: #aaa;">SYSTEM INFORMATION</span>
-                <h3 style="margin: 10px 0; color: var(--rose-gold);">SI-INKA BPN</h3>
-                <p style="font-size: 13px; color: #777;">Sistem Inventaris Barang Kantor untuk efisiensi pendataan aset di ATR/BPN.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3 style="color: var(--rose-gold);">SI-INKA BPN</h3>
+                <p style="font-size: 13px; margin-top: 10px;">Aplikasi Inventaris Barang Kantor (INKA) untuk efisiensi pendataan aset negara secara digital.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Shafira Zahra. Built with Passion ✨</p>
+        <p>&copy; 2024 Shafira Zahra. Built with Love & Code ✨</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Inisialisasi Animasi Scroll
         AOS.init({ duration: 1000, once: true });
 
+        // Fungsi Buka Amplop
         function openEnvelope() {
             const overlay = document.getElementById('envelopeOverlay');
             overlay.classList.add('open');
+            
             setTimeout(() => {
                 overlay.classList.add('fade-out');
                 document.body.classList.remove('no-scroll');
-            }, 2200);
+                
+                // Animasi Skill Bar setelah amplop dibuka
+                document.querySelectorAll('.skill-per').forEach(el => {
+                    const width = el.style.width;
+                    el.style.width = '0';
+                    setTimeout(() => { el.style.width = width; }, 100);
+                });
+            }, 2000);
         }
     </script>
 </body>
