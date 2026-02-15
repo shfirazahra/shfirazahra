@@ -1,63 +1,43 @@
-// 1. Inisialisasi AOS
 AOS.init({ duration: 1000, once: true });
 
-// 2. Dark Mode Logic (Pindahkan ke luar agar aktif segera)
+// 1. Dark Mode Logic
 const btnDark = document.getElementById('darkModeToggle');
-btnDark.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-});
-
-// 3. Back to Top & Scroll Logic
-window.onscroll = function() {
-    let btn = document.getElementById("backToTop");
-    if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) { 
-        btn.style.display = "block"; 
-    } else { 
-        btn.style.display = "none"; 
-    }
-};
-
-function scrollToTop() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+if(btnDark) {
+    btnDark.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
 }
 
-// 4. Translate Logic
+// 2. Translate Logic (Sederhana)
 const btnLang = document.getElementById('langToggle');
-btnLang.addEventListener('click', () => {
-    if(btnLang.innerText === "EN") {
-        alert("Switching to English...");
-        // Di sini nanti kamu bisa tambahkan logika ganti teks manual
-        btnLang.innerText = "ID";
-    } else {
-        alert("Mengalihkan ke Bahasa Indonesia...");
-        btnLang.innerText = "EN";
-    }
-});
+if(btnLang) {
+    btnLang.addEventListener('click', () => {
+        if(btnLang.innerText === "EN") {
+            // Contoh sederhana: Ganti satu judul saja untuk tes
+            document.querySelector('.logo').innerHTML = "Shafira<span>Portfolio</span>";
+            btnLang.innerText = "ID";
+        } else {
+            document.querySelector('.logo').innerHTML = "Shafira<span>Zahra</span>";
+            btnLang.innerText = "EN";
+        }
+    });
+}
 
-// 5. Fungsi Buka Amplop
+// 3. Fungsi Buka Amplop (Biar gak loncat)
 function openEnvelope() {
     const overlay = document.getElementById('envelopeOverlay');
     overlay.classList.add('open');
-    
     setTimeout(() => {
         overlay.classList.add('fade-out');
         document.body.classList.remove('no-scroll');
-        
-        // PENTING: Supaya tidak lompat ke skill, kunci ke paling atas
-        window.scrollTo(0, 0); 
-        
-        // Hilangkan overlay total agar tidak menghalangi klik di bawahnya
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 1000);
+        window.scrollTo(0, 0); // Kunci posisi ke atas
+        setTimeout(() => { overlay.style.display = 'none'; }, 1000);
     }, 2500);
 }
 
-
-// 6. Sidebar & Particles
+// 4. Sidebar & Particles
 function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
-
 function createParticles() {
     const container = document.getElementById('particles');
     if(!container) return;
@@ -67,8 +47,6 @@ function createParticles() {
         p.className = 'particle';
         p.innerText = icons[Math.floor(Math.random() * icons.length)];
         p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDelay = Math.random() * 15 + 's';
-        p.style.fontSize = (Math.random() * 10 + 10) + 'px';
         container.appendChild(p);
     }
 }
