@@ -1,29 +1,28 @@
 AOS.init({ duration: 1000, once: true });
 
-// 1. Dark Mode Logic
+// DARK MODE
 const btnDark = document.getElementById('darkModeToggle');
-if(btnDark) {
-    btnDark.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-}
+btnDark.onclick = function() {
+    document.body.classList.toggle('dark-mode');
+    this.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+};
 
-// 2. Translate Logic (Sederhana)
+// TRANSLATE (Contoh tes)
 const btnLang = document.getElementById('langToggle');
-if(btnLang) {
-    btnLang.addEventListener('click', () => {
-        if(btnLang.innerText === "EN") {
-            // Contoh sederhana: Ganti satu judul saja untuk tes
-            document.querySelector('.logo').innerHTML = "Shafira<span>Portfolio</span>";
-            btnLang.innerText = "ID";
-        } else {
-            document.querySelector('.logo').innerHTML = "Shafira<span>Zahra</span>";
-            btnLang.innerText = "EN";
-        }
-    });
-}
+btnLang.onclick = function() {
+    if(this.innerText === "EN") {
+        document.querySelector('.hero h1').innerText = "Hello, I'm Shafira";
+        this.innerText = "ID";
+    } else {
+        document.querySelector('.hero h1').innerText = "Halo, Aku Shafira";
+        this.innerText = "EN";
+    }
+};
 
+// Pastikan fungsi toggleMenu tetap ada
+function toggleMenu() {
+    document.getElementById('sidebar').classList.toggle('active');
+}
 // 3. Fungsi Buka Amplop (Biar gak loncat)
 function openEnvelope() {
     const overlay = document.getElementById('envelopeOverlay');
