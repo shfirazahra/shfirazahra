@@ -1,46 +1,44 @@
-// 1. Dark Mode
-const btnDark = document.getElementById('darkModeToggle');
-if(btnDark) {
-    btnDark.onclick = function() {
-        document.body.classList.toggle('dark-mode');
-        this.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    }
-}
+// Inisialisasi AOS (Animate on Scroll)
+AOS.init({ 
+    duration: 1000, 
+    once: true 
+});
 
-// 2. Translate (Kamus Lengkap)
-const btnLang = document.getElementById('langToggle');
-if(btnLang) {
-    btnLang.onclick = function() {
-        const isEN = this.innerText === "EN";
-        
-        // Contoh ganti judul About & Skills
-        const aboutTitle = document.querySelector('#about h2');
-        const skillsTitle = document.querySelector('#skills h2');
-
-        if(isEN) {
-            if(aboutTitle) aboutTitle.innerText = "About Me";
-            if(skillsTitle) skillsTitle.innerText = "Technical Skills";
-            this.innerText = "ID";
-        } else {
-            if(aboutTitle) aboutTitle.innerText = "Tentang Saya";
-            if(skillsTitle) skillsTitle.innerText = "Keahlian Teknis";
-            this.innerText = "EN";
-        }
-    }
-}
-
-// 3. Fungsi Buka Amplop
+// FUNGSI UNTUK MEMBUKA AMPLOP
 function openEnvelope() {
     const overlay = document.getElementById('envelopeOverlay');
+    
+    // 1. Tambahkan class 'open' untuk memicu animasi tutup amplop & surat naik
     overlay.classList.add('open');
+    
+    // 2. Tunggu sebentar (sampai surat naik maksimal), lalu hilangkan overlay-nya
     setTimeout(() => {
-        overlay.classList.add('fade-out');
+        overlay.classList.add('fade-out'); // Efek menghilang halus
+        
+        // 3. Aktifkan kembali scroll pada body agar web bisa dijelajahi
         document.body.classList.remove('no-scroll');
-        window.scrollTo(0,0);
-    }, 2500);
+    }, 2500); // 2.5 detik (waktu tunggu yang pas)
 }
 
-// 4. Sidebar Menu
-function toggleMenu() {
-    document.getElementById('sidebar').classList.toggle('active');
+// Fungsi Sidebar
+function toggleMenu() { 
+    document.getElementById('sidebar').classList.toggle('active'); 
 }
+
+// Efek Partikel (🌸, ✨, 🤍)
+function createParticles() {
+    const container = document.getElementById('particles');
+    const icons = ['🌸', '✨', '🤍'];
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        container.appendChild(p);
+    }
+}
+
+// Jalankan partikel saat web dimuat
+createParticles();
