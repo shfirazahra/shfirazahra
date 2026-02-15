@@ -1,63 +1,58 @@
-// Inisialisasi AOS (Animate on Scroll)
-AOS.init({ 
-    duration: 1000, 
-    once: true 
-});
+// 1. Inisialisasi AOS
+AOS.init({ duration: 1000, once: true });
 
-// FUNGSI UNTUK MEMBUKA AMPLOP
-function openEnvelope() {
-    // 1. Dark Mode Toggle
+// 2. Dark Mode Logic (Pindahkan ke luar agar aktif segera)
 const btnDark = document.getElementById('darkModeToggle');
 btnDark.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
 
-// 2. Back to Top Logic
+// 3. Back to Top & Scroll Logic
 window.onscroll = function() {
     let btn = document.getElementById("backToTop");
-    if (document.documentElement.scrollTop > 300) { btn.style.display = "block"; } 
-    else { btn.style.display = "none"; }
+    if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) { 
+        btn.style.display = "block"; 
+    } else { 
+        btn.style.display = "none"; 
+    }
 };
 
 function scrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// 3. Simple Translate (Hanya Contoh Logika Dasar)
-function toggleLanguage() {
-    const btn = document.getElementById('langToggle');
-    if(btn.innerText === "EN") {
-        // Logika ganti teks ke Inggris (bisa pakai library atau manual)
-        alert("Fitur Translate: Ganti teks ke English");
-        btn.innerText = "ID";
+// 4. Translate Logic
+const btnLang = document.getElementById('langToggle');
+btnLang.addEventListener('click', () => {
+    if(btnLang.innerText === "EN") {
+        alert("Switching to English...");
+        // Di sini nanti kamu bisa tambahkan logika ganti teks manual
+        btnLang.innerText = "ID";
     } else {
-        alert("Translate Feature: Change text to Indonesia");
-        btn.innerText = "EN";
+        alert("Mengalihkan ke Bahasa Indonesia...");
+        btnLang.innerText = "EN";
     }
-}
+});
+
+// 5. Fungsi Buka Amplop
+function openEnvelope() {
     const overlay = document.getElementById('envelopeOverlay');
-    
-    // 1. Tambahkan class 'open' untuk memicu animasi tutup amplop & surat naik
     overlay.classList.add('open');
-    
-    // 2. Tunggu sebentar (sampai surat naik maksimal), lalu hilangkan overlay-nya
     setTimeout(() => {
-        overlay.classList.add('fade-out'); // Efek menghilang halus
-        
-        // 3. Aktifkan kembali scroll pada body agar web bisa dijelajahi
+        overlay.classList.add('fade-out');
         document.body.classList.remove('no-scroll');
-    }, 2500); // 2.5 detik (waktu tunggu yang pas)
+        // Pastikan posisi scroll balik ke atas setelah buka
+        window.scrollTo(0,0);
+    }, 2500);
 }
 
-// Fungsi Sidebar
-function toggleMenu() { 
-    document.getElementById('sidebar').classList.toggle('active'); 
-}
+// 6. Sidebar & Particles
+function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
 
-// Efek Partikel (🌸, ✨, 🤍)
 function createParticles() {
     const container = document.getElementById('particles');
+    if(!container) return;
     const icons = ['🌸', '✨', '🤍'];
     for (let i = 0; i < 15; i++) {
         const p = document.createElement('div');
@@ -69,6 +64,4 @@ function createParticles() {
         container.appendChild(p);
     }
 }
-
-// Jalankan partikel saat web dimuat
 createParticles();
