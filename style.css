@@ -170,3 +170,42 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 footer { padding: 60px; background: #2d2d2d; color: white; text-align: center; }
 .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
+
+/* Styling Tombol Navigasi */
+.nav-controls { display: flex; gap: 10px; }
+.nav-btn {
+    background: var(--pink-bg);
+    border: 1px solid var(--rose-gold);
+    color: var(--rose-gold);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* WARNA DARK MODE */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .section, 
+body.dark-mode .hero, 
+body.dark-mode .card,
+body.dark-mode .journey-item,
+body.dark-mode nav,
+body.dark-mode .sidebar {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .cert-table td {
+    border-bottom: 1px solid #444;
+    color: #ddd;
+}
+
+body.dark-mode .hero-desc, body.dark-mode .job-desc {
+    color: #bbb !important;
+}
