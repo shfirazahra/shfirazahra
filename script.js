@@ -6,6 +6,36 @@ AOS.init({
 
 // FUNGSI UNTUK MEMBUKA AMPLOP
 function openEnvelope() {
+    // 1. Dark Mode Toggle
+const btnDark = document.getElementById('darkModeToggle');
+btnDark.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// 2. Back to Top Logic
+window.onscroll = function() {
+    let btn = document.getElementById("backToTop");
+    if (document.documentElement.scrollTop > 300) { btn.style.display = "block"; } 
+    else { btn.style.display = "none"; }
+};
+
+function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// 3. Simple Translate (Hanya Contoh Logika Dasar)
+function toggleLanguage() {
+    const btn = document.getElementById('langToggle');
+    if(btn.innerText === "EN") {
+        // Logika ganti teks ke Inggris (bisa pakai library atau manual)
+        alert("Fitur Translate: Ganti teks ke English");
+        btn.innerText = "ID";
+    } else {
+        alert("Translate Feature: Change text to Indonesia");
+        btn.innerText = "EN";
+    }
+}
     const overlay = document.getElementById('envelopeOverlay');
     
     // 1. Tambahkan class 'open' untuk memicu animasi tutup amplop & surat naik
