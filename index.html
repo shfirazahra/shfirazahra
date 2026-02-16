@@ -734,37 +734,40 @@ body.dark-mode .btn-download {
     }
 
     // 6. Logika Translate (Lengkap Sampai Judul Section)
-    const btnLang = document.getElementById('langToggle');
-    if(btnLang) {
-        btnLang.addEventListener('click', () => {
-            const isEN = btnLang.innerText === "EN";
-            
-            // Ambil elemen yang mau diterjemahkan
-            const heroTitle = document.querySelector('.hero h1');
-            const heroDesc = document.querySelector('.hero p b'); 
-            const sectionTitles = document.querySelectorAll('.section-title');
+   const btnLang = document.getElementById('langToggle');
+if(btnLang) {
+    btnLang.addEventListener('click', () => {
+        const isEN = btnLang.innerText === "EN";
+        
+        const heroTitle = document.querySelector('.hero h1');
+        const heroDesc = document.getElementById('hero-desc'); 
+        const sectionTitles = document.querySelectorAll('.section-title');
 
-            if (isEN) {
-                // VERSI INGGRIS
-                if(heroTitle) heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
-                if(heroDesc) heroDesc.innerText = "Informatics Engineering Graduate from UDINUS. Focus on Front-End & Back-End development and master UI/UX Design practices.";
-                if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
-                if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
-                if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
-                if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
-                btnLang.innerText = "ID";
-            } else {
-                // VERSI INDONESIA
-                if(heroTitle) heroTitle.innerHTML = "Halo, Aku <span>Shafira Zahra</span> ✨";
-                if(heroDesc) heroDesc.innerText = "Lulusan D3 Teknik Informatika UDINUS. Fokus pada pengembangan Front-End & Back-End serta menguasai praktik UI/UX Design.";
-                if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills"; // Sesuaikan kalau judul aslinya beda
-                if(sectionTitles[1]) sectionTitles[1].innerText = "Perjalanan Saya";
-                if(sectionTitles[2]) sectionTitles[2].innerText = "Proyek Unggulan";
-                if(sectionTitles[3]) sectionTitles[3].innerText = "Sertifikasi";
-                btnLang.innerText = "EN";
-            }
-        });
-    }
+        if (isEN) {
+            // VERSI INGGRIS
+            heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
+            heroDesc.innerText = "A Multidisciplinary Informatics Engineering graduate from UDINUS who bridges Service Administration precision with Front-End Development innovation. I blend system logic, operational discipline, and visual aesthetics to create precise and intuitive digital solutions.";
+            
+            if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
+            if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
+            if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
+            if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
+            
+            btnLang.innerText = "ID";
+        } else {
+            // VERSI INDONESIA
+            heroTitle.innerHTML = "Halo, Aku <span>Shafira Zahra</span> ✨";
+            heroDesc.innerText = "Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.";
+            
+            if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
+            if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
+            if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
+            if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
+            
+            btnLang.innerText = "EN";
+        }
+    });
+}
 
     // Jalankan partikel saat halaman pertama kali dibuka
     createParticles();
