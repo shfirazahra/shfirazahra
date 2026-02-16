@@ -5,8 +5,8 @@
     --text-color: #5d4037;
     --white: #ffffff;
     /* Warna Amplop Putih Aesthetic */
-    --env-paper: #FEF6F8;
-    --env-border: #FEF6F8;
+    --env-paper: #FFE5ED;
+    --env-border: #FFE5ED;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,7 +54,7 @@ body.no-scroll { overflow: hidden; height: 100vh; }
     position: absolute;
     top: 0;
     z-index: 4;
-    border-top: 110px solid #FEF6F8;
+    border-top: 110px solid #FFE5ED;
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
     transform-origin: top;
@@ -70,9 +70,9 @@ body.no-scroll { overflow: hidden; height: 100vh; }
     bottom: 0;
     width: 0;
     height: 0;
-    border-bottom: 100px solid #FEF6F8;
-    border-left: 150px solid #FEF6F8;
-    border-right: 150px solid #FEF6F8;
+    border-bottom: 100px solid #FFE5ED;
+    border-left: 150px solid #FFE5ED;
+    border-right: 150px solid #FFE5ED;
 }
 
 /* Kertas Surat di Dalam */
