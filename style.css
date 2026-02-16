@@ -54,7 +54,7 @@ body.no-scroll { overflow: hidden; height: 100vh; }
     position: absolute;
     top: 0;
     z-index: 4;
-    border-top: 110px solid #ffffff;
+    border-top: 110px solid #FEF6F8;
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
     transform-origin: top;
