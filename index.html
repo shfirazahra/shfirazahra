@@ -60,32 +60,35 @@
             transition: 0.4s;
         }
 
-        .envelope::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 4;
-            border-top: 110px solid var(--env-dark);
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            transform-origin: top;
-            transition: transform 0.7s ease-in-out 0.2s;
-        }
+    
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    /* Ganti var(--env-dark) menjadi var(--env-color) agar sama dengan bawah */
+    border-top: 110px solid var(--env-color); 
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out 0.2s;
+}
 
-        .envelope::after {
-            content: "";
-            position: absolute;
-            z-index: 3;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-bottom: 100px solid #f9dae2;
-            border-left: 150px solid var(--env-color);
-            border-right: 150px solid var(--env-color);
-            border-radius: 0 0 4px 4px;
-        }
+    .envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    /* Pastikan border-bottom dan border-left/right menggunakan warna yang sama */
+    border-bottom: 100px solid #f9dae2; /* Kamu bisa ganti ini ke var(--env-color) juga */
+    border-left: 150px solid var(--env-color);
+    border-right: 150px solid var(--env-color);
+    border-radius: 0 0 4px 4px;
+}
 
         .wax-seal {
             position: absolute;
