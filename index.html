@@ -548,22 +548,34 @@ body.dark-mode span {
         });
     }
 
-    // Efek Partikel
-    function createParticles() {
-        const container = document.getElementById('particles');
-        if(!container) return;
-        const icons = ['🌸', '✨', '🤍'];
-        for (let i = 0; i < 15; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.innerText = icons[Math.floor(Math.random() * icons.length)];
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 15 + 's';
-            p.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            container.appendChild(p);
-        }
+   const particleContainer = document.getElementById('particles');
+
+function createParticles() {
+    if(!particleContainer) return;
+    particleContainer.innerHTML = '';
+    const isDark = document.body.classList.contains('dark-mode');
+    // Jika gelap pakai bintang, jika terang pakai bunga
+    const icons = isDark ? ['⭐', '🌟', '✨', '🪐'] : ['🌸', '✨', '🤍'];
+    
+    for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDelay = Math.random() * 10 + 's';
+        p.style.fontSize = (Math.random() * 15 + 10) + 'px';
+        particleContainer.appendChild(p);
     }
-    createParticles();
+}
+
+// Pastikan fungsi ini dipanggil di dalam event listener tombol Dark Mode kamu
+btnDark.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    createParticles(); // Ini yang bikin bintang muncul saat diklik
+});
+
+createParticles(); // Panggil saat pertama kali load
 </script>
     <link rel="stylesheet" href="style.css">
 
