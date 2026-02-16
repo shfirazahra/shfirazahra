@@ -130,19 +130,24 @@
             text-align: center;
             border: 1px solid #eee;
         }
-     /* --- DARK MODE UNTUK SEMUA BAGIAN (SAMA SEPERTI HERO) --- */
-
-body.dark-mode {
-    background-color: #2d1b1e !important; /* Warna dasar gelap */
-    color: #fce4ec !important;
+    /* --- DARK MODE SETTINGS (HANYA INI YANG DIGANTI) --- */
+body.dark-mode { 
+    background-color: #2d1b1e !important; 
+    color: #fce4ec !important; 
 }
-
-/* Pastikan semua section (About, Skills, Journey, dll) warnanya sama */
-body.dark-mode section,
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #3d2428 0%, #2d1b1e 100%) !important;
+body.dark-mode section, body.dark-mode .hero { 
+    background: linear-gradient(135deg, #3d2428 0%, #2d1b1e 100%) !important; 
 }
-
+body.dark-mode .card, body.dark-mode .sidebar, body.dark-mode .cert-table, body.dark-mode .journey-item { 
+    background-color: #3d2428 !important; 
+    color: #fce4ec !important; 
+    border: 1px solid var(--rose-gold) !important; 
+}
+body.dark-mode nav { background: rgba(45, 27, 30, 0.9) !important; color: #fce4ec !important; }
+body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
+body.dark-mode .envelope { background-color: #4a2f33 !important; }
+body.dark-mode .envelope::before { border-bottom-color: #4a2f33 !important; }
+body.dark-mode p, body.dark-mode h2, body.dark-mode b, body.dark-mode td { color: #fce4ec !important; }
 /* Mengubah warna semua kartu (Card) agar tidak putih lagi */
 body.dark-mode .card, 
 body.dark-mode .journey-item,
