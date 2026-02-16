@@ -335,7 +335,23 @@ body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
     50% { opacity: 0.8; } 
     100% { transform: translateY(-10vh); opacity: 0; } 
 }
-      
+.tech-stack {
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rose-gold); /* Menggunakan warna rose-gold agar konsisten */
+    background: var(--pink-bg);
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Penyesuaian untuk Dark Mode */
+body.dark-mode .tech-stack {
+    background: rgba(229, 164, 180, 0.2);
+    color: #fce4ec;
+}
     </style>
 </head>
 <body class="no-scroll">
