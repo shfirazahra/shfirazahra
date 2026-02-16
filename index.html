@@ -226,10 +226,69 @@ body.dark-mode span {
         .hero h1 span { color: var(--rose-gold); border-bottom: 2px solid var(--rose-gold); }
         .section { padding: 80px 8%; text-align: center; }
         .section-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 40px; color: var(--text-color); }
-        .skill-container { max-width: 600px; margin: 0 auto; text-align: left; }
-        .skill-name { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-        .skill-bar { width: 100%; height: 10px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
-        .skill-per { height: 100%; background: var(--rose-gold); border-radius: 10px; width: 0; transition: 1.5s ease-in-out; }
+       /* Container utama skill */
+.skill-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5); /* Semi transparan agar cantik */
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateX(10px);
+    background: white;
+}
+
+/* Pengaturan baris nama dan badge */
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skill-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-color);
+}
+
+/* Styling untuk Badge */
+.skill-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.skill-badge.advanced {
+    background-color: #e5a4b4; /* Rose Gold */
+    color: white;
+}
+
+.skill-badge.intermediate {
+    background-color: #fce4ec; /* Pink sangat muda */
+    color: #e5a4b4;
+    border: 1px solid #e5a4b4;
+}
+
+/* Styling untuk Bintang */
+.skill-stars {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #ffb400; /* Warna emas bintang */
+}
+
+/* Penyesuaian Dark Mode */
+body.dark-mode .skill-item {
+    background: rgba(61, 36, 40, 0.5);
+}
+body.dark-mode .skill-name {
+    color: #fce4ec !important;
+}
         .journey-container { max-width: 600px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; position: relative; }
         .journey-item { position: relative; margin-bottom: 30px; text-align: left; cursor: pointer; padding: 5px 10px; border-radius: 12px; transition: 0.3s; }
         .journey-item:hover { background: rgba(229, 164, 180, 0.05); }
