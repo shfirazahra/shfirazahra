@@ -23,20 +23,19 @@
         
         body.no-scroll { overflow: hidden; height: 100vh; width: 100vw; position: fixed; }
 
-/* Ganti bagian overlay agar pink terus */
 .envelope-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fdf2f5 !important; /* Pink konsisten */
+    background-color: var(--pink-bg) !important; /* Kunci warna pink di sini */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10000;
     transition: opacity 1s ease-in-out, visibility 1s;
-}   
+}
 
         .envelope-wrapper {
             position: relative;
