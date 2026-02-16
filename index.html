@@ -17,73 +17,86 @@
             --env-color: #FFEDED;
         }
 
+        /* --- DARK MODE SETTINGS --- */
+        body.dark-mode {
+            --pink-soft: #2d1b1e;
+            --pink-bg: #3d2428;
+            --text-color: #fce4ec;
+            --white: #4a2d32;
+            background-color: #2d1b1e !important;
+            color: #fce4ec !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; transition: 0.3s; }
         body.no-scroll { overflow: hidden; height: 100vh; width: 100vw; position: fixed; }
 
-        /* --- ENVELOPE STYLES --- */
-        .envelope-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FEF6F8; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 1s ease-in-out, visibility 1s; }
+        /* --- ENVELOPE --- */
+        .envelope-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--white); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 1s ease-in-out, visibility 1s; }
         .envelope-wrapper { position: relative; cursor: pointer; display: flex; justify-content: center; align-items: center; width: 300px; height: 200px; }
-        .envelope { position: relative; width: 300px; height: 200px; background: var(--env-color); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 4px; }
+        .envelope { position: relative; width: 300px; height: 200px; background: var(--env-color); border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .envelope::before { content: ""; position: absolute; top: 0; left: 0; z-index: 4; border-top: 110px solid var(--env-color); border-left: 150px solid transparent; border-right: 150px solid transparent; transform-origin: top; transition: transform 0.7s ease-in-out 0.2s; }
-        .envelope::after { content: ""; position: absolute; z-index: 3; bottom: 0; left: 0; width: 0; height: 0; border-bottom: 100px solid #f9dae2; border-left: 150px solid var(--env-color); border-right: 150px solid var(--env-color); border-radius: 0 0 4px 4px; }
+        .envelope::after { content: ""; position: absolute; z-index: 3; bottom: 0; left: 0; border-bottom: 100px solid #f9dae2; border-left: 150px solid var(--env-color); border-right: 150px solid var(--env-color); border-radius: 0 0 4px 4px; }
         .wax-seal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: #d46a81; border-radius: 50%; z-index: 5; display: flex; align-items: center; justify-content: center; color: white; }
-        .open-me-text { position: absolute; top: -50px; width: 100%; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--rose-gold); }
-        .letter { position: absolute; bottom: 10px; left: 25px; width: 250px; height: 170px; background: white; z-index: 2; transition: transform 0.9s ease-in-out 0.8s; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; border: 1px solid #eee; }
-        .letter img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid var(--pink-bg); }
-        
+        .letter { position: absolute; bottom: 10px; left: 25px; width: 250px; height: 170px; background: white; z-index: 2; transition: transform 0.9s ease-in-out 0.8s; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #eee; color: #5d4037; }
+        .letter img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 5px; }
         .envelope-overlay.open .envelope::before { transform: rotateX(180deg); z-index: 1; }
         .envelope-overlay.open .letter { transform: translateY(-130px); }
-        .envelope-overlay.open .wax-seal { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        .envelope-overlay.open .wax-seal { opacity: 0; }
         .envelope-overlay.fade-out { opacity: 0; visibility: hidden; }
 
-        /* --- DARK MODE --- */
-        body.dark-mode { background-color: #2d1b1e !important; color: #fce4ec !important; }
-        body.dark-mode .card, body.dark-mode .journey-item, body.dark-mode .sidebar, body.dark-mode .cert-table { background-color: #3d2428 !important; color: #fce4ec !important; border: 1px solid var(--rose-gold) !important; }
-        body.dark-mode p, body.dark-mode h2, body.dark-mode b, body.dark-mode td, body.dark-mode span { color: #fce4ec !important; }
-
-        /* --- NAV & HERO --- */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; }
-        .nav-btn { background: var(--pink-bg); border: 1px solid var(--rose-gold); color: var(--rose-gold); padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; margin-left: 5px; }
-        .sidebar { position: fixed; top: 0; left: -280px; width: 250px; height: 100%; background: var(--white); transition: 0.4s; z-index: 999; padding-top: 100px; }
-        .sidebar.active { left: 0; }
-        .sidebar ul { list-style: none; padding: 0 30px; }
-        .sidebar ul li { margin: 25px 0; border-bottom: 1px solid var(--pink-bg); padding-bottom: 10px; cursor: pointer; }
-        
-        .hero { display: flex; flex-direction: column; align-items: center; padding: 80px 10%; text-align: center; }
-        .profile-img-hero { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 6px solid white; box-shadow: 0 10px 25px rgba(229,164,180,0.25); margin-bottom: 25px; }
-
-        /* --- JOURNEY & CONTENT --- */
-        .section { padding: 60px 8%; text-align: center; }
-        .journey-container { max-width: 700px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; text-align: left; }
-        .journey-item { position: relative; margin-bottom: 30px; padding: 15px; border-radius: 12px; transition: 0.3s; cursor: pointer; background: white; }
-        .journey-item::before { content: '🌸'; position: absolute; left: -43px; top: 15px; }
-        .journey-detail { max-height: 0; overflow: hidden; opacity: 0; transition: 0.5s; }
-        .journey-item.active .journey-detail { max-height: 1500px; opacity: 1; margin-top: 15px; }
-        .journey-detail img { width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 10px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 20px; border-radius: 15px; border: 1px solid #fce4ec; text-align: left; display: block; height: 100%; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--rose-gold); }
-        
-        .cert-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; font-size: 13px; }
-        .cert-table th { background: var(--rose-gold); color: white; padding: 12px; }
-        .cert-table td { padding: 12px; border-bottom: 1px solid var(--pink-bg); }
-
+        /* --- PARTICLES --- */
         #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
-        footer { padding: 40px; background: #2d2d2d; color: white; text-align: center; }
+        .particle { position: absolute; animation: floatParticle 8s infinite linear; opacity: 0.6; }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- COMPONENTS --- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; transition: 0.3s; }
+        body.dark-mode nav { background: rgba(45, 27, 30, 0.9); }
+        .nav-btn { background: var(--pink-bg); border: 1px solid var(--rose-gold); color: var(--rose-gold); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; margin-left: 8px; }
+        .sidebar { position: fixed; top: 0; left: -280px; width: 250px; height: 100%; background: var(--white); transition: 0.4s; z-index: 999; padding-top: 100px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); }
+        .sidebar.active { left: 0; }
+        .sidebar ul li { list-style: none; margin: 25px 30px; border-bottom: 1px solid var(--rose-gold); padding-bottom: 8px; cursor: pointer; font-weight: 600; }
+
+        .section { padding: 80px 8%; text-align: center; }
+        .card, .journey-item, .cert-table { background: var(--white); border-radius: 15px; transition: 0.3s; border: 1px solid rgba(229,164,180,0.2); }
+        body.dark-mode .card, body.dark-mode .journey-item { border-color: var(--rose-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+        /* --- SKILLS --- */
+        .skill-container { max-width: 600px; margin: 0 auto; text-align: left; }
+        .skill-bar { width: 100%; height: 10px; background: rgba(0,0,0,0.05); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        body.dark-mode .skill-bar { background: rgba(255,255,255,0.1); }
+        .skill-per { height: 100%; background: var(--rose-gold); width: 0; transition: 1.5s ease-in-out; }
+
+        /* --- JOURNEY --- */
+        .journey-container { max-width: 700px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; text-align: left; }
+        .journey-item { position: relative; margin-bottom: 30px; padding: 20px; cursor: pointer; }
+        .journey-item::before { content: '🌸'; position: absolute; left: -45px; top: 20px; font-size: 20px; }
+        .journey-detail { max-height: 0; overflow: hidden; opacity: 0; transition: 0.5s; }
+        .journey-item.active .journey-detail { max-height: 1000px; opacity: 1; margin-top: 15px; }
+        .journey-detail img { width: 100%; max-width: 450px; border-radius: 10px; margin-bottom: 10px; }
+
+        .cert-table { width: 100%; border-collapse: collapse; overflow: hidden; }
+        .cert-table th { background: var(--rose-gold); color: white; padding: 12px; }
+        .cert-table td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+        footer { padding: 50px; background: #2d1b1e; color: #fce4ec; text-align: center; }
     </style>
 </head>
 <body class="no-scroll">
 
     <div class="envelope-overlay" id="envelopeOverlay">
         <div class="envelope-wrapper" onclick="openEnvelope()">
-            <div class="open-me-text">Open Me</div>
+            <div style="position: absolute; top: -50px; color: var(--rose-gold); font-style: italic;">Open Me</div>
             <div class="envelope">
                 <div class="wax-seal">❤</div>
                 <div class="letter">
                     <img src="foto-profil.jpeg" alt="Shafira">
-                    <p id="welcomeMsg">Welcome to my Portfolio ✨</p>
+                    <p>Welcome to my Portfolio ✨</p>
                 </div>
             </div>
         </div>
@@ -107,175 +120,84 @@
     <div class="sidebar" id="sidebar">
         <ul>
             <li onclick="location.href='#home'; toggleMenu()">Home</li>
+            <li onclick="location.href='#skills'; toggleMenu()">Skills</li>
             <li onclick="location.href='#journey'; toggleMenu()">Journey</li>
             <li onclick="location.href='#projects'; toggleMenu()">Projects</li>
             <li onclick="location.href='#certificates'; toggleMenu()">Certificates</li>
         </ul>
     </div>
 
-    <header class="hero" id="home">
-        <img src="foto-profil.jpeg" alt="Shafira" class="profile-img-hero" data-aos="zoom-in">
+    <header class="hero" id="home" style="padding: 80px 10%; text-align: center;">
+        <img src="foto-profil.jpeg" alt="Shafira" style="width:160px; height:160px; border-radius:50%; border:6px solid white; margin-bottom:20px;" data-aos="zoom-in">
         <h1 id="heroTitle">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-        <p id="heroDesc" style="max-width: 650px; margin-top: 15px; line-height: 1.7;">
+        <p id="heroDesc" style="max-width: 650px; margin: 15px auto; line-height: 1.7;">
             <b>Lulusan D3 Teknik Informatika UDINUS</b>. Fokus pada pengembangan Front-End & Back-End serta menguasai praktik UI/UX Design.
         </p>
     </header>
 
+    <section id="skills" class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skill-container">
+            <div class="skill-name"><span>Computational Logic</span><span>96%</span></div>
+            <div class="skill-bar"><div class="skill-per" data-aos="slide-right" style="width: 96%;"></div></div>
+            <div class="skill-name"><span>Ethical Compliance</span><span>94%</span></div>
+            <div class="skill-bar"><div class="skill-per" data-aos="slide-right" style="width: 94%;"></div></div>
+            <div class="skill-name"><span>System Architecture</span><span>91%</span></div>
+            <div class="skill-bar"><div class="skill-per" data-aos="slide-right" style="width: 91%;"></div></div>
+            <div class="skill-name"><span>UI/UX Design</span><span>88%</span></div>
+            <div class="skill-bar"><div class="skill-per" data-aos="slide-right" style="width: 88%;"></div></div>
+        </div>
+    </section>
+
     <section id="journey" class="section" style="background-color: var(--pink-bg);">
-        <h2 class="section-title" id="titleJourney">My Journey</h2>
-        <p id="journeyHint" style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
-        
+        <h2 class="section-title">My Journey</h2>
         <div class="journey-container">
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-up" onclick="this.classList.toggle('active')">
                 <span class="year">2025-2026</span>
                 <h3>PT Bumen Redja Abadi</h3>
-                <p class="j-short">Warranty Service Claim Administrator</p>
+                <p>Warranty Service Claim Administrator</p>
                 <div class="journey-detail">
                     <img src="fotobra.jpg" alt="BRA">
-                    <div class="j-full">
-                        <p>• Menginput data klaim (informasi kendaraan, part yang diganti) ke dalam sistem.</p>
-                        <p>• Mengelola dan mengarsipkan dokumen klaim garansi digital & fisik.</p>
-                        <p>• Berkoordinasi dengan teknisi terkait teknis perbaikan part garansi.</p>
-                        <p>• Membuat laporan mengenai jumlah dan status klaim.</p>
-                    </div>
+                    <p>• Menginput data klaim kendaraan dan part ke sistem.</p>
                 </div>
             </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2024-2025</span>
-                <h3>ATR/BPN Provinsi Jawa Tengah</h3>
-                <p class="j-short">Karyawan Koperasi</p>
-                <div class="journey-detail">
-                    <img src="Koperasi.jpg" alt="BPN">
-                    <div class="j-full">
-                        <p>• Mengelola akurasi data inventaris stok kebutuhan kantor.</p>
-                        <p>• Menerapkan workflow terstruktur untuk distribusi barang.</p>
-                        <p>• Berkolaborasi dengan stakeholder internal untuk kelancaran operasional.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
+            <div class="journey-item" data-aos="fade-up" onclick="this.classList.toggle('active')">
                 <span class="year">2024</span>
                 <h3>PT Swakarya Insan Mandiri</h3>
-                <p class="j-short">Data Entry</p>
+                <p>Data Entry Specialist</p>
                 <div class="journey-detail">
                     <img src="SIM.png" alt="SIM">
-                    <div class="j-full">
-                        <p>• Memproses 840 data Kartu Keluarga untuk mitra FIF.</p>
-                        <p>• Mempertahankan tingkat akurasi data 99% melalui verifikasi silang.</p>
-                        <p>• Melakukan data cleaning secara teratur untuk integritas basis data.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2023-2024</span>
-                <h3>ATR/BPN Provinsi Jawa Tengah</h3>
-                <p class="j-short">Data Engineer | Data Center</p>
-                <div class="journey-detail">
-                    <img src="BPN.png" alt="Data Engineer">
-                    <div class="j-full">
-                        <p>• Menerapkan patching sistem, firmware, dan upgrade software berkala.</p>
-                        <p>• Melakukan capacity planning untuk sumber daya server dan storage.</p>
-                        <p>• Mendiagnosis dan menyelesaikan masalah kompleks pada sistem server.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2022-2022</span>
-                <h3>Milkshake Idola & Seblak Seuhah</h3>
-                <p class="j-short">F&B Stand Operator</p>
-                <div class="journey-detail">
-                    <img src="journey5.jpg" alt="F&B">
-                    <div class="j-full">
-                        <p>• Mengelola transaksi harian dan akurasi keseimbangan kas.</p>
-                        <p>• Berinteraksi langsung dengan pelanggan dan mengelola kepuasan layanan.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2021-2024</span>
-                <h3>Universitas Dian Nuswantoro</h3>
-                <p class="j-short">D3 Teknik Informatika | IPK 3.51</p>
-                <div class="journey-detail">
-                    <img src="wisuda.png" alt="UDINUS">
-                    <div class="j-full">
-                        <p>• Panitia Workshop HMDTI Tahun 2023.</p>
-                        <p>• Anggota aktif Himpunan Mahasiswa D3 Teknik Informatika.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2020-2020</span>
-                <h3>BBPLK Semarang</h3>
-                <p class="j-short">Pelatihan Menjahit Pakaian Pria | Grade A</p>
-                <div class="journey-detail">
-                    <img src="BBPLK.png" alt="BBPLK">
-                    <div class="j-full">
-                        <p>• Menguasai teknik menjahit manual dan mesin sesuai standar K3.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2017-2020</span>
-                <h3>SMA N 10 Semarang</h3>
-                <p class="j-short">Jurusan MIPA | Rata-rata 82.60</p>
-                <div class="journey-detail">
-                    <img src="SMA 10.png" alt="SMA">
-                    <div class="j-full">
-                        <p>• Ekstrakurikuler PMR dan Olimpiade Kimia.</p>
-                        <p>• Finalis Lomba Mural Art dan OSN Ekonomi.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="journey-item" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2014-2017</span>
-                <h3>SMP N 6 Semarang</h3>
-                <p class="j-short">Rata-rata 84.00</p>
-                <div class="journey-detail">
-                    <img src="smp.jpeg" alt="SMP">
-                    <div class="j-full">
-                        <p>• Ekstrakurikuler Karya Ilmiah Remaja dan Catur.</p>
-                    </div>
+                    <p>• Memproses 840 data Kartu Keluarga dengan akurasi 99%.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="section">
-        <h2 class="section-title" id="titleProjects">Featured Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Toko Sejati Cosmetics</h3>
-                <p class="p-desc">Website E-Commerce untuk Toko Sejati Cosmetics.</p>
-            </div>
-            <div class="card">
-                <h3>BRA-WAREHOUSE</h3>
-                <p class="p-desc">Sistem pencatatan kendaraan (WO, Plat Nomor) terstruktur.</p>
-            </div>
-            <div class="card">
-                <h3>SI-INKA</h3>
-                <p class="p-desc">Sistem Inventaris Barang Kanwil ATR/BPN (Web & Mobile).</p>
-            </div>
-            <div class="card">
-                <h3>WEB GIS JAMBI</h3>
-                <p class="p-desc">Sistem Informasi Geografis persebaran RS di Kota Jambi.</p>
-            </div>
-            <div class="card">
-                <h3>Lyfera's Art</h3>
-                <p class="p-desc">Website portofolio interaktif untuk karya seni visual.</p>
-            </div>
+        <h2 class="section-title">Featured Projects</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="card"><h3>Toko Sejati Cosmetics</h3><p>E-Commerce website.</p></div>
+            <div class="card"><h3>BRA-WAREHOUSE</h3><p>Inventory system.</p></div>
+            <div class="card"><h3>SI-INKA</h3><p>ATR/BPN Inventory system.</p></div>
+            <div class="card"><h3>WEB GIS JAMBI</h3><p>Hospital mapping.</p></div>
+            <div class="card"><h3>Lyfera's Art</h3><p>Interactive portfolio.</p></div>
         </div>
     </section>
 
-    <footer id="contact">
-        <h2 id="footerTitle">Get In Touch</h2>
+    <section id="certificates" class="section" style="background-color: var(--pink-bg);">
+        <h2 class="section-title">Certifications</h2>
+        <table class="cert-table">
+            <thead><tr><th>No</th><th>Sertifikat</th><th>Penyelenggara</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Web Programming</td><td>APTI</td></tr>
+                <tr><td>2</td><td>Mobile Programming</td><td>BNSP</td></tr>
+                <tr><td>3</td><td>TOEFL Prep</td><td>UDINUS</td></tr>
+                <tr><td>4</td><td>Finalis Business Plan</td><td>UPGRIS</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
         <p>&copy; 2024 Shafira Zahra ✨ Built with Passion</p>
     </footer>
 
@@ -284,80 +206,47 @@
         AOS.init({ duration: 1000, once: true });
 
         function openEnvelope() {
-            const overlay = document.getElementById('envelopeOverlay');
-            overlay.classList.add('open');
+            document.getElementById('envelopeOverlay').classList.add('open');
             setTimeout(() => {
-                overlay.classList.add('fade-out');
+                document.getElementById('envelopeOverlay').classList.add('fade-out');
                 document.body.classList.remove('no-scroll');
             }, 2500);
         }
 
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
 
-        const btnDark = document.getElementById('darkModeToggle');
-        btnDark.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        });
-
-        const btnLang = document.getElementById('langToggle');
-        btnLang.addEventListener('click', () => {
-            const isEN = btnLang.innerText === "EN";
-            
-            const heroTitle = document.getElementById('heroTitle');
-            const heroDesc = document.getElementById('heroDesc');
-            const titleJourney = document.getElementById('titleJourney');
-            const titleProjects = document.getElementById('titleProjects');
-            const jShorts = document.querySelectorAll('.j-short');
-            const jFulls = document.querySelectorAll('.j-full');
-            const pDescs = document.querySelectorAll('.p-desc');
-
-            if (isEN) {
-                btnLang.innerText = "ID";
-                heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
-                heroDesc.innerHTML = "<b>Informatics Engineering Graduate from UDINUS</b>. Focusing on Front-End & Back-End development and proficient in UI/UX Design.";
-                titleJourney.innerText = "My Journey";
-                titleProjects.innerText = "Featured Projects";
-
-                // Update All 9 Journeys
-                jShorts[0].innerText = "Warranty Service Claim Administrator";
-                jFulls[0].innerHTML = "<p>• Inputting claim data (vehicle info, replaced parts) into the system.</p><p>• Managing and archiving digital & physical warranty claim documents.</p><p>• Coordinating with technicians regarding warranty part repairs.</p>";
-
-                jShorts[1].innerText = "Cooperative Employee";
-                jFulls[1].innerHTML = "<p>• Managing inventory data accuracy for office supplies.</p><p>• Implementing structured workflows for item distribution.</p>";
-
-                jShorts[2].innerText = "Data Entry Specialist";
-                jFulls[2].innerHTML = "<p>• Processed 840 family card records for FIF partners.</p><p>• Maintained 99% accuracy through cross-verification.</p>";
-
-                jShorts[3].innerText = "Data Engineer | Data Center";
-                jFulls[3].innerHTML = "<p>• Performed system patching, firmware updates, and software upgrades.</p><p>• Conducted capacity planning for server and storage resources.</p>";
-
-                jShorts[4].innerText = "F&B Stand Operator";
-                jFulls[4].innerHTML = "<p>• Managed daily transactions and cash balance accuracy.</p><p>• Handled customer interactions and service satisfaction.</p>";
-
-                jShorts[5].innerText = "Informatics Engineering Student | GPA 3.51";
-                jFulls[5].innerHTML = "<p>• Committee member for HMDTI Workshop 2023.</p><p>• Active member of the Student Association.</p>";
-
-                jShorts[6].innerText = "Tailoring Vocational Training | Grade A";
-                jFulls[6].innerHTML = "<p>• Mastered manual and machine sewing techniques following safety standards.</p>";
-
-                jShorts[7].innerText = "Science Major | Average 82.60";
-                jFulls[7].innerHTML = "<p>• Red Cross and Chemistry Olympiad extracurriculars.</p>";
-
-                jShorts[8].innerText = "Junior High School | Average 84.00";
-                jFulls[8].innerHTML = "<p>• Youth Science Club and Chess extracurriculars.</p>";
-
-                // Projects
-                pDescs[0].innerText = "E-Commerce website for Toko Sejati Cosmetics.";
-                pDescs[1].innerText = "Structured vehicle tracking system (WO, Plate Number).";
-                pDescs[2].innerText = "Inventory system for ATR/BPN (Web & Mobile).";
-                pDescs[3].innerText = "Geographic Information System for hospitals in Jambi.";
-                pDescs[4].innerText = "Interactive portfolio website for visual artworks.";
-
-            } else {
-                location.reload();
+        // LOGIKA PARTIKEL (🌸 Terang, 💫 Gelap)
+        const particleContainer = document.getElementById('particles');
+        function createParticles() {
+            particleContainer.innerHTML = '';
+            const isDark = document.body.classList.contains('dark-mode');
+            const icons = isDark ? ['💫', '✨', '🌙'] : ['🌸', '✨', '🤍'];
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerText = icons[Math.floor(Math.random() * icons.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                p.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                particleContainer.appendChild(p);
             }
+        }
+
+        // TOGGLE DARK MODE
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            createParticles(); // Refresh partikel agar berubah icon
         });
+
+        // TRANSLATE
+        document.getElementById('langToggle').addEventListener('click', function() {
+            const isEN = this.innerText === "EN";
+            this.innerText = isEN ? "ID" : "EN";
+            document.getElementById('heroTitle').innerHTML = isEN ? "Hi, I'm <span>Shafira Zahra</span> ✨" : "Halo, Aku <span>Shafira Zahra</span> ✨";
+        });
+
+        createParticles();
     </script>
 </body>
 </html>
