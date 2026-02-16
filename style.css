@@ -148,7 +148,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .journey-container { max-width: 600px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; position: relative; }
 .journey-item { position: relative; margin-bottom: 30px; text-align: left; cursor: pointer; padding: 5px 10px; border-radius: 12px; transition: 0.3s; }
 .journey-item:hover { background: rgba(229, 164, 180, 0.05); }
-.journey-item::before { content: '🌸'; position: absolute; left: -43px; top: 5px; font-size: 18px;}
+.journey-item::before { content: '🌸'; position: absolute; left: -30px; transform: translateX(-50%); top: 5px; font-size: 18px; z-index: 2;}
 .journey-item .year { font-weight: 600; color: var(--rose-gold); margin-bottom: 2px; display: block; }
 .journey-item h3 { font-size: 17px; margin-bottom: 2px; }
 .journey-item .short-desc { margin: 0; font-size: 14px; }
