@@ -268,3 +268,21 @@ body.dark-mode .cert-table td {
 body.dark-mode .hero-desc, body.dark-mode .job-desc {
     color: #bbb !important;
 }
+
+.tech-stack {
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rose-gold); /* Menggunakan warna rose-gold agar konsisten */
+    background: var(--pink-bg);
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Penyesuaian untuk Dark Mode */
+body.dark-mode .tech-stack {
+    background: rgba(229, 164, 180, 0.2);
+    color: #fce4ec;
+}
