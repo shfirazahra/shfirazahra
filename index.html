@@ -130,6 +130,34 @@
             text-align: center;
             border: 1px solid #eee;
         }
+        /* --- DARK MODE UNTUK BAGIAN PERKENALAN (HERO) --- */
+body.dark-mode {
+    background-color: #2d1b1e !important;
+    color: #fce4ec !important;
+}
+
+/* Ini kunci supaya tampilan perkenalan jadi gelap */
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #3d2428 0%, #2d1b1e 100%) !important;
+}
+
+/* Pastikan teks deskripsi di perkenalan juga berubah warna */
+body.dark-mode .hero-desc, 
+body.dark-mode .hero-desc b,
+body.dark-mode .hero h1 {
+    color: #fce4ec !important;
+}
+
+/* Agar amplop awal juga gelap kalau dark mode aktif */
+body.dark-mode .envelope-overlay {
+    background-color: #2d1b1e !important;
+}
+body.dark-mode .envelope {
+    background-color: #4a2f33 !important;
+}
+body.dark-mode .envelope::before {
+    border-bottom-color: #4a2f33 !important;
+}
 
         .letter img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid var(--pink-bg); }
         .letter p { font-size: 12px; font-family: 'Playfair Display', serif; color: #888; }
