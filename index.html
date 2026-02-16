@@ -246,7 +246,31 @@ body.dark-mode span {
         .cert-table tr:hover { background-color: var(--pink-soft); cursor: pointer; }
         footer { padding: 60px; background: #2d2d2d; color: white; text-align: center; }
         .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
+/* --- Tambahan untuk Partikel & Dark Mode Burgundy --- */
+body.dark-mode { 
+    background-color: #2d1b1e !important; 
+    color: #fce4ec !important; 
+}
+body.dark-mode section, body.dark-mode .hero { 
+    background: linear-gradient(135deg, #3d2428 0%, #2d1b1e 100%) !important; 
+}
+body.dark-mode .card, body.dark-mode .journey-item, body.dark-mode .cert-table { 
+    background-color: #3d2428 !important; 
+    color: #fce4ec !important; 
+    border: 1px solid var(--rose-gold) !important; 
+}
+body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
 
+#particles { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    pointer-events: none; z-index: 9999; 
+}
+.particle { position: absolute; animation: float 10s infinite linear; }
+@keyframes float { 
+    0% { transform: translateY(100vh); opacity: 0; } 
+    50% { opacity: 0.8; } 
+    100% { transform: translateY(-10vh); opacity: 0; } 
+}
       
     </style>
 </head>
@@ -498,11 +522,11 @@ body.dark-mode span {
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Inisialisasi Animasi AOS
+<script>
+    // 1. Inisialisasi Animasi AOS
     AOS.init({ duration: 1000, once: true });
 
-    // 1. Fungsi Buka Amplop
+    // 2. Fungsi Buka Amplop
     function openEnvelope() {
         const overlay = document.getElementById('envelopeOverlay');
         overlay.classList.add('open');
@@ -512,18 +536,19 @@ body.dark-mode span {
         }, 2500);
     }
 
-    // 2. Fungsi Sidebar/Menu
+    // 3. Fungsi Sidebar/Menu
     function toggleMenu() { 
         document.getElementById('sidebar').classList.toggle('active'); 
     }
 
-    // 3. Logika Partikel (Bintang vs Bunga)
+    // 4. Logika Partikel (Bintang vs Bunga)
     const particleContainer = document.getElementById('particles');
     function createParticles() {
         if(!particleContainer) return;
         particleContainer.innerHTML = '';
         const isDark = document.body.classList.contains('dark-mode');
-        // Kalau gelap: Bintang/Planet. Kalau terang: Bunga/Hati.
+        
+        // Pilih icon: Kalau gelap Bintang/Planet, kalau terang Bunga/Hati
         const icons = isDark ? ['⭐', '🌟', '✨', '🪐'] : ['🌸', '✨', '🤍'];
         
         for (let i = 0; i < 20; i++) {
@@ -531,36 +556,37 @@ body.dark-mode span {
             p.className = 'particle';
             p.innerText = icons[Math.floor(Math.random() * icons.length)];
             p.style.left = Math.random() * 100 + 'vw';
-            p.style.top = Math.random() * 100 + 'vh'; // Ditambahkan agar menyebar
+            p.style.top = Math.random() * 100 + 'vh'; 
             p.style.animationDelay = Math.random() * 10 + 's';
             p.style.fontSize = (Math.random() * 15 + 10) + 'px';
             particleContainer.appendChild(p);
         }
     }
 
-    // 4. Logika Dark Mode
+    // 5. Logika Dark Mode
     const btnDark = document.getElementById('darkModeToggle');
     if(btnDark) {
         btnDark.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             btnDark.innerText = isDark ? '☀️' : '🌙';
-            createParticles(); // Update partikel jadi bintang
+            createParticles(); // Ganti bunga jadi bintang pas diklik
         });
     }
 
-    // 5. Logika Translate
+    // 6. Logika Translate (Lengkap Sampai Judul Section)
     const btnLang = document.getElementById('langToggle');
     if(btnLang) {
         btnLang.addEventListener('click', () => {
             const isEN = btnLang.innerText === "EN";
             
-            // Target Elemen
+            // Ambil elemen yang mau diterjemahkan
             const heroTitle = document.querySelector('.hero h1');
-            const heroDesc = document.querySelector('.hero p b'); // Sesuai struktur filemu
+            const heroDesc = document.querySelector('.hero p b'); 
             const sectionTitles = document.querySelectorAll('.section-title');
 
             if (isEN) {
+                // VERSI INGGRIS
                 if(heroTitle) heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
                 if(heroDesc) heroDesc.innerText = "Informatics Engineering Graduate from UDINUS. Focus on Front-End & Back-End development and master UI/UX Design practices.";
                 if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
@@ -569,12 +595,13 @@ body.dark-mode span {
                 if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
                 btnLang.innerText = "ID";
             } else {
+                // VERSI INDONESIA
                 if(heroTitle) heroTitle.innerHTML = "Halo, Aku <span>Shafira Zahra</span> ✨";
                 if(heroDesc) heroDesc.innerText = "Lulusan D3 Teknik Informatika UDINUS. Fokus pada pengembangan Front-End & Back-End serta menguasai praktik UI/UX Design.";
-                if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
-                if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
-                if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
-                if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
+                if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills"; // Sesuaikan kalau judul aslinya beda
+                if(sectionTitles[1]) sectionTitles[1].innerText = "Perjalanan Saya";
+                if(sectionTitles[2]) sectionTitles[2].innerText = "Proyek Unggulan";
+                if(sectionTitles[3]) sectionTitles[3].innerText = "Sertifikasi";
                 btnLang.innerText = "EN";
             }
         });
