@@ -286,3 +286,29 @@ body.dark-mode .tech-stack {
     background: rgba(229, 164, 180, 0.2);
     color: #fce4ec;
 }
+/* Styling Tombol Download CV */
+.btn-download {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--rose-gold);
+    color: white !important;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(229, 164, 180, 0.4);
+    border: none;
+    text-decoration: none;
+}
+
+.btn-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(229, 164, 180, 0.6);
+    background-color: #d46a81; /* Warna pink agak gelap saat hover */
+}
+
+/* Penyesuaian Dark Mode agar tombol tetap terlihat jelas */
+body.dark-mode .btn-download {
+    background-color: var(--rose-gold);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
