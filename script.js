@@ -1,5 +1,4 @@
-
-  // 1. Inisialisasi Animasi AOS
+ // 1. Inisialisasi Animasi AOS
     AOS.init({ duration: 1000, once: true });
 
     // 2. Fungsi Buka Amplop
