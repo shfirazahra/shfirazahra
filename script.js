@@ -1,8 +1,8 @@
-<script>
-    // 1. Inisialisasi AOS
+
+  // 1. Inisialisasi Animasi AOS
     AOS.init({ duration: 1000, once: true });
 
-    // 2. Logika Buka Amplop
+    // 2. Fungsi Buka Amplop
     function openEnvelope() {
         const overlay = document.getElementById('envelopeOverlay');
         overlay.classList.add('open');
@@ -12,49 +12,80 @@
         }, 2500);
     }
 
-    // 3. Logika Sidebar
+    // 3. Fungsi Sidebar/Menu
     function toggleMenu() { 
         document.getElementById('sidebar').classList.toggle('active'); 
     }
 
-    // 4. LOGIKA DARK MODE PINK AESTHETIC
-    const btnDark = document.getElementById('darkModeToggle');
-    btnDark.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        btnDark.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-
-    // 5. LOGIKA TRANSLATE (Teks Hero & Judul)
-    const btnLang = document.getElementById('langToggle');
-    btnLang.addEventListener('click', () => {
-        const isEN = btnLang.innerText === "EN";
-        const heroTitle = document.querySelector('.hero h1');
-        const heroDesc = document.querySelector('.hero p b'); // Target teks tebal
-
-        if (isEN) {
-            heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
-            heroDesc.innerText = "Informatics Engineering Graduate from UDINUS. Focus on Front-End & Back-End development and master UI/UX Design practices.";
-            btnLang.innerText = "ID";
-        } else {
-            heroTitle.innerHTML = "Halo, Aku <span>Shafira Zahra</span> ✨";
-            heroDesc.innerText = "Lulusan D3 Teknik Informatika UDINUS. Fokus pada pengembangan Front-End & Back-End serta menguasai praktik UI/UX Design.";
-            btnLang.innerText = "EN";
-        }
-    });
-
-    // 6. Efek Partikel
+    // 4. Logika Partikel (Bintang vs Bunga)
+    const particleContainer = document.getElementById('particles');
     function createParticles() {
-        const container = document.getElementById('particles');
-        const icons = ['🌸', '✨', '🤍'];
-        for (let i = 0; i < 15; i++) {
+        if(!particleContainer) return;
+        particleContainer.innerHTML = '';
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        // Pilih icon: Kalau gelap Bintang/Planet, kalau terang Bunga/Hati
+        const icons = isDark ? ['💫', '🌎', '✨', '🌙'] : ['🌸', '✨', '🎀','💝'];
+        
+        for (let i = 0; i < 20; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
             p.innerText = icons[Math.floor(Math.random() * icons.length)];
             p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 15 + 's';
-            p.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            container.appendChild(p);
+            p.style.top = Math.random() * 100 + 'vh'; 
+            p.style.animationDelay = Math.random() * 0 + 's';
+            p.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            particleContainer.appendChild(p);
         }
     }
+
+    // 5. Logika Dark Mode
+    const btnDark = document.getElementById('darkModeToggle');
+    if(btnDark) {
+        btnDark.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            btnDark.innerText = isDark ? '☀️' : '🌙';
+            createParticles(); // Ganti bunga jadi bintang pas diklik
+        });
+    }
+
+    // 6. Logika Translate (Lengkap Sampai Judul Section)
+   const btnLang = document.getElementById('langToggle');
+if(btnLang) {
+    btnLang.addEventListener('click', () => {
+        const isEN = btnLang.innerText === "EN";
+        
+        const heroTitle = document.querySelector('.hero h1');
+        const heroDesc = document.getElementById('hero-desc'); 
+        const sectionTitles = document.querySelectorAll('.section-title');
+
+        if (isEN) {
+            // VERSI INGGRIS
+            heroTitle.innerHTML = "Hi, I'm <span>Shafira Zahra</span> ✨";
+            heroDesc.innerText = "A Multidisciplinary Informatics Engineering graduate from UDINUS who bridges Service Administration precision with Front-End Development innovation. I blend system logic, operational discipline, and visual aesthetics to create precise and intuitive digital solutions.";
+            
+            if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
+            if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
+            if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
+            if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
+            
+            btnLang.innerText = "ID";
+        } else {
+            // VERSI INDONESIA
+            heroTitle.innerHTML = "Halo, Aku <span>Shafira Zahra</span> ✨";
+            heroDesc.innerText = "Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.";
+            
+            if(sectionTitles[0]) sectionTitles[0].innerText = "Technical Skills";
+            if(sectionTitles[1]) sectionTitles[1].innerText = "My Journey";
+            if(sectionTitles[2]) sectionTitles[2].innerText = "Featured Projects";
+            if(sectionTitles[3]) sectionTitles[3].innerText = "Certifications";
+            
+            btnLang.innerText = "EN";
+        }
+    });
+}
+
+    // Jalankan partikel saat halaman pertama kali dibuka
     createParticles();
-</script>
+
