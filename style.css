@@ -14,58 +14,57 @@
         body.no-scroll { overflow: hidden; height: 100vh; width: 100vw; position: fixed; }
 
 
-        /* --- STYLES AMPLOP VINTAGE (FIXED MOBILE) --- */
-        .envelope-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #FEF6F8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease-in-out, visibility 1s;
-        }
+     /* Mencegah scroll saat amplop belum dibuka */
+body.no-scroll { overflow: hidden; height: 100vh; }
 
-        .envelope-wrapper {
-            position: relative;
-            cursor: pointer;
-            /* Hapus transform scale yang bikin geser di mobile */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 200px;
-        }
+/* --- STYLES AMPLOP (INTRO) --- */
+.envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Paling atas */
+    transition: opacity 1s ease-in-out, visibility 1s;
+}
 
-        .envelope {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background: var(--env-color);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            transition: 0.4s;
-        }
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.envelope-wrapper:hover { transform: scale(1.15); }
 
-    
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: #FFE5ED;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid var(--env-border);
+    border-radius: 4px;
+}
+
+/* Tutup Amplop Atas */
 .envelope::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 4;
-    /* Ganti var(--env-dark) menjadi var(--env-color) agar sama dengan bawah */
-    border-top: 110px solid var(--env-color); 
+    border-top: 110px solid #FFE5ED;
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
     transform-origin: top;
     transition: transform 0.7s ease-in-out 0.2s;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.02));
 }
 
-   /* Badan Amplop (Samping & Bawah) */
+/* Badan Amplop (Samping & Bawah) */
 .envelope::after {
     content: "";
     position: absolute;
@@ -77,51 +76,42 @@
     border-left: 150px solid #FFE5ED;
     border-right: 150px solid #FFE5ED;
 }
-        .wax-seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Benar-benar di tengah */
-            width: 40px;
-            height: 40px;
-            background: #d46a81;
-            border-radius: 50%;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: 0.5s;
-        }
 
-        .open-me-text {
-            position: absolute;
-            top: -50px;
-            width: 100%;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 22px;
-            color: var(--rose-gold);
-        }
+/* Kertas Surat di Dalam */
+.letter {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    width: 250px;
+    height: 170px;
+    background: white;
+    z-index: 2;
+    transition: transform 0.9s ease-in-out 0.8s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #f9f9f9;
+}
 
-        .letter {
-            position: absolute;
-            bottom: 10px;
-            left: 25px;
-            width: 250px;
-            height: 170px;
-            background: white;
-            z-index: 2;
-            transition: transform 0.9s ease-in-out 0.8s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
+.letter img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid var(--pink-bg);
+}
+
+.letter p { font-size: 11px; letter-spacing: 1px; color: #aaa; text-transform: uppercase; }
+
+/* Animasi Buka */
+.envelope-overlay.open .envelope::before { transform: rotateX(180deg); z-index: 1; }
+.envelope-overlay.open .letter { transform: translateY(-130px); }
+.envelope-overlay.fade-out { opacity: 0; visibility: hidden; }
+
     /* --- DARK MODE SETTINGS (HANYA INI YANG DIGANTI) --- */
 body.dark-mode { 
     background-color: #2d1b1e !important; 
