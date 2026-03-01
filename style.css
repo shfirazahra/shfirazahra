@@ -369,3 +369,77 @@ body.dark-mode .btn-download {
     background-color: var(--rose-gold);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+/* Styling Gateway di Hero */
+.gateway-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.gateway-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--rose-gold);
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gateway-card:hover {
+    transform: translateY(-10px);
+    background: var(--rose-gold);
+    color: white;
+}
+
+.gateway-card .icon { font-size: 2rem; margin-bottom: 10px; }
+.gateway-card h3 { font-size: 16px; margin-bottom: 5px; font-family: 'Playfair Display', serif; }
+.gateway-card p { font-size: 11px; opacity: 0.8; }
+
+/* Sistem Sembunyi Section */
+.section-hidden { display: none !important; }
+
+@media (max-width: 600px) {
+    .gateway-container { grid-template-columns: 1fr; }
+}
+
+/* Dark Mode untuk Gateway */
+body.dark-mode .gateway-card {
+    background: rgba(61, 36, 40, 0.8);
+    color: #fce4ec;
+}
+/* Memaksa baris tabel hilang saat difilter */
+tr.type-pro[style*="display: none"], 
+tr.type-creative[style*="display: none"],
+tr.type-personal[style*="display: none"] {
+    display: none !important;
+}
+
+/* Sembunyikan semua section secara default */
+.section-hidden { 
+    display: none !important; 
+}
+
+/* Pastikan Lobby (Hero) tetap muncul di awal */
+.hero:not(.section-hidden) {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Memperbaiki tampilan tabel saat difilter */
+tbody tr {
+    transition: all 0.3s ease;
+}
+
+/* Tambahkan ini agar saat user di dalam kategori, dia tahu cara balik */
+#backToLobby {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#backToLobby:hover {
+    transform: scale(1.1);
+}
