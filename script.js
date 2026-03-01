@@ -87,4 +87,77 @@ if(btnLang) {
 
     // Jalankan partikel saat halaman pertama kali dibuka
     createParticles();
+// Awalnya sembunyikan semua section saat amplop belum dibuka
+document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
 
+// Fungsi Utama Filter
+function filterContent(category) {
+    // 1. Sembunyikan Landing Hero & Tampilkan Tombol Kembali
+    document.querySelector('.hero').classList.add('section-hidden');
+    const backBtn = document.getElementById('backToLobby');
+    if(backBtn) backBtn.style.display = 'block';
+
+    // 2. Tampilkan semua section induk
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('section-hidden');
+        sec.style.display = 'block';
+    });
+
+    // 3. Filter Item di dalam Section (Journey, Projects, Table Rows)
+    const allItems = document.querySelectorAll('.journey-item, .card, tbody tr');
+    
+    allItems.forEach(item => {
+        if (item.classList.contains('type-' + category)) {
+            item.style.display = ''; // Munculkan (default)
+        } else {
+            item.style.display = 'none'; // Sembunyikan
+        }
+    });
+
+    // 4. Penyesuaian Judul & Tampilan khusus
+    if (category === 'pro') {
+        document.getElementById('skills').style.display = 'block';
+    } else if (category === 'creative') {
+        document.getElementById('skills').style.display = 'none';
+        // Di kategori kreatif, kita sembunyikan section journey karena isinya cuma cerita hidup
+        document.getElementById('journey').style.display = 'none'; 
+    } else if (category === 'personal') {
+        document.getElementById('skills').style.display = 'none';
+        document.getElementById('projects').style.display = 'none';
+        document.getElementById('certificates').style.display = 'none';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    AOS.refresh();
+}
+
+// Fungsi kembali ke Lobby
+function showLobby() {
+    document.querySelector('.hero').classList.remove('section-hidden');
+    document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
+    const backBtn = document.getElementById('backToLobby');
+    if(backBtn) backBtn.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Fungsi navigasi khusus dari Sidebar
+function navigateFromSidebar(category, targetId) {
+    // 1. Jalankan filter kategori sesuai tujuan
+    filterContent(category);
+    
+    // 2. Tutup sidebar setelah klik
+    toggleMenu();
+    
+    // 3. Beri jeda sedikit agar browser sempat menampilkan section-nya, lalu scroll
+    setTimeout(() => {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 300);
+}
+
+// Pastikan fungsi toggleMenu kamu tetap seperti ini
+function toggleMenu() { 
+    document.getElementById('sidebar').classList.toggle('active'); 
+}
