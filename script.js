@@ -119,12 +119,10 @@ function filterContent(category) {
         document.getElementById('skills').style.display = 'block';
     } else if (category === 'creative') {
         document.getElementById('skills').style.display = 'none';
-        // Di kategori kreatif, kita sembunyikan section journey karena isinya cuma cerita hidup
-        document.getElementById('journey').style.display = 'none'; 
     } else if (category === 'personal') {
         document.getElementById('skills').style.display = 'none';
         document.getElementById('projects').style.display = 'none';
-        document.getElementById('certificates').style.display = 'none';
+       
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
