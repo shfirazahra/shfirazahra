@@ -1,7 +1,7 @@
  // 1. Inisialisasi Animasi AOS
     AOS.init({ duration: 1000, once: true });
 
-    // 2. Fungsi Buka Amplop
+    // 2. Fungsi Untuk Buka Amplop Vintage
     function openEnvelope() {
         const overlay = document.getElementById('envelopeOverlay');
         overlay.classList.add('open');
@@ -16,14 +16,14 @@
         document.getElementById('sidebar').classList.toggle('active'); 
     }
 
-    // 4. Logika Partikel (Bintang vs Bunga)
+    // 4. Logika Partikel dari Normal Mode Elemen Tema Vintage menjadi Dark Mode Elemen Tema Galaksi
     const particleContainer = document.getElementById('particles');
     function createParticles() {
         if(!particleContainer) return;
         particleContainer.innerHTML = '';
         const isDark = document.body.classList.contains('dark-mode');
         
-        // Pilih icon: Kalau gelap Bintang/Planet, kalau terang Bunga/Hati
+        // Pilih icon: Kalau di Dark Mode bertema Galaksi, Kalau Terang bertema Vintage
         const icons = isDark ? ['💫', '🌎', '✨', '🌙'] : ['🌸', '✨', '🎀','💝'];
         
         for (let i = 0; i < 20; i++) {
@@ -38,7 +38,7 @@
         }
     }
 
-    // 5. Logika Dark Mode
+    // 5. Logika untuk memunculkan fitur Dark Mode
     const btnDark = document.getElementById('darkModeToggle');
     if(btnDark) {
         btnDark.addEventListener('click', () => {
@@ -49,7 +49,7 @@
         });
     }
 
-    // 6. Logika Translate (Lengkap Sampai Judul Section)
+    // 6. Logika untuk Translate dari Indonesia ke Inggris begitupun sebaliknya (Lengkap Sampai Judul Section)
    const btnLang = document.getElementById('langToggle');
 if(btnLang) {
     btnLang.addEventListener('click', () => {
@@ -87,7 +87,7 @@ if(btnLang) {
 
     // Jalankan partikel saat halaman pertama kali dibuka
     createParticles();
-// Awalnya sembunyikan semua section saat amplop belum dibuka
+// Awalnya sembunyikan semua section saat amplop vintage belum dibuka
 document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
 
 // Fungsi Utama Filter
