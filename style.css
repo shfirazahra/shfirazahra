@@ -291,18 +291,35 @@ body.dark-mode .skill-name {
         .journey-detail img { width: 100%; max-width: 400px; border-radius: 15px; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: block; }
         .journey-detail .full-desc { font-size: 13px; margin-top: 8px; line-height: 1.6; color: #777; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { 
+     /* 1. Atur dasar kartu agar siap bergerak */
+.card { 
     background: white; 
-    padding: 40px 25px 25px 25px; /* Padding atas ditambah dari 25px ke 40px */
+    padding: 40px 25px 25px 25px; 
     border-radius: 20px; 
     border: 1px solid #fce4ec; 
     text-align: left; 
-    transition: 0.4s; 
     height: 100%; 
-    position: relative; /* Ini kunci agar ikon tidak lari keluar */
-    overflow: hidden; 
+    position: relative; 
+    overflow: hidden;
+    /* Tambahkan transition ini agar gerakannya halus */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-        .card:hover { transform: translateY(-10px); border-color: var(--rose-gold); box-shadow: 0 15px 30px rgba(229,164,180,0.2); }
+
+/* 2. Paksa efek HOVER agar jalan di semua kartu */
+.grid a:hover .card, 
+.card:hover { 
+    transform: translateY(-15px) !important; /* Membuat kartu naik */
+    border-color: var(--rose-gold) !important;
+    box-shadow: 0 20px 40px rgba(229, 164, 180, 0.3) !important;
+    z-index: 5;
+}
+
+/* 3. Pastikan link pembungkus tidak merusak tampilan */
+.grid a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
         .card h3 { color: var(--rose-gold); margin-bottom: 10px; font-size: 18px; }
         .cert-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; font-size: 13px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); margin-top: 20px; }
         .cert-table th { background: var(--rose-gold); color: white; padding: 12px; }
