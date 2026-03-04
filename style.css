@@ -292,6 +292,7 @@ body.dark-mode .skill-name {
         .journey-detail .full-desc { font-size: 13px; margin-top: 8px; line-height: 1.6; color: #777; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
      /* 1. Atur dasar kartu agar siap bergerak */
+/* 1. Perbaikan pada kartu utama */
 .card { 
     background: white; 
     padding: 40px 25px 25px 25px; 
@@ -300,25 +301,27 @@ body.dark-mode .skill-name {
     text-align: left; 
     height: 100%; 
     position: relative; 
-    overflow: hidden;
-    /* Tambahkan transition ini agar gerakannya halus */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Mencegah efek 'greges' dengan backface-visibility */
+    backface-visibility: hidden;
+    transform: translateZ(0); 
+    
+    /* Transisi dibuat sedikit lebih lambat agar elegan */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, border-color 0.4s ease-out;
 }
 
-/* 2. Paksa efek HOVER agar jalan di semua kartu */
-.grid a:hover .card, 
+/* 2. Solusi utama: Gunakan container atau a untuk trigger hover */
+/* Ini agar area hover tetap stabil meski kartu sedang naik-turun */
+.grid a:hover .card,
 .card:hover { 
-    transform: translateY(-10px) !important; /* Membuat kartu naik */
+    transform: translateY(-12px) !important;
+    box-shadow: 0 20px 40px rgba(229, 164, 180, 0.25) !important;
     border-color: var(--rose-gold) !important;
-    box-shadow: 0 20px 40px rgba(229, 164, 180, 0.3) !important;
-    z-index: 5;
 }
 
-/* 3. Pastikan link pembungkus tidak merusak tampilan */
-.grid a {
-    text-decoration: none;
-    display: block;
-    height: 100%;
+/* 3. Pastikan tidak ada overflow yang memotong bayangan */
+.grid {
+    padding-top: 20px; /* Kasih ruang di atas supaya pas naik tidak kepotong */
 }
         .card h3 { color: var(--rose-gold); margin-bottom: 10px; font-size: 18px; }
         .cert-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; font-size: 13px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); margin-top: 20px; }
