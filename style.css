@@ -308,7 +308,7 @@ body.dark-mode .skill-name {
 /* 2. Paksa efek HOVER agar jalan di semua kartu */
 .grid a:hover .card, 
 .card:hover { 
-    transform: translateY(-15px) !important; /* Membuat kartu naik */
+    transform: translateY(-10px) !important; /* Membuat kartu naik */
     border-color: var(--rose-gold) !important;
     box-shadow: 0 20px 40px rgba(229, 164, 180, 0.3) !important;
     z-index: 5;
