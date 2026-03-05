@@ -160,81 +160,82 @@ function toggleMenu() {
     document.getElementById('sidebar').classList.toggle('active'); 
 }
 
-// Custom Cursor - Petal Effect
-const cursor = document.createElement('div');
-cursor.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
-    font-size: 20px;
-    transition: transform 0.1s ease;
-    transform: translate(-50%, -50%);
-`;
-cursor.innerHTML = '🌸';
-document.body.appendChild(cursor);
+// Custom Cursor - hanya aktif di desktop
+const isTouchDevice = ('ontouchstart' in window) || 
+                       (navigator.maxTouchPoints > 0);
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-
-    // Buat jejak petal
-    const petal = document.createElement('div');
-    petal.innerHTML = ['🌸', '🌺', '✿', '❀', '💮'][Math.floor(Math.random() * 5)];
-    petal.style.cssText = `
+if (!isTouchDevice) {
+    const cursor = document.createElement('div');
+    cursor.style.cssText = `
         position: fixed;
         pointer-events: none;
-        z-index: 99998;
-        font-size: ${Math.random() * 12 + 8}px;
-        left: ${e.clientX}px;
-        top: ${e.clientY}px;
+        z-index: 99999;
+        font-size: 20px;
+        transition: transform 0.1s ease;
         transform: translate(-50%, -50%);
-        transition: all 0.8s ease;
-        opacity: 1;
     `;
-    document.body.appendChild(petal);
+    cursor.innerHTML = '🌸';
+    document.body.appendChild(cursor);
 
-    // Animasi petal jatuh
-    setTimeout(() => {
-        petal.style.opacity = '0';
-        petal.style.transform = `translate(
-            ${(Math.random() - 0.5) * 60}px, 
-            ${Math.random() * 40 + 20}px
-        ) rotate(${Math.random() * 360}deg)`;
-    }, 50);
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
 
-    // Hapus petal setelah animasi
-    setTimeout(() => petal.remove(), 900);
-});
-
-// Efek klik — burst bunga
-document.addEventListener('click', (e) => {
-    for (let i = 0; i < 6; i++) {
-        const burst = document.createElement('div');
-        burst.innerHTML = '🌸';
-        burst.style.cssText = `
+        const petal = document.createElement('div');
+        petal.innerHTML = ['🌸', '🌺', '✿', '❀', '💮'][Math.floor(Math.random() * 5)];
+        petal.style.cssText = `
             position: fixed;
             pointer-events: none;
             z-index: 99998;
-            font-size: 16px;
+            font-size: ${Math.random() * 12 + 8}px;
             left: ${e.clientX}px;
             top: ${e.clientY}px;
             transform: translate(-50%, -50%);
-            transition: all 0.6s ease;
+            transition: all 0.8s ease;
             opacity: 1;
         `;
-        document.body.appendChild(burst);
+        document.body.appendChild(petal);
 
-        const angle = (i / 6) * 360;
-        const distance = Math.random() * 50 + 30;
         setTimeout(() => {
-            burst.style.opacity = '0';
-            burst.style.left = `${e.clientX + Math.cos(angle) * distance}px`;
-            burst.style.top = `${e.clientY + Math.sin(angle) * distance}px`;
+            petal.style.opacity = '0';
+            petal.style.transform = `translate(
+                ${(Math.random() - 0.5) * 60}px, 
+                ${Math.random() * 40 + 20}px
+            ) rotate(${Math.random() * 360}deg)`;
         }, 50);
 
-        setTimeout(() => burst.remove(), 700);
-    }
-});
+        setTimeout(() => petal.remove(), 900);
+    });
 
-// Sembunyikan cursor default
-document.body.style.cursor = 'none';
+    document.addEventListener('click', (e) => {
+        for (let i = 0; i < 6; i++) {
+            const burst = document.createElement('div');
+            burst.innerHTML = '🌸';
+            burst.style.cssText = `
+                position: fixed;
+                pointer-events: none;
+                z-index: 99998;
+                font-size: 16px;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                transform: translate(-50%, -50%);
+                transition: all 0.6s ease;
+                opacity: 1;
+            `;
+            document.body.appendChild(burst);
+
+            const angle = (i / 6) * 360;
+            const distance = Math.random() * 50 + 30;
+            setTimeout(() => {
+                burst.style.opacity = '0';
+                burst.style.left = `${e.clientX + Math.cos(angle) * distance}px`;
+                burst.style.top = `${e.clientY + Math.sin(angle) * distance}px`;
+            }, 50);
+
+            setTimeout(() => burst.remove(), 700);
+        }
+    });
+
+    // Sembunyikan cursor default hanya di desktop
+    document.body.style.cursor = 'none';
+}
