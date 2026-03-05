@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/0.5">
+  <url>
+    <loc>https://shfirazahra.github.io/shfirazahra/</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+Buat juga `robots.txt`:
+```
+User-agent: *
+Allow: /
+Sitemap: https://shfirazahra.github.io/shfirazahra/sitemap.xml
