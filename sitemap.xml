@@ -6,10 +6,3 @@
     <priority>1.0</priority>
   </url>
 </urlset>
-```
-
-Buat juga `robots.txt`:
-```
-User-agent: *
-Allow: /
-Sitemap: https://shfirazahra.github.io/shfirazahra/sitemap.xml
