@@ -174,7 +174,7 @@
 
     <section id="journey" class="section" style="background-color: var(--pink-bg);">
         <h2 class="section-title" data-aos="fade-down">My Journey</h2>
-        <p style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
+        <p id="journey-hint" style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
         <div class="journey-container">
             <div class="journey-item type-pro" data-aos="fade-left" onclick="this.classList.toggle('active')">
                 <span class="year">2025-2026</span>
@@ -354,7 +354,7 @@
         <div style="overflow-x: auto; max-width: 800px; margin: 0 auto;" data-aos="fade-up">
             <table class="cert-table">
                 <thead>
-                    <tr><th>No</th><th>Nama Sertifikat </th><th>Penyelenggara</th></tr>
+                    <tr><th>No</th><th id="cert-header-name">Nama Sertifikat</th><th id="cert-header-issuer">Penyelenggara</th></tr>
                 </thead>
              <tbody>
     <tr class="type-pro">
@@ -399,4 +399,4 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="script.js"></script>
 </body>
-</html> 
+</html>
