@@ -68,15 +68,15 @@
 
     <div class="sidebar" id="sidebar">
        <ul>
-    <li><a href="#home" onclick="showLobby(); toggleMenu();">🏠 Home / Lobby</a></li>
+    <li><a href="javascript:void(0)" onclick="showLobby(); toggleMenu();">🏠 Home / Lobby</a></li>
     
-    <li><a href="#skills" onclick="navigateFromSidebar('pro', 'skills')">🛠 Technical Skills</a></li>
-    <li><a href="#projects" onclick="navigateFromSidebar('pro', 'projects')">💻 IT Projects</a></li>
-    <li><a href="#certificates" onclick="navigateFromSidebar('pro', 'certificates')">📜 IT Certifications</a></li>
+    <li><a href="javascript:void(0)" onclick="navigateFromSidebar('pro', 'skills')">🛠 Technical Skills</a></li>
+    <li><a href="javascript:void(0)" onclick="navigateFromSidebar('pro', 'projects')">💻 IT Projects</a></li>
+    <li><a href="javascript:void(0)" onclick="navigateFromSidebar('pro', 'certificates')">📜 IT Certifications</a></li>
     
-    <li><a href="#projects" onclick="navigateFromSidebar('creative', 'projects')">🎨 Art & Sewing</a></li>
+    <li><a href="javascript:void(0)" onclick="navigateFromSidebar('creative', 'projects')">🎨 Art & Sewing</a></li>
     
-    <li><a href="#journey" onclick="navigateFromSidebar('personal', 'journey')">🌸 My Story</a></li>
+    <li><a href="javascript:void(0)" onclick="navigateFromSidebar('personal', 'journey')">🌸 My Story</a></li>
     
     <li><a href="#contact" onclick="toggleMenu()">📧 Contact</a></li>
 </ul>
@@ -114,17 +114,31 @@
 
     <section id="skills" class="section">
         <h2 class="section-title" data-aos="fade-down">Technical Skills</h2>
-        <p style="text-align:center; font-size:13px; opacity:0.6; margin-bottom: 32px; font-style:italic;">Skill diekstrak dari proyek nyata, pengalaman kerja, dan sertifikasi ✨</p>
+        <p style="text-align:center; font-size:13px; opacity:0.6; margin-bottom: 16px; font-style:italic;">Diekstrak dari proyek nyata, pengalaman kerja, dan sertifikasi ✨</p>
+
+        <!-- Legend inline — langsung terlihat sebelum scroll -->
+        <div class="skill-legend-top" data-aos="fade-up">
+            <div class="sll-item">
+                <span class="sktag proven" style="pointer-events:none; font-size:10px; padding:3px 9px;">Tag outline</span>
+                <span>= terbukti dari kerja / proyek nyata</span>
+            </div>
+            <div class="sll-item">
+                <span class="sktag" style="pointer-events:none; font-size:10px; padding:3px 9px;">Tag biasa</span>
+                <span>= familiar / pernah dipelajari</span>
+            </div>
+        </div>
 
         <div class="skillcard-grid">
 
             <!-- 1. Web Frontend -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#c96a3a; --sc-light: var(--pink-bg);">
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#c96a3a; --sc-light:#fdf0e9;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">💻</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Web Frontend Development</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Proficient · Certified</div>
+                        <div class="skillcard-level">Proficient · Certified (APTI)</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -137,13 +151,15 @@
                 </div>
             </div>
 
-            <!-- 2. Backend & Framework -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#3a7cc9; --sc-light: #e7eff8;">
+            <!-- 2. Backend & Framework + GIS -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#3a7cc9; --sc-light:#e9f2fc;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">⚙️</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
                     <div>
-                        <div class="skillcard-title">Backend & Web Framework</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Intermediate · Project-Proven</div>
+                        <div class="skillcard-title">Backend, Framework & GIS</div>
+                        <div class="skillcard-level">Intermediate · Project-Proven</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -152,16 +168,20 @@
                     <span class="sktag proven">MVC Architecture</span>
                     <span class="sktag proven">Firebase</span>
                     <span class="sktag proven">Web App Deployment</span>
+                    <span class="sktag proven">QGIS</span>
+                    <span class="sktag proven">Web GIS</span>
                 </div>
             </div>
 
             <!-- 3. Database -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#4e9e6a; --sc-light: #e8f4ed;">
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#4e9e6a; --sc-light:#eaf6ef;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🗄️</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Database Management</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Intermediate · Project-Proven</div>
+                        <div class="skillcard-level">Intermediate · Project-Proven</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -173,13 +193,15 @@
                 </div>
             </div>
 
-            <!-- 4. Data Entry & Management -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#b8922e; --sc-light: #f7f0e2;">
+            <!-- 4. Data Entry -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#b8922e; --sc-light:#fdf4e3;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">📊</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Data Entry & Management</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Proficient · 99% Accuracy</div>
+                        <div class="skillcard-level">Proficient · 99% Accuracy Record</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -193,12 +215,14 @@
             </div>
 
             <!-- 5. IT Infrastructure -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#2e9eaa; --sc-light: #e4f4f6;">
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#2e9eaa; --sc-light:#e5f7f9;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🖥️</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">IT Infrastructure & Ops</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Intermediate · BPN Data Center</div>
+                        <div class="skillcard-level">Intermediate · BPN Data Center</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -211,29 +235,15 @@
                 </div>
             </div>
 
-            <!-- 6. GIS -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#4e9e6a; --sc-light: #e8f4ed;">
+            <!-- 6. Mobile Dev -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#8a5ec9; --sc-light:#f3eefb;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🗺️</div>
-                    <div>
-                        <div class="skillcard-title">GIS & Spatial Data</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Familiar · Project-Proven</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                     </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">QGIS</span>
-                    <span class="sktag proven">Web GIS</span>
-                    <span class="sktag proven">Spatial Visualization</span>
-                </div>
-            </div>
-
-            <!-- 7. Mobile Dev -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#8a5ec9; --sc-light: #f0ebf8;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">📱</div>
                     <div>
                         <div class="skillcard-title">Mobile Development</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Familiar · BNSP Certified</div>
+                        <div class="skillcard-level">Familiar · BNSP Certified</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -243,13 +253,15 @@
                 </div>
             </div>
 
-            <!-- 8. Admin & Document -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#5a6e8a; --sc-light: #eaecf2;">
+            <!-- 7. Admin -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#5a6e8a; --sc-light:#edf0f5;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">📁</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Administrative Management</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Proficient · Multi-company</div>
+                        <div class="skillcard-level">Proficient · 3 Companies</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -262,13 +274,15 @@
                 </div>
             </div>
 
-            <!-- 9. Creative -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#c93a6a; --sc-light: #f8e7ee;">
+            <!-- 8. Creative -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#c93a6a; --sc-light:#fceef4;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🎨</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Creative & Visual Design</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Proficient · Awarded</div>
+                        <div class="skillcard-level">Proficient · Awarded (UDINUS)</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
@@ -280,31 +294,35 @@
                 </div>
             </div>
 
-            <!-- 10. Sewing -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#8a5ec9; --sc-light: #f0ebf8;">
+            <!-- 9. Sewing -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#8a5ec9; --sc-light:#f3eefb;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🧵</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Garment & Sewing</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Kemenaker RI + BNSP Certified</div>
+                        <div class="skillcard-level">Certified · Kemenaker RI + BNSP</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
                     <span class="sktag proven">Hand Sewing</span>
                     <span class="sktag proven">Machine Sewing</span>
                     <span class="sktag proven">Garment Construction</span>
-                    <span class="sktag proven">K3 Safety</span>
+                    <span class="sktag proven">K3 Workplace Safety</span>
                     <span class="sktag proven">Kemenaker RI Certified</span>
                 </div>
             </div>
 
-            <!-- 11. Soft Skills -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#2e9eaa; --sc-light: #e4f4f6;">
+            <!-- 10. Soft Skills -->
+            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#2e9eaa; --sc-light:#e5f7f9;">
                 <div class="skillcard-head">
-                    <div class="skillcard-icon">🤝</div>
+                    <div class="skillcard-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <div>
                         <div class="skillcard-title">Professional & Interpersonal</div>
-                        <div class="skillcard-level" style="color:var(--sc)">Strong · Consistently Demonstrated</div>
+                        <div class="skillcard-level">Strong · Consistently Demonstrated</div>
                     </div>
                 </div>
                 <div class="skillcard-tags">
