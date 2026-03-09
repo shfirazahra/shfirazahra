@@ -680,3 +680,121 @@ body.dark-mode .sktag.proven {
 @media (max-width: 600px) {
     .skillcard-grid { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════════════
+   SKILL CARDS v3 — fixes & improvements
+═══════════════════════════════════════ */
+
+/* Override: icon pakai SVG — warna & background lebih kuat */
+.skillcard-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--sc-light);
+    border: 1.5px solid var(--sc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--sc);
+}
+
+/* Override: level text pakai warna accent card */
+.skillcard-level {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+    color: var(--sc);
+    opacity: 1;
+}
+
+/* Override: card background tinted sesuai warna */
+.skillcard {
+    background: color-mix(in srgb, var(--sc-light) 60%, white);
+}
+
+/* Override: proven tag lebih tebal & kontras */
+.sktag.proven {
+    background: white;
+    border: 1.5px solid var(--sc);
+    color: var(--sc);
+    font-weight: 600;
+}
+
+/* Override: tag biasa lebih jelas bedanya */
+.sktag {
+    background: rgba(0,0,0,0.05);
+    border: 1.5px dashed rgba(0,0,0,0.2);
+    color: #777;
+    font-weight: 500;
+}
+
+.sktag:hover {
+    background: var(--sc, #c96a3a);
+    color: #fff;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.sktag.proven:hover {
+    background: var(--sc, #c96a3a);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* Legend top — muncul sebelum grid */
+.skill-legend-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding: 12px 20px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 100px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+}
+
+.sll-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: #888;
+}
+
+/* Dark mode override v3 */
+body.dark-mode .skillcard {
+    background: color-mix(in srgb, var(--sc-light) 10%, #1e1e2e);
+    border-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .skillcard-title {
+    color: #f0eee8;
+}
+
+body.dark-mode .sktag {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.2);
+    color: #aaa;
+}
+
+body.dark-mode .sktag.proven {
+    background: transparent;
+    border-color: var(--sc);
+    color: var(--sc);
+}
+
+body.dark-mode .skill-legend-top {
+    background: rgba(255,255,255,0.05);
+    color: #aaa;
+}
+
+body.dark-mode .sll-item {
+    color: #aaa;
+}
