@@ -1084,3 +1084,64 @@ body.dark-mode #scrollTopBtn {
         content: none;
     }
 }
+
+/* ============================================================
+   PERBAIKAN PUTARAN 5
+   ============================================================ */
+
+/* FIX 2: Skip-to-content link untuk pengguna keyboard */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--rose-gold);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 99999;
+    transition: top 0.2s;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* FIX 1: prefers-reduced-motion — matikan animasi untuk yang sensitif gerak */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .particles {
+        display: none !important;
+    }
+
+    #scrollTopBtn {
+        transition: none !important;
+    }
+}
+
+/* FIX 7: prefers-color-scheme — auto dark mode jika OS sudah dark */
+@media (prefers-color-scheme: dark) {
+    body:not(.dark-mode):not(.light-mode-forced) {
+        --bg-color: #2d1b1e;
+        --text-color: #fce4ec;
+        --pink-bg: #3d2329;
+        --pink-soft: #4a2a30;
+        --card-bg: #3d2329;
+    }
+}
