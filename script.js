@@ -35,22 +35,134 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// 4. Logika Partikel
-const particleContainer = document.getElementById('particles');
+// 4. Logika Partikel — Dandelion Canvas
+let dandelionCanvas, dandelionCtx, dandelionParticles = [], dandelionAnimId;
+
+function initDandelionCanvas() {
+    if (dandelionCanvas) return;
+    dandelionCanvas = document.createElement('canvas');
+    dandelionCanvas.id = 'dandelion-canvas';
+    Object.assign(dandelionCanvas.style, {
+        position: 'fixed', top: '0', left: '0',
+        width: '100%', height: '100%',
+        pointerEvents: 'none', zIndex: '0'
+    });
+    document.body.prepend(dandelionCanvas);
+    dandelionCtx = dandelionCanvas.getContext('2d');
+    resizeDandelion();
+    window.addEventListener('resize', resizeDandelion);
+}
+
+function resizeDandelion() {
+    if (!dandelionCanvas) return;
+    dandelionCanvas.width  = window.innerWidth;
+    dandelionCanvas.height = window.innerHeight;
+}
+
+const DANDELION_COLORS_LIGHT = [
+    'rgba(255,215,60,',  // golden yellow
+    'rgba(255,195,40,',  // deep gold
+    'rgba(255,235,120,', // butter
+    'rgba(240,200,70,',  // amber
+    'rgba(255,245,160,', // cream
+];
+const DANDELION_COLORS_DARK = [
+    'rgba(255,230,100,', // bright gold
+    'rgba(255,210,70,',  // gold
+    'rgba(200,170,40,',  // dark amber
+    'rgba(255,245,180,', // soft cream
+    'rgba(230,190,60,',  // warm yellow
+];
+
+class DandelionParticle {
+    constructor(initial) { this.reset(initial); }
+    reset(initial = false) {
+        const w = dandelionCanvas.width, h = dandelionCanvas.height;
+        this.x = Math.random() * w;
+        this.y = initial ? Math.random() * h : h + 20;
+        this.radius = Math.random() * 2.2 + 0.7;
+        this.speedY = -(Math.random() * 0.55 + 0.25);
+        this.speedX = (Math.random() - 0.5) * 0.35;
+        this.swayAmp   = Math.random() * 1.1 + 0.3;
+        this.swaySpeed = Math.random() * 0.018 + 0.007;
+        this.swayOff   = Math.random() * Math.PI * 2;
+        this.alpha     = Math.random() * 0.5 + 0.3;
+        this.targetAlpha = this.alpha;
+        this.fadeSpeed = Math.random() * 0.004 + 0.002;
+        this.rotation  = Math.random() * Math.PI * 2;
+        this.rotSpeed  = (Math.random() - 0.5) * 0.013;
+        this.type      = Math.random() > 0.4 ? 'circle' : 'wisp';
+        this.wispLen   = Math.random() * 6 + 3;
+        this.age = 0;
+
+        const isDark = document.body.classList.contains('dark-mode');
+        const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
+        this.color = palette[Math.floor(Math.random() * palette.length)];
+    }
+    update() {
+        this.age++;
+        this.x += this.speedX + Math.sin(this.age * this.swaySpeed + this.swayOff) * this.swayAmp * 0.05;
+        this.y += this.speedY;
+        this.rotation += this.rotSpeed;
+        if (this.age < 60) this.alpha = Math.min(this.targetAlpha, this.age / 60 * this.targetAlpha);
+        if (this.y < 80)   this.alpha -= this.fadeSpeed;
+        if (this.y < -20 || this.alpha <= 0) this.reset();
+    }
+    draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.alpha);
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        if (this.type === 'circle') {
+            const g = ctx.createRadialGradient(0,0,0,0,0,this.radius*2.5);
+            g.addColorStop(0,   this.color + '0.9)');
+            g.addColorStop(0.5, this.color + '0.5)');
+            g.addColorStop(1,   this.color + '0)');
+            ctx.beginPath(); ctx.arc(0,0,this.radius*2.5,0,Math.PI*2);
+            ctx.fillStyle = g; ctx.fill();
+            ctx.beginPath(); ctx.arc(0,0,this.radius*0.6,0,Math.PI*2);
+            ctx.fillStyle = this.color + '1)'; ctx.fill();
+        } else {
+            ctx.strokeStyle = this.color + '0.7)';
+            ctx.lineWidth = 0.5; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-this.wispLen); ctx.stroke();
+            for (let i = 0; i < 4; i++) {
+                const a = (i/4)*Math.PI*2, tl = this.wispLen*0.5;
+                ctx.beginPath(); ctx.moveTo(0,-this.wispLen);
+                ctx.lineTo(Math.cos(a)*tl, -this.wispLen+Math.sin(a)*tl); ctx.stroke();
+            }
+            ctx.beginPath(); ctx.arc(0,-this.wispLen,0.8,0,Math.PI*2);
+            ctx.fillStyle = this.color+'0.9)'; ctx.fill();
+        }
+        ctx.restore();
+    }
+}
+
+let mouseX = -999, mouseY = -999;
+window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+function dandelionLoop() {
+    dandelionCtx.clearRect(0,0,dandelionCanvas.width,dandelionCanvas.height);
+    dandelionParticles.forEach(p => {
+        const dx = p.x - mouseX, dy = p.y - mouseY;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < 80) { const f=(80-dist)/80; p.x+=(dx/dist)*f*1.5; p.y+=(dy/dist)*f*1.5; }
+        p.update(); p.draw(dandelionCtx);
+    });
+    dandelionAnimId = requestAnimationFrame(dandelionLoop);
+}
+
 function createParticles() {
-    if(!particleContainer) return;
-    particleContainer.innerHTML = '';
-    const isDark = document.body.classList.contains('dark-mode');
-    const icons = isDark ? ['💫', '🌎', '✨', '🌙'] : ['🌸', '✨', '🎀','💝'];
-    for (let i = 0; i < 20; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.innerText = icons[Math.floor(Math.random() * icons.length)];
-        p.style.left = Math.random() * 100 + 'vw';
-        p.style.top = Math.random() * 100 + 'vh'; 
-        p.style.animationDelay = Math.random() * 0 + 's';
-        p.style.fontSize = (Math.random() * 15 + 10) + 'px';
-        particleContainer.appendChild(p);
+    initDandelionCanvas();
+    // Refresh warna saat dark mode toggle
+    dandelionParticles.forEach(p => {
+        const isDark = document.body.classList.contains('dark-mode');
+        const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
+        p.color = palette[Math.floor(Math.random() * palette.length)];
+    });
+    if (dandelionParticles.length === 0) {
+        dandelionParticles = Array.from({length: 55}, (_, i) => new DandelionParticle(i < 30));
+        dandelionLoop();
     }
 }
 
@@ -447,7 +559,7 @@ if (!isTouchDevice) {
         font-size: 20px; transition: transform 0.1s ease;
         transform: translate(-50%, -50%);
     `;
-    cursor.innerHTML = '🌸';
+    cursor.innerHTML = '✿';
     document.body.appendChild(cursor);
 
     let lastPetalTime = 0;
@@ -462,7 +574,7 @@ if (!isTouchDevice) {
         lastPetalTime = now;
 
         const petal = document.createElement('div');
-        petal.innerHTML = ['🌸', '🌺', '✿', '❀', '💮'][Math.floor(Math.random() * 5)];
+        petal.innerHTML = ['✿', '❀', '✦', '✧', '⁕'][Math.floor(Math.random() * 5)];
         petal.style.cssText = `
             position: fixed; pointer-events: none; z-index: 99998;
             font-size: ${Math.random() * 12 + 8}px;
@@ -480,7 +592,7 @@ if (!isTouchDevice) {
     document.addEventListener('click', (e) => {
         for (let i = 0; i < 6; i++) {
             const burst = document.createElement('div');
-            burst.innerHTML = '🌸';
+            burst.innerHTML = ['✿', '❀', '✦', '·', '⁕'][Math.floor(Math.random()*5)];
             burst.style.cssText = `
                 position: fixed; pointer-events: none; z-index: 99998;
                 font-size: 16px; left: ${e.clientX}px; top: ${e.clientY}px;
