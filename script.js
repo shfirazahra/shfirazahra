@@ -269,8 +269,27 @@ if(btnLang) {
     });
 }
 
-// Jalankan partikel saat halaman pertama kali dibuka
-createParticles();
+// FIX 1: Jalankan partikel hanya jika reduced-motion tidak aktif
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion) {
+    createParticles();
+} else {
+    // Kalau reduced-motion aktif, AOS juga dimatikan agar tidak ada transform
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        el.removeAttribute('data-aos');
+    });
+}
+
+// FIX 7: Auto dark mode dari OS jika belum ada preferensi tersimpan
+if (!localStorage.getItem('darkMode')) {
+    const osDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (osDark) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'on');
+        const btn = document.getElementById('darkModeToggle');
+        if (btn) btn.innerText = '☀️';
+    }
+}
 
 // FIX: Copyright tahun otomatis update tiap tahun
 const yearEl = document.getElementById('currentYear');
