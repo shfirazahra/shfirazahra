@@ -9,7 +9,9 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--pink-soft); color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
+        /* Background dipindah ke html agar canvas fixed z-index:-1 tetap terlihat di atas bg */
+        html { background-color: var(--pink-soft); }
+        body { font-family: 'Poppins', sans-serif; background-color: transparent; color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
         
         body.no-scroll { overflow: hidden; height: 100vh; width: 100vw; position: fixed; }
 
@@ -126,8 +128,9 @@ body.no-scroll { overflow: hidden; height: 100vh; }
             border: 1px solid #eee;
         }
     /* --- DARK MODE SETTINGS (HANYA INI YANG DIGANTI) --- */
+html:has(body.dark-mode) { background-color: #2d1b1e !important; }
 body.dark-mode { 
-    background-color: #2d1b1e !important; 
+    background-color: transparent !important; 
     color: #fce4ec !important; 
 }
 body.dark-mode section, body.dark-mode .hero { 
@@ -325,7 +328,7 @@ body.dark-mode .skill-name {
         .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
 /* --- Tambahan untuk Partikel & Dark Mode Burgundy --- */
 body.dark-mode { 
-    background-color: #2d1b1e !important; 
+    background-color: transparent !important; 
     color: #fce4ec !important; 
 }
 body.dark-mode section, body.dark-mode .hero { 
