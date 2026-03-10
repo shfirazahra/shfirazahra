@@ -312,10 +312,25 @@ const shortDescMap = [
 // ============================================================
 // 7. FUNGSI TERAPKAN BAHASA
 // ============================================================
+// ID nav sidebar yang punya SVG — update text node saja, jangan overwrite SVG
+const SVG_NAV_IDS = new Set(['nav-home','nav-skills','nav-projects-pro','nav-certs','nav-projects-creative','nav-journey','nav-contact']);
+
 function applyLanguage(langIndex) {
     for (const [id, texts] of Object.entries(translations)) {
         const el = document.getElementById(id);
-        if(el) el.innerText = texts[langIndex];
+        if (!el) continue;
+
+        if (SVG_NAV_IDS.has(id)) {
+            // Cari text node terakhir (setelah SVG) dan update teksnya saja
+            const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+            if (textNodes.length > 0) {
+                textNodes[textNodes.length - 1].textContent = ' ' + texts[langIndex];
+            } else {
+                el.appendChild(document.createTextNode(' ' + texts[langIndex]));
+            }
+        } else {
+            el.innerText = texts[langIndex];
+        }
     }
     const heroH1 = document.querySelector('.hero h1');
     if(heroH1) heroH1.innerHTML = htmlTranslations['hero-h1'][langIndex];
@@ -608,4 +623,4 @@ if (!isTouchDevice) {
     });
 
     document.body.style.cursor = 'none';
-        }
+                                      }
