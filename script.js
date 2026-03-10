@@ -144,6 +144,25 @@ const translations = {
     'LyferaTitle': ["Lyfera's Art", "Lyfera's Art"],
     'LyferaDesc': ['Kumpulan berbagai karya seni ku dalam bentuk website yang interaktif', 'A collection of my artworks in an interactive website format.'],
     'CVText': ['📄 Download CV', '📄 Download CV'],
+
+    // Technical Skills
+    'skills-note':    ['Diekstrak dari proyek nyata, pengalaman kerja, dan sertifikasi ✨', 'Extracted from real projects, work experience, and certifications ✨'],
+    'legend-proven':  ['= terbukti dari kerja / proyek nyata', '= proven from real work / projects'],
+    'legend-familiar':['= familiar / pernah dipelajari', '= familiar / have studied before'],
+
+    // Sertifikat
+    'cert1': ['Sertifikat Kompetensi Keahlian Pemrograman Web', 'Web Programming Competency Certificate'],
+    'cert2': ['Sertifikat Kompetensi Pemrograman Mobil Pratama', 'Mobile Programming Competency Certificate'],
+    'cert3': ['TOEFL PREPARATION', 'TOEFL PREPARATION'],
+    'cert4': ['Sertifikat Seminar Nasional Teknik Informatika', 'National Informatics Engineering Seminar Certificate'],
+    'cert5': ['Sertifikat Kompetensi Menjahit Pakaian', 'Clothing Sewing Competency Certificate'],
+    'cert6': ['Sertifikat Kompetensi Menjahit Pakaian', 'Clothing Sewing Competency Certificate'],
+    'cert7': ['Sertifikat Finalis 8 Besar Business Plan', 'Top 8 Finalist Business Plan Certificate'],
+    'cert8': ['Sertifikat Lomba Mural Art', 'Mural Art Competition Certificate'],
+
+    // Form Kontak
+    'contact-subtitle': ['Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨', 'Interested in collaborating or have a question? Send a message! ✨'],
+    'btn-send': ['Kirim Pesan 💌', 'Send Message 💌'],
 };
 
 const htmlTranslations = {
@@ -210,7 +229,15 @@ function applyLanguage(langIndex) {
     if(certHeaderIssuer) certHeaderIssuer.innerText = langIndex === 1 ? 'Issuer'           : 'Penyelenggara';
     if(certHeaderYear)   certHeaderYear.innerText   = langIndex === 1 ? 'Year'             : 'Tahun';
 
-    // FIX #6: Update atribut lang di <html> agar screen reader membaca dengan benar
+    // Update placeholder form kontak
+    const inputName    = document.getElementById('input-name');
+    const inputEmail   = document.getElementById('input-email');
+    const inputMessage = document.getElementById('input-message');
+    if(inputName)    inputName.placeholder    = langIndex === 1 ? 'Your name 🌸'     : 'Nama kamu 🌸';
+    if(inputEmail)   inputEmail.placeholder   = langIndex === 1 ? 'Your email 📧'    : 'Email kamu 📧';
+    if(inputMessage) inputMessage.placeholder = langIndex === 1 ? 'Your message... ✨' : 'Pesan kamu... ✨';
+
+    // FIX: Update atribut lang di <html>
     document.getElementById('htmlRoot').setAttribute('lang', langIndex === 1 ? 'en' : 'id');
 }
 
