@@ -45,7 +45,7 @@
 <body class="no-scroll">
 
     <div class="envelope-overlay" id="envelopeOverlay">
-        <button class="envelope-wrapper" onclick="openEnvelope()" aria-label="Buka portfolio Shafira Zahra">
+        <div class="envelope-wrapper" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Buka portfolio Shafira Zahra" onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()">
             <div class="open-me-text">Open Me</div>
             <div class="envelope">
                 <div class="wax-seal">❤</div>
@@ -54,7 +54,7 @@
                     <p>Welcome to my Portfolio ✨</p>
                 </div>
             </div>
-        </button>
+        </div>
     </div>
 
     <div class="particles" id="particles"></div>
