@@ -1,6 +1,5 @@
 // 1. Inisialisasi Animasi AOS
 AOS.init({ duration: 1000, once: true });
-// (Dark mode preference sudah diterapkan via inline script di <head> agar tidak flicker)
 
 // 2. Fungsi Untuk Buka Amplop Vintage
 function openEnvelope() {
@@ -17,11 +16,9 @@ function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     const hamburger = document.querySelector('.hamburger');
     const isActive = sidebar.classList.toggle('active');
-    // FIX #2: Update aria-expanded sesuai state aktual
     if (hamburger) hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
 }
 
-// FIX #5: Tutup sidebar saat klik di luar area sidebar & hamburger
 document.addEventListener('click', (e) => {
     const sidebar = document.getElementById('sidebar');
     const hamburger = document.querySelector('.hamburger');
@@ -31,7 +28,7 @@ document.addEventListener('click', (e) => {
         hamburger && !hamburger.contains(e.target)
     ) {
         sidebar.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
     }
 });
 
@@ -46,9 +43,9 @@ function initDandelionCanvas() {
         position: 'fixed', top: '0', left: '0',
         width: '100%', height: '100%',
         pointerEvents: 'none',
-        zIndex: '-1'   // Selalu di belakang semua elemen termasuk amplop
+        zIndex: '-1'
     });
-    document.body.appendChild(dandelionCanvas); // append (bukan prepend) agar tidak ganggu DOM order
+    document.body.appendChild(dandelionCanvas);
     dandelionCtx = dandelionCanvas.getContext('2d');
     resizeDandelion();
     window.addEventListener('resize', resizeDandelion);
@@ -68,11 +65,11 @@ const DANDELION_COLORS_LIGHT = [
     'rgba(255,245,160,',
 ];
 const DANDELION_COLORS_DARK = [
-    'rgba(255,240,120,',  // kuning terang
-    'rgba(255,225,80,',   // gold cerah
-    'rgba(255,210,50,',   // gold
-    'rgba(255,255,200,',  // hampir putih kuning
-    'rgba(255,200,100,',  // amber cerah
+    'rgba(255,240,120,',
+    'rgba(255,225,80,',
+    'rgba(255,210,50,',
+    'rgba(255,255,200,',
+    'rgba(255,200,100,',
 ];
 
 class DandelionParticle {
@@ -88,7 +85,6 @@ class DandelionParticle {
         this.swayAmp   = Math.random() * 1.1 + 0.3;
         this.swaySpeed = Math.random() * 0.018 + 0.007;
         this.swayOff   = Math.random() * Math.PI * 2;
-        // Dark mode: alpha jauh lebih tinggi agar jelas terlihat
         this.alpha     = isDark ? Math.random() * 0.4 + 0.6 : Math.random() * 0.5 + 0.3;
         this.targetAlpha = this.alpha;
         this.fadeSpeed = Math.random() * 0.004 + 0.002;
@@ -155,38 +151,41 @@ function dandelionLoop() {
 
 function createParticles() {
     initDandelionCanvas();
-    const isDark = document.body.classList.contains('dark-mode');
-
-    // Selalu respawn ulang semua partikel agar warna & alpha langsung update
-    if (dandelionAnimId) cancelAnimationFrame(dandelionAnimId);
+    // Stop loop lama dulu
+    if (dandelionAnimId) {
+        cancelAnimationFrame(dandelionAnimId);
+        dandelionAnimId = null;
+    }
+    // Spawn ulang semua partikel dengan warna mode saat ini
     dandelionParticles = Array.from({length: 60}, (_, i) => new DandelionParticle(i < 40));
     dandelionLoop();
 }
 
-// 5. Logika Dark Mode — simpan ke localStorage + apply saat load
+// 5. Logika Dark Mode
 const btnDark = document.getElementById('darkModeToggle');
 
-// Apply dark mode ke body saat load (inline script sudah handle background agar tidak flicker)
+// Apply dark mode saat load
 if (localStorage.getItem('darkMode') === 'on') {
     document.body.classList.add('dark-mode');
 }
 
-if(btnDark) {
-    const storedDark = localStorage.getItem('darkMode') === 'on';
-    btnDark.innerText = storedDark ? '☀️' : '🌙';
+if (btnDark) {
+    // Set ikon awal sesuai state: kalau dark mode aktif → tampilkan ☀️ (untuk balik ke light)
+    const isDarkOnLoad = document.body.classList.contains('dark-mode');
+    btnDark.innerText = isDarkOnLoad ? '☀️' : '🌙';
 
     btnDark.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
+        // Kalau sekarang dark → tampilkan ☀️ (tombol untuk balik ke light)
+        // Kalau sekarang light → tampilkan 🌙 (tombol untuk ke dark)
         btnDark.innerText = isDark ? '☀️' : '🌙';
         localStorage.setItem('darkMode', isDark ? 'on' : 'off');
         createParticles();
     });
 }
 
-// ============================================================
-// 6. DATA TERJEMAHAN LENGKAP (Indonesia <-> English)
-// ============================================================
+// 6. DATA TERJEMAHAN
 const translations = {
     'hero-desc': [
         "Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.",
@@ -253,13 +252,9 @@ const translations = {
     'LyferaTitle': ["Lyfera's Art", "Lyfera's Art"],
     'LyferaDesc': ['Kumpulan berbagai karya seni ku dalam bentuk website yang interaktif', 'A collection of my artworks in an interactive website format.'],
     'CVText': ['📄 Download CV', '📄 Download CV'],
-
-    // Technical Skills
     'skills-note':    ['Diekstrak dari proyek nyata, pengalaman kerja, dan sertifikasi ✨', 'Extracted from real projects, work experience, and certifications ✨'],
     'legend-proven':  ['= terbukti dari kerja / proyek nyata', '= proven from real work / projects'],
     'legend-familiar':['= familiar / pernah dipelajari', '= familiar / have studied before'],
-
-    // Sertifikat
     'cert1': ['Sertifikat Kompetensi Keahlian Pemrograman Web', 'Web Programming Competency Certificate'],
     'cert2': ['Sertifikat Kompetensi Pemrograman Mobil Pratama', 'Mobile Programming Competency Certificate'],
     'cert3': ['TOEFL PREPARATION', 'TOEFL PREPARATION'],
@@ -268,19 +263,15 @@ const translations = {
     'cert6': ['Sertifikat Kompetensi Menjahit Pakaian', 'Clothing Sewing Competency Certificate'],
     'cert7': ['Sertifikat Finalis 8 Besar Business Plan', 'Top 8 Finalist Business Plan Certificate'],
     'cert8': ['Sertifikat Lomba Mural Art', 'Mural Art Competition Certificate'],
-
-    // Form Kontak
     'contact-subtitle': ['Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨', 'Interested in collaborating or have a question? Send a message! ✨'],
     'btn-send': ['Kirim Pesan 💌', 'Send Message 💌'],
-
-    // Sidebar navigation
-    'nav-home':             ['Home / Lobby',       'Home / Lobby'],
-    'nav-skills':           ['Technical Skills',    'Technical Skills'],
-    'nav-projects-pro':     ['IT Projects',         'IT Projects'],
-    'nav-certs':            ['IT Certifications',   'IT Certifications'],
-    'nav-projects-creative':['Art & Sewing',        'Art & Sewing'],
-    'nav-journey':          ['My Story',            'My Story'],
-    'nav-contact':          ['Contact',             'Contact'],
+    'nav-home':              ['Home / Lobby',       'Home / Lobby'],
+    'nav-skills':            ['Technical Skills',    'Technical Skills'],
+    'nav-projects-pro':      ['IT Projects',         'IT Projects'],
+    'nav-certs':             ['IT Certifications',   'IT Certifications'],
+    'nav-projects-creative': ['Art & Sewing',        'Art & Sewing'],
+    'nav-journey':           ['My Story',            'My Story'],
+    'nav-contact':           ['Contact',             'Contact'],
 };
 
 const htmlTranslations = {
@@ -309,9 +300,7 @@ const shortDescMap = [
     ['SMP6Title',   '84,00',                               '84.00'],
 ];
 
-// ============================================================
 // 7. FUNGSI TERAPKAN BAHASA
-// ============================================================
 // ID nav sidebar yang punya SVG — update text node saja, jangan overwrite SVG
 const SVG_NAV_IDS = new Set(['nav-home','nav-skills','nav-projects-pro','nav-certs','nav-projects-creative','nav-journey','nav-contact']);
 
@@ -321,7 +310,7 @@ function applyLanguage(langIndex) {
         if (!el) continue;
 
         if (SVG_NAV_IDS.has(id)) {
-            // Cari text node terakhir (setelah SVG) dan update teksnya saja
+            // Cari text node (setelah SVG) dan update teksnya saja
             const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
             if (textNodes.length > 0) {
                 textNodes[textNodes.length - 1].textContent = ' ' + texts[langIndex];
@@ -332,25 +321,26 @@ function applyLanguage(langIndex) {
             el.innerText = texts[langIndex];
         }
     }
+
     const heroH1 = document.querySelector('.hero h1');
-    if(heroH1) heroH1.innerHTML = htmlTranslations['hero-h1'][langIndex];
+    if (heroH1) heroH1.innerHTML = htmlTranslations['hero-h1'][langIndex];
 
     document.querySelectorAll('.section-title').forEach((el, idx) => {
-        if(sectionTitleTranslations[idx]) el.innerText = sectionTitleTranslations[idx][langIndex];
+        if (sectionTitleTranslations[idx]) el.innerText = sectionTitleTranslations[idx][langIndex];
     });
 
     const journeyHint = document.getElementById('journey-hint');
-    if(journeyHint) journeyHint.innerText = langIndex === 1
+    if (journeyHint) journeyHint.innerText = langIndex === 1
         ? '(Click the place name to see documentation details ✨)'
         : '(Klik nama tempat untuk detail dokumentasi ✨)';
 
     shortDescMap.forEach(([headerId, textID, textEN]) => {
         const headerEl = document.getElementById(headerId);
-        if(headerEl) {
+        if (headerEl) {
             const parent = headerEl.closest('.journey-item');
-            if(parent) {
+            if (parent) {
                 const shortDesc = parent.querySelector('.short-desc:not([id])');
-                if(shortDesc) shortDesc.innerText = langIndex === 1 ? textEN : textID;
+                if (shortDesc) shortDesc.innerText = langIndex === 1 ? textEN : textID;
             }
         }
     });
@@ -358,31 +348,28 @@ function applyLanguage(langIndex) {
     const certHeaderName   = document.getElementById('cert-header-name');
     const certHeaderIssuer = document.getElementById('cert-header-issuer');
     const certHeaderYear   = document.getElementById('cert-header-year');
-    if(certHeaderName)   certHeaderName.innerText   = langIndex === 1 ? 'Certificate Name' : 'Nama Sertifikat';
-    if(certHeaderIssuer) certHeaderIssuer.innerText = langIndex === 1 ? 'Issuer'           : 'Penyelenggara';
-    if(certHeaderYear)   certHeaderYear.innerText   = langIndex === 1 ? 'Year'             : 'Tahun';
+    if (certHeaderName)   certHeaderName.innerText   = langIndex === 1 ? 'Certificate Name' : 'Nama Sertifikat';
+    if (certHeaderIssuer) certHeaderIssuer.innerText = langIndex === 1 ? 'Issuer'           : 'Penyelenggara';
+    if (certHeaderYear)   certHeaderYear.innerText   = langIndex === 1 ? 'Year'             : 'Tahun';
 
-    // Update placeholder form kontak
     const inputName    = document.getElementById('input-name');
     const inputEmail   = document.getElementById('input-email');
     const inputMessage = document.getElementById('input-message');
-    if(inputName)    inputName.placeholder    = langIndex === 1 ? 'Your name 🌸'     : 'Nama kamu 🌸';
-    if(inputEmail)   inputEmail.placeholder   = langIndex === 1 ? 'Your email 📧'    : 'Email kamu 📧';
-    if(inputMessage) inputMessage.placeholder = langIndex === 1 ? 'Your message... ✨' : 'Pesan kamu... ✨';
+    if (inputName)    inputName.placeholder    = langIndex === 1 ? 'Your name 🌸'      : 'Nama kamu 🌸';
+    if (inputEmail)   inputEmail.placeholder   = langIndex === 1 ? 'Your email 📧'     : 'Email kamu 📧';
+    if (inputMessage) inputMessage.placeholder = langIndex === 1 ? 'Your message... ✨' : 'Pesan kamu... ✨';
 
-    // FIX: Update atribut lang di <html>
-    document.getElementById('htmlRoot').setAttribute('lang', langIndex === 1 ? 'en' : 'id');
+    const htmlRoot = document.getElementById('htmlRoot');
+    if (htmlRoot) htmlRoot.setAttribute('lang', langIndex === 1 ? 'en' : 'id');
 }
 
-// ============================================================
-// 8. TOMBOL BAHASA — FIX: simpan ke localStorage
-// ============================================================
+// 8. TOMBOL BAHASA
 const btnLang = document.getElementById('langToggle');
-if(btnLang) {
+if (btnLang) {
     const storedLang = localStorage.getItem('lang') || 'id';
     const storedLangIndex = storedLang === 'en' ? 1 : 0;
     btnLang.innerText = storedLang === 'en' ? 'ID' : 'EN';
-    if(storedLangIndex === 1) applyLanguage(1);
+    if (storedLangIndex === 1) applyLanguage(1);
 
     btnLang.addEventListener('click', () => {
         const isEN = btnLang.innerText === 'EN';
@@ -393,18 +380,15 @@ if(btnLang) {
     });
 }
 
-// FIX 1: Jalankan partikel hanya jika reduced-motion tidak aktif
+// Jalankan partikel (kecuali reduced-motion)
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReducedMotion) {
     createParticles();
 } else {
-    // Kalau reduced-motion aktif, AOS juga dimatikan agar tidak ada transform
-    document.querySelectorAll('[data-aos]').forEach(el => {
-        el.removeAttribute('data-aos');
-    });
+    document.querySelectorAll('[data-aos]').forEach(el => el.removeAttribute('data-aos'));
 }
 
-// FIX 7: Auto dark mode dari OS jika belum ada preferensi tersimpan
+// Auto dark mode dari OS jika belum ada preferensi tersimpan
 if (!localStorage.getItem('darkMode')) {
     const osDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (osDark) {
@@ -415,23 +399,19 @@ if (!localStorage.getItem('darkMode')) {
     }
 }
 
-// FIX: Copyright tahun otomatis update tiap tahun
+// Copyright tahun otomatis
 const yearEl = document.getElementById('currentYear');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// FIX 2: Scroll-to-top — muncul setelah scroll 300px
+// Scroll-to-top
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 if (scrollTopBtn) {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
     });
 }
 
-// FIX 3: Active state sidebar — highlight link sesuai section yang sedang dilihat
+// Active state sidebar
 const sectionIds = ['skills', 'projects', 'certificates', 'journey', 'contact'];
 const navMap = {
     'skills':       ['nav-skills'],
@@ -445,9 +425,7 @@ const observerOptions = { rootMargin: '-40% 0px -40% 0px', threshold: 0 };
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Hapus semua active
             document.querySelectorAll('.sidebar ul li a').forEach(a => a.classList.remove('active'));
-            // Tambah active ke link yang sesuai
             const ids = navMap[entry.target.id] || [];
             ids.forEach(id => {
                 const el = document.getElementById(id);
@@ -462,47 +440,34 @@ sectionIds.forEach(id => {
     if (el) sectionObserver.observe(el);
 });
 
-// FIX: Form kontak — feedback sukses/gagal setelah kirim
+// Form kontak
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('.btn-send');
         const originalText = btn.innerHTML;
-
         btn.innerHTML = '⏳ Mengirim...';
         btn.disabled = true;
         btn.style.opacity = '0.7';
-
         try {
             const response = await fetch(contactForm.action, {
                 method: 'POST',
                 body: new FormData(contactForm),
                 headers: { 'Accept': 'application/json' }
             });
-
             if (response.ok) {
                 btn.innerHTML = '✅ Pesan Terkirim!';
                 btn.style.background = '#4caf50';
                 btn.style.opacity = '1';
                 contactForm.reset();
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 4000);
-            } else {
-                throw new Error('Gagal');
-            }
+                setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; btn.disabled = false; }, 4000);
+            } else { throw new Error('Gagal'); }
         } catch {
             btn.innerHTML = '❌ Gagal, coba lagi';
             btn.style.background = '#e53935';
             btn.style.opacity = '1';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.disabled = false;
-            }, 4000);
+            setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; btn.disabled = false; }, 4000);
         }
     });
 }
@@ -510,11 +475,10 @@ if (contactForm) {
 // Sembunyikan semua section saat amplop belum dibuka
 document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
 
-// Fungsi Utama Filter
 function filterContent(category) {
     document.querySelector('.hero').classList.add('section-hidden');
     const backBtn = document.getElementById('backToLobby');
-    if(backBtn) backBtn.style.display = 'block';
+    if (backBtn) backBtn.style.display = 'block';
 
     document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('section-hidden');
@@ -539,16 +503,14 @@ function filterContent(category) {
     AOS.refresh();
 }
 
-// Fungsi kembali ke Lobby
 function showLobby() {
     document.querySelector('.hero').classList.remove('section-hidden');
     document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
     const backBtn = document.getElementById('backToLobby');
-    if(backBtn) backBtn.style.display = 'none';
+    if (backBtn) backBtn.style.display = 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Fungsi navigasi dari Sidebar
 function navigateFromSidebar(category, targetId) {
     filterContent(category);
     toggleMenu();
@@ -558,10 +520,7 @@ function navigateFromSidebar(category, targetId) {
     }, 300);
 }
 
-// ============================================================
-// FIX #2: Custom Cursor — throttle petal agar tidak lag
-//         Max 1 petal per 60ms, bukan setiap mousemove event
-// ============================================================
+// Custom Cursor
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 if (!isTouchDevice) {
@@ -580,7 +539,6 @@ if (!isTouchDevice) {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
 
-        // FIX: Throttle — max 1 petal per 60ms
         const now = Date.now();
         if (now - lastPetalTime < 60) return;
         lastPetalTime = now;
@@ -623,4 +581,4 @@ if (!isTouchDevice) {
     });
 
     document.body.style.cursor = 'none';
-                                      }
+              }
