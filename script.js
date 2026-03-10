@@ -236,6 +236,55 @@ if(btnLang) {
 // Jalankan partikel saat halaman pertama kali dibuka
 createParticles();
 
+// FIX: Copyright tahun otomatis update tiap tahun
+const yearEl = document.getElementById('currentYear');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// FIX: Form kontak — feedback sukses/gagal setelah kirim
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.btn-send');
+        const originalText = btn.innerHTML;
+
+        btn.innerHTML = '⏳ Mengirim...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                btn.innerHTML = '✅ Pesan Terkirim!';
+                btn.style.background = '#4caf50';
+                btn.style.opacity = '1';
+                contactForm.reset();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            } else {
+                throw new Error('Gagal');
+            }
+        } catch {
+            btn.innerHTML = '❌ Gagal, coba lagi';
+            btn.style.background = '#e53935';
+            btn.style.opacity = '1';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 4000);
+        }
+    });
+}
+
 // Sembunyikan semua section saat amplop belum dibuka
 document.querySelectorAll('.section').forEach(sec => sec.classList.add('section-hidden'));
 
