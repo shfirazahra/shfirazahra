@@ -6,11 +6,18 @@
     <!-- FIX #1: Apply dark mode SEBELUM render agar tidak flicker/kedip -->
     <script>if(localStorage.getItem('darkMode')==='on'){document.documentElement.style.backgroundColor='#2d1b1e';}</script>
     
+    <!-- FIX: Apply lang dari localStorage SEBELUM render -->
+    <script>
+      const _sl = localStorage.getItem('lang');
+      if(_sl === 'en') document.documentElement.setAttribute('lang','en');
+    </script>
     <title>Shafira Zahra | IT Professional & Creative Artist</title>
     <meta name="title" content="Shafira Zahra | IT Professional & Creative Artist">
     <meta name="description" content="Portofolio multidisiplin Shafira Zahra. Lulusan IT UDINUS yang ahli dalam Front-End Development, Administrasi Sistem, dan Seni Kreatif.">
     <meta name="keywords" content="Shafira Zahra, Web Developer, IT Portfolio, Art Portfolio, UDINUS, Front End Developer Semarang">
     <meta name="author" content="Shafira Zahra">
+    <!-- FIX: Canonical URL -->
+    <link rel="canonical" href="https://shfirazahra.github.io/shfirazahra/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shfirazahra.github.io/shfirazahra/">
@@ -76,17 +83,17 @@
 
     <div class="sidebar" id="sidebar">
        <ul>
-    <li><a href="#home" onclick="showLobby(); toggleMenu();">🏠 Home / Lobby</a></li>
+    <li><a href="#home" id="nav-home" onclick="showLobby(); toggleMenu();">🏠 Home / Lobby</a></li>
     
-    <li><a href="#skills" onclick="navigateFromSidebar('pro', 'skills')">🛠 Technical Skills</a></li>
-    <li><a href="#projects" onclick="navigateFromSidebar('pro', 'projects')">💻 IT Projects</a></li>
-    <li><a href="#certificates" onclick="navigateFromSidebar('pro', 'certificates')">📜 IT Certifications</a></li>
+    <li><a href="#skills" id="nav-skills" onclick="navigateFromSidebar('pro', 'skills')">🛠 Technical Skills</a></li>
+    <li><a href="#projects" id="nav-projects-pro" onclick="navigateFromSidebar('pro', 'projects')">💻 IT Projects</a></li>
+    <li><a href="#certificates" id="nav-certs" onclick="navigateFromSidebar('pro', 'certificates')">📜 IT Certifications</a></li>
     
-    <li><a href="#projects" onclick="navigateFromSidebar('creative', 'projects')">🎨 Art & Sewing</a></li>
+    <li><a href="#projects" id="nav-projects-creative" onclick="navigateFromSidebar('creative', 'projects')">🎨 Art & Sewing</a></li>
     
-    <li><a href="#journey" onclick="navigateFromSidebar('personal', 'journey')">🌸 My Story</a></li>
+    <li><a href="#journey" id="nav-journey" onclick="navigateFromSidebar('personal', 'journey')">🌸 My Story</a></li>
     
-    <li><a href="#contact" onclick="toggleMenu()">📧 Contact</a></li>
+    <li><a href="#contact" id="nav-contact" onclick="toggleMenu()">📧 Contact</a></li>
 </ul>
     </div>
 
@@ -567,13 +574,16 @@
         <td>1</td><td id="cert7">Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td><td>2019</td>
     </tr>
      <tr class="type-creative">
-        <td>3</td><td id="cert8">Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2018</td>
+        <td>3</td><td id="cert8">Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2019</td>
     </tr>
 </tbody>
             </table>
         </div>
     </section>
         
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">↑</button>
+
     <footer id="contact">
         <h2 data-aos="fade-up">Get In Touch</h2>
         <p id="contact-subtitle" data-aos="fade-up" style="opacity:0.7; margin: 10px 0 30px; font-size: 14px;">Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨</p>
