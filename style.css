@@ -192,14 +192,7 @@ body.dark-mode span {
         }
 
         /* --- CSS ORIGINAL --- */
-        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-        .particle { position: absolute; opacity: 0.4; animation: float 15s infinite linear; }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
+        #dandelion-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
@@ -282,7 +275,7 @@ body.dark-mode .skill-name {
         .journey-container { max-width: 600px; margin: 0 auto; border-left: 2px dashed var(--rose-gold); padding-left: 30px; position: relative; }
         .journey-item { position: relative; margin-bottom: 30px; text-align: left; cursor: pointer; padding: 5px 10px; border-radius: 12px; transition: 0.3s; }
         .journey-item:hover { background: rgba(229, 164, 180, 0.05); }
-        .journey-item::before { content: '🌸'; position: absolute; left: -30px; transform: translateX(-50%); top: 5px; font-size: 18px; z-index: 2;}
+        .journey-item::before { content: '✿'; position: absolute; left: -30px; transform: translateX(-50%); top: 5px; font-size: 18px; z-index: 2;}
         .journey-item .year { font-weight: 600; color: var(--rose-gold); margin-bottom: 2px; display: block; }
         .journey-item h3 { font-size: 17px; margin-bottom: 2px; }
         .journey-item .short-desc { margin: 0; font-size: 14px; }
@@ -345,16 +338,9 @@ body.dark-mode .card, body.dark-mode .journey-item, body.dark-mode .cert-table {
 }
 body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
 
-#particles { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    pointer-events: none; z-index: 9999; 
-}
-.particle { position: absolute; animation: float 10s infinite linear; }
-@keyframes float { 
-    0% { transform: translateY(100vh); opacity: 0; } 
-    50% { opacity: 0.8; } 
-    100% { transform: translateY(-10vh); opacity: 0; } 
-}
+/* Dandelion canvas particles handled by JS canvas — no div particles needed */
+#dandelion-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
 .tech-stack {
     margin-top: 15px;
     font-size: 12px;
@@ -1048,7 +1034,7 @@ body.dark-mode #scrollTopBtn {
 /* FIX 4: Print CSS — sembunyikan dekorasi saat print/save PDF */
 @media print {
     .envelope-overlay,
-    .particles,
+    #dandelion-canvas,
     nav,
     .sidebar,
     #scrollTopBtn,
@@ -1126,7 +1112,7 @@ body.dark-mode #scrollTopBtn {
         transition: none !important;
     }
 
-    .particles {
+    #dandelion-canvas {
         display: none !important;
     }
 
@@ -1144,88 +1130,4 @@ body.dark-mode #scrollTopBtn {
         --pink-soft: #4a2a30;
         --card-bg: #3d2329;
     }
-}
-
-/* ============================================================
-   SVG ICON STYLES
-   ============================================================ */
-
-/* Ukuran dan alignment semua nav icon */
-.nav-icon {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-    flex-shrink: 0;
-}
-
-/* Icon di tombol nav (dark mode, back to lobby) */
-.nav-btn .nav-icon {
-    margin-right: 0;
-    width: 17px;
-    height: 17px;
-}
-
-/* Sidebar links dengan SVG */
-.sidebar ul li a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.sidebar ul li a .nav-icon {
-    margin-right: 0;
-    width: 16px;
-    height: 16px;
-    opacity: 0.85;
-}
-
-/* Gateway card icons */
-.gateway-svg {
-    width: 36px;
-    height: 36px;
-    display: block;
-    margin: 0 auto 8px;
-    stroke: var(--rose-gold);
-}
-
-/* CV download button icon */
-.btn-icon {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 6px;
-}
-
-/* Project links (globe + github) */
-.proj-icon {
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    vertical-align: middle;
-    transition: stroke 0.2s, transform 0.2s;
-}
-
-a:hover .proj-icon {
-    transform: scale(1.15);
-    stroke: var(--rose-gold);
-}
-
-/* Scroll to top SVG */
-#scrollTopBtn svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-/* Dark mode — icon warna menyesuaikan */
-body.dark-mode .nav-icon,
-body.dark-mode .proj-icon {
-    stroke: currentColor;
-}
-
-body.dark-mode .gateway-svg {
-    stroke: #f48fb1;
 }
