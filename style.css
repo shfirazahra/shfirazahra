@@ -1145,3 +1145,87 @@ body.dark-mode #scrollTopBtn {
         --card-bg: #3d2329;
     }
 }
+
+/* ============================================================
+   SVG ICON STYLES
+   ============================================================ */
+
+/* Ukuran dan alignment semua nav icon */
+.nav-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* Icon di tombol nav (dark mode, back to lobby) */
+.nav-btn .nav-icon {
+    margin-right: 0;
+    width: 17px;
+    height: 17px;
+}
+
+/* Sidebar links dengan SVG */
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar ul li a .nav-icon {
+    margin-right: 0;
+    width: 16px;
+    height: 16px;
+    opacity: 0.85;
+}
+
+/* Gateway card icons */
+.gateway-svg {
+    width: 36px;
+    height: 36px;
+    display: block;
+    margin: 0 auto 8px;
+    stroke: var(--rose-gold);
+}
+
+/* CV download button icon */
+.btn-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* Project links (globe + github) */
+.proj-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: stroke 0.2s, transform 0.2s;
+}
+
+a:hover .proj-icon {
+    transform: scale(1.15);
+    stroke: var(--rose-gold);
+}
+
+/* Scroll to top SVG */
+#scrollTopBtn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Dark mode — icon warna menyesuaikan */
+body.dark-mode .nav-icon,
+body.dark-mode .proj-icon {
+    stroke: currentColor;
+}
+
+body.dark-mode .gateway-svg {
+    stroke: #f48fb1;
+}
