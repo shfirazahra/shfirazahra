@@ -838,7 +838,6 @@ button.hamburger:focus-visible {
 .cert-table td:last-child {
     text-align: center;
     min-width: 60px;
-  
 }
 
 /* ============================================================
@@ -969,4 +968,119 @@ button.logo span {
 
 body.dark-mode button.logo {
     color: #fce4ec;
+}
+
+/* ============================================================
+   PERBAIKAN PUTARAN 4
+   ============================================================ */
+
+/* FIX 2: Scroll-to-top button */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--rose-gold);
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scrollTopBtn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-3px);
+    background: var(--dark-rose);
+}
+
+#scrollTopBtn:focus-visible {
+    outline: 3px solid var(--rose-gold);
+    outline-offset: 3px;
+}
+
+body.dark-mode #scrollTopBtn {
+    background: #c2677a;
+}
+
+/* FIX 3: Active state sidebar link */
+.sidebar ul li a.active {
+    color: var(--rose-gold);
+    font-weight: 600;
+    background: rgba(229, 164, 180, 0.15);
+    border-radius: 8px;
+    padding-left: 10px;
+}
+
+/* FIX 6: Touch target hamburger lebih besar */
+.hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FIX 7: Hover transition footer links */
+.footer-links a {
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--rose-gold);
+    opacity: 1 !important;
+}
+
+/* FIX 4: Print CSS — sembunyikan dekorasi saat print/save PDF */
+@media print {
+    .envelope-overlay,
+    .particles,
+    nav,
+    .sidebar,
+    #scrollTopBtn,
+    .btn-download,
+    .gateway-cards,
+    .skill-legend-top,
+    .contact-form-wrapper,
+    .footer-links,
+    [data-aos] {
+        display: none !important;
+    }
+
+    body, .section, footer {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    .section {
+        display: block !important;
+        opacity: 1 !important;
+        page-break-inside: avoid;
+    }
+
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 10px;
+        color: #666;
+    }
+
+    a[href^="mailto"]::after,
+    a[href^="#"]::after {
+        content: none;
+    }
 }
