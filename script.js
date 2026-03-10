@@ -68,28 +68,28 @@ const DANDELION_COLORS_LIGHT = [
     'rgba(255,245,160,',
 ];
 const DANDELION_COLORS_DARK = [
-    'rgba(255,235,100,',  // bright gold - lebih terang
-    'rgba(255,220,80,',   // gold
-    'rgba(255,200,50,',   // deep gold
-    'rgba(255,250,200,',  // almost white yellow
-    'rgba(240,200,80,',   // warm gold
+    'rgba(255,240,120,',  // kuning terang
+    'rgba(255,225,80,',   // gold cerah
+    'rgba(255,210,50,',   // gold
+    'rgba(255,255,200,',  // hampir putih kuning
+    'rgba(255,200,100,',  // amber cerah
 ];
 
 class DandelionParticle {
     constructor(initial) { this.reset(initial); }
     reset(initial = false) {
         const w = dandelionCanvas.width, h = dandelionCanvas.height;
+        const isDark = document.body.classList.contains('dark-mode');
         this.x = Math.random() * w;
         this.y = initial ? Math.random() * h : h + 20;
-        this.radius    = Math.random() * 2.2 + 0.7;
+        this.radius    = isDark ? Math.random() * 3.5 + 1.5 : Math.random() * 2.2 + 0.7;
         this.speedY    = -(Math.random() * 0.55 + 0.25);
         this.speedX    = (Math.random() - 0.5) * 0.35;
         this.swayAmp   = Math.random() * 1.1 + 0.3;
         this.swaySpeed = Math.random() * 0.018 + 0.007;
         this.swayOff   = Math.random() * Math.PI * 2;
-        const isDark = document.body.classList.contains('dark-mode');
-        // Di dark mode alpha lebih tinggi agar terlihat jelas
-        this.alpha     = isDark ? Math.random() * 0.5 + 0.5 : Math.random() * 0.5 + 0.3;
+        // Dark mode: alpha jauh lebih tinggi agar jelas terlihat
+        this.alpha     = isDark ? Math.random() * 0.4 + 0.6 : Math.random() * 0.5 + 0.3;
         this.targetAlpha = this.alpha;
         this.fadeSpeed = Math.random() * 0.004 + 0.002;
         this.rotation  = Math.random() * Math.PI * 2;
@@ -156,17 +156,11 @@ function dandelionLoop() {
 function createParticles() {
     initDandelionCanvas();
     const isDark = document.body.classList.contains('dark-mode');
-    const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
-    // Refresh warna semua partikel saat dark mode toggle
-    dandelionParticles.forEach(p => {
-        p.color = palette[Math.floor(Math.random() * palette.length)];
-        // Di dark mode naikkan alpha sedikit agar partikel terlihat
-        p.targetAlpha = isDark ? Math.random() * 0.6 + 0.4 : Math.random() * 0.5 + 0.3;
-    });
-    if (dandelionParticles.length === 0) {
-        dandelionParticles = Array.from({length: 55}, (_, i) => new DandelionParticle(i < 30));
-        dandelionLoop();
-    }
+
+    // Selalu respawn ulang semua partikel agar warna & alpha langsung update
+    if (dandelionAnimId) cancelAnimationFrame(dandelionAnimId);
+    dandelionParticles = Array.from({length: 60}, (_, i) => new DandelionParticle(i < 40));
+    dandelionLoop();
 }
 
 // 5. Logika Dark Mode — simpan ke localStorage + apply saat load
@@ -614,4 +608,4 @@ if (!isTouchDevice) {
     });
 
     document.body.style.cursor = 'none';
-}
+        }
