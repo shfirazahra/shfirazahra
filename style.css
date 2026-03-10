@@ -838,7 +838,7 @@ button.hamburger:focus-visible {
 .cert-table td:last-child {
     text-align: center;
     min-width: 60px;
-    opacity: 0.75;
+  
 }
 
 /* ============================================================
