@@ -940,24 +940,6 @@ body.dark-mode .contact-form textarea:focus {
    ============================================================ */
 
 
-/* Envelope wrapper sebagai <button> — hanya reset style browser, layout dari .envelope-wrapper di atas */
-button.envelope-wrapper {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-button.envelope-wrapper:focus-visible {
-    outline: 3px solid var(--rose-gold);
-    outline-offset: 6px;
-    border-radius: 8px;
-}
-
 /* Logo navbar sebagai <button> yang bisa diklik kembali ke lobby */
 button.logo {
     background: none;
