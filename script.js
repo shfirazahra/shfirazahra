@@ -163,6 +163,15 @@ const translations = {
     // Form Kontak
     'contact-subtitle': ['Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨', 'Interested in collaborating or have a question? Send a message! ✨'],
     'btn-send': ['Kirim Pesan 💌', 'Send Message 💌'],
+
+    // Sidebar navigation
+    'nav-home':             ['🏠 Home / Lobby',       '🏠 Home / Lobby'],
+    'nav-skills':           ['🛠 Technical Skills',    '🛠 Technical Skills'],
+    'nav-projects-pro':     ['💻 IT Projects',         '💻 IT Projects'],
+    'nav-certs':            ['📜 IT Certifications',   '📜 IT Certifications'],
+    'nav-projects-creative':['🎨 Art & Sewing',        '🎨 Art & Sewing'],
+    'nav-journey':          ['🌸 My Story',            '🌸 My Story'],
+    'nav-contact':          ['📧 Contact',             '📧 Contact'],
 };
 
 const htmlTranslations = {
@@ -266,6 +275,49 @@ createParticles();
 // FIX: Copyright tahun otomatis update tiap tahun
 const yearEl = document.getElementById('currentYear');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// FIX 2: Scroll-to-top — muncul setelah scroll 300px
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+}
+
+// FIX 3: Active state sidebar — highlight link sesuai section yang sedang dilihat
+const sectionIds = ['skills', 'projects', 'certificates', 'journey', 'contact'];
+const navMap = {
+    'skills':       ['nav-skills'],
+    'projects':     ['nav-projects-pro', 'nav-projects-creative'],
+    'certificates': ['nav-certs'],
+    'journey':      ['nav-journey'],
+    'contact':      ['nav-contact'],
+};
+
+const observerOptions = { rootMargin: '-40% 0px -40% 0px', threshold: 0 };
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Hapus semua active
+            document.querySelectorAll('.sidebar ul li a').forEach(a => a.classList.remove('active'));
+            // Tambah active ke link yang sesuai
+            const ids = navMap[entry.target.id] || [];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('active');
+            });
+        }
+    });
+}, observerOptions);
+
+sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+});
 
 // FIX: Form kontak — feedback sukses/gagal setelah kirim
 const contactForm = document.querySelector('.contact-form');
