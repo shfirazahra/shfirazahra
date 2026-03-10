@@ -45,9 +45,10 @@ function initDandelionCanvas() {
     Object.assign(dandelionCanvas.style, {
         position: 'fixed', top: '0', left: '0',
         width: '100%', height: '100%',
-        pointerEvents: 'none', zIndex: '0'
+        pointerEvents: 'none',
+        zIndex: '-1'   // Selalu di belakang semua elemen termasuk amplop
     });
-    document.body.prepend(dandelionCanvas);
+    document.body.appendChild(dandelionCanvas); // append (bukan prepend) agar tidak ganggu DOM order
     dandelionCtx = dandelionCanvas.getContext('2d');
     resizeDandelion();
     window.addEventListener('resize', resizeDandelion);
@@ -60,18 +61,18 @@ function resizeDandelion() {
 }
 
 const DANDELION_COLORS_LIGHT = [
-    'rgba(255,215,60,',  // golden yellow
-    'rgba(255,195,40,',  // deep gold
-    'rgba(255,235,120,', // butter
-    'rgba(240,200,70,',  // amber
-    'rgba(255,245,160,', // cream
+    'rgba(255,215,60,',
+    'rgba(255,195,40,',
+    'rgba(255,235,120,',
+    'rgba(240,200,70,',
+    'rgba(255,245,160,',
 ];
 const DANDELION_COLORS_DARK = [
-    'rgba(255,230,100,', // bright gold
-    'rgba(255,210,70,',  // gold
-    'rgba(200,170,40,',  // dark amber
-    'rgba(255,245,180,', // soft cream
-    'rgba(230,190,60,',  // warm yellow
+    'rgba(255,230,100,',
+    'rgba(255,210,70,',
+    'rgba(200,170,40,',
+    'rgba(255,245,180,',
+    'rgba(230,190,60,',
 ];
 
 class DandelionParticle {
@@ -80,9 +81,9 @@ class DandelionParticle {
         const w = dandelionCanvas.width, h = dandelionCanvas.height;
         this.x = Math.random() * w;
         this.y = initial ? Math.random() * h : h + 20;
-        this.radius = Math.random() * 2.2 + 0.7;
-        this.speedY = -(Math.random() * 0.55 + 0.25);
-        this.speedX = (Math.random() - 0.5) * 0.35;
+        this.radius    = Math.random() * 2.2 + 0.7;
+        this.speedY    = -(Math.random() * 0.55 + 0.25);
+        this.speedX    = (Math.random() - 0.5) * 0.35;
         this.swayAmp   = Math.random() * 1.1 + 0.3;
         this.swaySpeed = Math.random() * 0.018 + 0.007;
         this.swayOff   = Math.random() * Math.PI * 2;
@@ -94,7 +95,6 @@ class DandelionParticle {
         this.type      = Math.random() > 0.4 ? 'circle' : 'wisp';
         this.wispLen   = Math.random() * 6 + 3;
         this.age = 0;
-
         const isDark = document.body.classList.contains('dark-mode');
         const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
         this.color = palette[Math.floor(Math.random() * palette.length)];
