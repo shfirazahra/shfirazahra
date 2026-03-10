@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Halaman Tidak Ditemukan | Shafira Zahra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-soft: #fffafa;
+            --pink-bg: #fdf2f5;
+            --rose-gold: #e5a4b4;
+            --text-color: #5d4037;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--pink-soft);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(80px, 20vw, 160px);
+            line-height: 1;
+            color: var(--rose-gold);
+            opacity: 0.3;
+            letter-spacing: -4px;
+            margin-bottom: -20px;
+        }
+
+        .flower {
+            font-size: clamp(50px, 12vw, 90px);
+            animation: wobble 3s ease-in-out infinite;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50%       { transform: rotate(5deg) scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 5vw, 32px);
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        h1 span { color: var(--rose-gold); }
+
+        p {
+            font-size: 14px;
+            opacity: 0.65;
+            max-width: 380px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background: var(--rose-gold);
+            color: white;
+            padding: 13px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(229, 164, 180, 0.35);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(229, 164, 180, 0.45);
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.35;
+            animation: float 14s infinite linear;
+            font-size: 16px;
+        }
+
+        @keyframes float {
+            0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.35; }
+            90%  { opacity: 0.35; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="content">
+        <div class="error-number">404</div>
+        <span class="flower">🌸</span>
+        <h1>Halaman <span>Tidak Ditemukan</span></h1>
+        <p>Sepertinya halaman yang kamu cari sudah pergi entah kemana... mungkin sedang menikmati taman bunga ✨</p>
+        <a href="index.html" class="btn-home">🏠 Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        const container = document.getElementById('particles');
+        const icons = ['🌸', '✨', '🎀', '💝', '🌺'];
+        for (let i = 0; i < 18; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.innerText = icons[Math.floor(Math.random() * icons.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = (Math.random() * 10) + 's';
+            p.style.fontSize = (Math.random() * 14 + 10) + 'px';
+            container.appendChild(p);
+        }
+    </script>
+</body>
+</html>
