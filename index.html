@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FIX #1: Apply dark mode SEBELUM render agar tidak flicker/kedip -->
+    <script>if(localStorage.getItem('darkMode')==='on'){document.documentElement.style.backgroundColor='#2d1b1e';}</script>
     
     <title>Shafira Zahra | IT Professional & Creative Artist</title>
     <meta name="title" content="Shafira Zahra | IT Professional & Creative Artist">
@@ -53,16 +55,17 @@
     <div class="particles" id="particles"></div>
 
     <nav>
-        <div class="hamburger" onclick="toggleMenu()">
+        <!-- FIX #3: Pakai <button> agar accessible via keyboard & screen reader -->
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu navigasi" aria-expanded="false">
             <div></div><div></div><div></div>
-        </div>
+        </button>
      <div class="logo" data-aos="fade-right">Shafira<span>Zahra</span></div>
         <div style="width: 40px;"></div>
         
         <div class="nav-controls">
         <button id="backToLobby" class="nav-btn" style="display: none; margin-right: 10px;" onclick="showLobby()">🏠 Lobby</button>
-        <button id="darkModeToggle" class="nav-btn">🌙</button>
-        <button id="langToggle" class="nav-btn">EN</button>
+        <button id="darkModeToggle" class="nav-btn" aria-label="Toggle dark mode">🌙</button>
+        <button id="langToggle" class="nav-btn" aria-label="Ganti bahasa">EN</button>
     </div>
     </nav>
 
@@ -83,7 +86,7 @@
     </div>
 
    <header class="hero" id="home">
-    <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in">
+    <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in" loading="eager">
     <h1 data-aos="fade-up">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
     <p data-aos="fade-up" data-aos-delay="200" style="max-width: 650px; margin-top: 15px; line-height: 1.7;">
         <b id="hero-desc">Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.</b>
@@ -93,21 +96,22 @@
             <span>📄</span> Download CV
         </a>
         <div class="gateway-container" data-aos="fade-up" data-aos-delay="400">
-    <div class="gateway-card" onclick="filterContent('pro')">
+    <!-- FIX #3: Pakai <button> agar accessible via keyboard -->
+    <button class="gateway-card" onclick="filterContent('pro')" aria-label="Lihat Professional Path">
         <div class="icon">💼</div>
         <h3 id="ProTitle">Professional Path</h3>
         <p id="ProDesc">IT & Admin Portfolio</p>
-    </div>
-    <div class="gateway-card" onclick="filterContent('creative')">
+    </button>
+    <button class="gateway-card" onclick="filterContent('creative')" aria-label="Lihat Creative Hub">
         <div class="icon">🎨</div>
         <h3 id="CreTitle">Creative Hub</h3>
         <p id="CreDesc">Art & Sewing Works</p>
-    </div>
-    <div class="gateway-card" onclick="filterContent('personal')">
+    </button>
+    <button class="gateway-card" onclick="filterContent('personal')" aria-label="Lihat The Story">
         <div class="icon">📖</div>
         <h3 id="PerTitle">The Story</h3>
         <p id="PerDesc">My Life & Journey</p>
-    </div>
+    </button>
 </div>
     </div>
 </header>
@@ -461,13 +465,13 @@
     <div class="card-header">
         <h3 id="SejatiTitle">Toko Sejati Cosmetics</h3>
         <div class="card-actions">
-            <a href="https://tokosejatikosmetik.42web.io/" target="_blank" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/TokoSejati" target="_blank" title="View Code">📂</a>
+            <a href="https://tokosejatikosmetik.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
+            <a href="https://github.com/shfirazahra/TokoSejati" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
 
     <!-- 2. TENGAH: gambar screenshot -->
-    <img src="tokosejati.JPG" alt="Preview Toko Sejati" class="card-preview">
+    <img src="tokosejati.JPG" alt="Preview Toko Sejati" class="card-preview" loading="lazy">
 
     <!-- 3. BAWAH: deskripsi + tech stack -->
     <p id="SejatiDesc">Website untuk E-Commerce Toko Sejati Cosmetics</p>
@@ -478,11 +482,11 @@
     <div class="card-header">
         <h3 id="BRATitlePro">BRA-WAREHOUSE SERVICE</h3>
         <div class="card-actions">
-            <a href="https://bra-servicewarehouse.web.app/index.html" target="_blank" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" title="View Code">📂</a>
+            <a href="https://bra-servicewarehouse.web.app/index.html" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
+            <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="bra.JPG" alt="Preview BRA Warehouse" class="card-preview">
+    <img src="bra.JPG" alt="Preview BRA Warehouse" class="card-preview" loading="lazy">
     <p id="BRADescPro">Sistem Pencatatan detail kendaraan mulai dari Nomor WO, Plat Nomor, hingga Tipe Kendaraan dan Nama Customer secara terstruktur</p>
     <p class="tech-stack">Tech Stack: Firebase, Javascript, CSS, HTML</p>
 </div>
@@ -491,11 +495,11 @@
     <div class="card-header">
         <h3 id="INKATitle">SI-INKA</h3>
         <div class="card-actions">
-            <a href="https://appinventorykanwilbpn.42web.io/" target="_blank" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" title="View Code">📂</a>
+            <a href="https://appinventorykanwilbpn.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
+            <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="kanwil.JPG" alt="Preview SI-INKA" class="card-preview">
+    <img src="kanwil.JPG" alt="Preview SI-INKA" class="card-preview" loading="lazy">
     <p id="INKADesc">Sistem Inventaris Barang Kanwil ATR/BPN berbasis Website & Mobile</p>
     <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL</p>
 </div>
@@ -504,11 +508,11 @@
     <div class="card-header">
         <h3 id="GISTitle">PETA PERSEBARAN WILAYAH JAMBI DALAM BENTUK WEB GIS</h3>
         <div class="card-actions">
-            <a href="https://petapersebarankotajambi.42web.io/" target="_blank" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" title="View Code">📂</a>
+            <a href="https://petapersebarankotajambi.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
+            <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="jambi.JPG" alt="Preview GIS Jambi" class="card-preview">
+    <img src="jambi.JPG" alt="Preview GIS Jambi" class="card-preview" loading="lazy">
     <p id="GISDesc">Sistem Informasi Geografis Persebaran Rumah Sakit Pada Wilayah Kota Jambi Tahun 2016</p>
     <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL, QGIS</p>
 </div>
@@ -517,11 +521,11 @@
     <div class="card-header">
         <h3 id="LyferaTitle">Lyfera's Art</h3>
         <div class="card-actions">
-            <a href="https://lyferaa.github.io/Lyfera/" target="_blank" title="Live Demo">🌐</a>
-            <a href="https://github.com/Lyferaa/Lyfera" target="_blank" title="View Code">📂</a>
+            <a href="https://lyferaa.github.io/Lyfera/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
+            <a href="https://github.com/Lyferaa/Lyfera" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="lyfera.jpeg" alt="Preview Lyfera's Art" class="card-preview">
+    <img src="lyfera.jpeg" alt="Preview Lyfera's Art" class="card-preview" loading="lazy">
     <p id="LyferaDesc">Kumpulan berbagai karya seni ku dalam bentuk website yang interaktif</p>
     <p class="tech-stack">Tech Stack: Javascript, CSS, HTML</p>
 </div>
@@ -533,33 +537,32 @@
         <div style="overflow-x: auto; max-width: 800px; margin: 0 auto;" data-aos="fade-up">
             <table class="cert-table">
                 <thead>
-                    <tr><th>No</th><th id="cert-header-name">Nama Sertifikat</th><th id="cert-header-issuer">Penyelenggara</th></tr>
+                    <tr><th>No</th><th id="cert-header-name">Nama Sertifikat</th><th id="cert-header-issuer">Penyelenggara</th><th id="cert-header-year">Tahun</th></tr>
                 </thead>
              <tbody>
     <tr class="type-pro">
-        <td>1</td><td>Sertifikat Kompetensi Keahlian Pemrograman Web</td><td>APTI</td>
+        <td>1</td><td>Sertifikat Kompetensi Keahlian Pemrograman Web</td><td>APTI</td><td>2024</td>
     </tr>
     <tr class="type-pro">
-        <td>2</td><td>Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>BNSP</td>
+        <td>2</td><td>Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>BNSP</td><td>2024</td>
     </tr>
     <tr class="type-pro">
-        <td>3</td><td>TOEFL PREPARATION</td><td>UDINUS</td>
+        <td>3</td><td>TOEFL PREPARATION</td><td>UDINUS</td><td>2023</td>
     </tr>
     <tr class="type-pro">
-        <td>4</td><td>Sertifikat Seminar Nasional Teknik Informatika</td><td>UDINUS</td>
-    </tr>
-
-    <tr class="type-creative">
-        <td>1</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>Kemenaker RI</td>
+        <td>4</td><td>Sertifikat Seminar Nasional Teknik Informatika</td><td>UDINUS</td><td>2023</td>
     </tr>
     <tr class="type-creative">
-        <td>2</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>BNSP</td>
+        <td>1</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>Kemenaker RI</td><td>2020</td>
+    </tr>
+    <tr class="type-creative">
+        <td>2</td><td>Sertifikat Kompetensi Menjahit Pakaian</td><td>BNSP</td><td>2020</td>
     </tr>
     <tr class="type-personal">
-        <td>1</td><td>Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td>
+        <td>1</td><td>Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td><td>2023</td>
     </tr>
      <tr class="type-creative">
-        <td>3</td><td>Sertifikat Lomba Mural Art</td><td>UDINUS</td>
+        <td>3</td><td>Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2022</td>
     </tr>
 </tbody>
             </table>
@@ -568,14 +571,28 @@
         
     <footer id="contact">
         <h2 data-aos="fade-up">Get In Touch</h2>
+        <p data-aos="fade-up" style="opacity:0.7; margin: 10px 0 30px; font-size: 14px;">Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨</p>
+
+        <!-- FIX: Ganti YOUR_FORM_ID dengan ID dari formspree.io (daftar gratis) -->
+        <div class="contact-form-wrapper" data-aos="fade-up">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Nama kamu 🌸" required aria-label="Nama">
+                    <input type="email" name="email" placeholder="Email kamu 📧" required aria-label="Email">
+                </div>
+                <textarea name="message" placeholder="Pesan kamu... ✨" rows="4" required aria-label="Pesan"></textarea>
+                <button type="submit" class="btn-send">Kirim Pesan 💌</button>
+            </form>
+        </div>
+
+        <!-- Social Links + Email langsung -->
         <div class="footer-links">
-            <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank">LinkedIn</a>
-            <a href="https://instagram.com/shfiraazhraa._" target="_blank">Instagram</a>
-           <a href="https://wa.me/628973179630" target="_blank">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://github.com/shfirazahra" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+            <a href="https://instagram.com/shfiraazhraa._" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+            <a href="https://wa.me/628973179630" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+            <a href="mailto:shfirazahra@gmail.com" aria-label="Email">✉️ Email</a>
         </div>
         <p style="font-size: 11px; opacity: 0.5; margin-top: 30px;">&copy; 2026 Shafira Zahra ✨ Built with Passion</p>
     </footer>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare
