@@ -48,8 +48,32 @@
 
   gtag('config', 'G-RENN22NLL7');
 </script>
+    <!-- FIX 5: JSON-LD Structured Data — Google bisa tampilkan info kartu di hasil pencarian -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shafira Zahra",
+        "url": "https://shfirazahra.github.io/shfirazahra/",
+        "image": "https://shfirazahra.github.io/shfirazahra/foto-profil.jpeg",
+        "jobTitle": "IT Professional & Creative Artist",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Universitas Dian Nuswantoro"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/shfiraazhraa/",
+            "https://github.com/shfirazahra",
+            "https://instagram.com/shfiraazhraa._"
+        ],
+        "knowsAbout": ["Web Development", "Front-End Development", "Data Entry", "GIS", "PHP", "JavaScript", "CodeIgniter"]
+    }
+    </script>
 </head>
 <body class="no-scroll">
+
+    <!-- FIX 2: Skip-to-content untuk pengguna keyboard -->
+    <a href="#home" class="skip-to-content">Skip to content</a>
 
     <div class="envelope-overlay" id="envelopeOverlay">
         <div class="envelope-wrapper" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Buka portfolio Shafira Zahra" onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()">
@@ -57,7 +81,7 @@
             <div class="envelope">
                 <div class="wax-seal">❤</div>
                 <div class="letter">
-                    <img src="foto-profil.jpeg" alt="Shafira">
+                    <img src="foto-profil.jpeg" alt="Shafira" onerror="this.style.opacity='0.3'">
                     <p>Welcome to my Portfolio ✨</p>
                 </div>
             </div>
@@ -98,7 +122,7 @@
     </div>
 
    <header class="hero" id="home">
-    <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in" loading="eager">
+    <img src="foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in" loading="eager" onerror="this.style.opacity='0.3'">
     <h1 data-aos="fade-up">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
     <p data-aos="fade-up" data-aos-delay="200" style="max-width: 650px; margin-top: 15px; line-height: 1.7;">
         <b id="hero-desc">Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.</b>
@@ -363,7 +387,7 @@
                 <h3 id="BRATitle">PT Bumen Redja Abadi</h3>
                 <p class="short-desc">Warranty Service Claim Administrator</p>
                 <div class="journey-detail">
-                    <img src="fotobra.jpg" loading="lazy" alt="Dokumentasi PT BRA">
+                    <img src="fotobra.jpg" loading="lazy" alt="Dokumentasi PT BRA" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="BRADesc1">• Menginput data klaim (informasi kendaraan, jenis kendaraan, part yang diganti ke dalam sistem.</p>
                     <p class="full-desc" id="BRADesc2">• Mengelola dan mengarsipkan semua dokumen klaim garansi (faktur, job order, formulir klaim, foto kerusakan, dll) baik secara fisik maupun digital.</p>
                     <p class="full-desc" id="BRADesc3">• Memastikan kelengkapan dan keakuratan data klaim sebagai bukti.</p>
@@ -376,7 +400,7 @@
                 <h3 id="BPNTitle">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
                 <p class="short-desc" id="BPNClear">Karyawan Koperasi</p>
                 <div class="journey-detail">
-                    <img src="Koperasi.jpg" loading="lazy" alt="Dokumentasi ATR BPN">
+                    <img src="Koperasi.jpg" loading="lazy" alt="Dokumentasi ATR BPN" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="BPNDesc1">• Mengelola dan memelihara akurasi data inventaris stok kebutuhan kantor, mengurangi potensi stockout hingga 15%.</p>
                     <p class="full-desc" id="BPNDesc2">• Menerapkan alur kerja (workflow) terstruktur untuk prosedur permintaan dan distribusi barang, menjamin efisiensi operasional.</p>
                     <p class="full-desc" id="BPNDesc3">• Bertanggung jawab atas integritas dan kepatuhan data, serta mengkoordinasikan respons terhadap permintaan data mendesak antar unit kerja.</p>
@@ -388,7 +412,7 @@
                 <h3 id="SIMTitle">PT Swakarya Insan Mandiri</h3>
                 <p class="short-desc">Data Entry</p>
                 <div class="journey-detail">
-                    <img src="SIM.png" loading="lazy" alt="Dokumentasi SIM">
+                    <img src="SIM.png" loading="lazy" alt="Dokumentasi SIM" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="SIMDesc1">• Secara konsisten menginput dan memproses 840 data Kartu Keluarga (KK) untuk mitra FIF.</p>
                     <p class="full-desc" id="SIMDesc2">• Mempertahankan tingkat akurasi data 99% melalui verifikasi silang data, secara efektif mengurangi error rate dalam basis data operasional.</p>
                     <p class="full-desc" id="SIMDesc3">• Mengoperasikan sistem input data proprietary dan memanfaatkan Microsoft Excel untuk manajemen dan pelaporan data.</p>
@@ -400,7 +424,7 @@
                 <h3 id="KanwilTitle">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
                 <p class="short-desc">Data Engineer | Data Center</p>
                 <div class="journey-detail">
-                    <img src="BPN.png" loading="lazy" alt="Dokumentasi Data Engineer">
+                    <img src="BPN.png" loading="lazy" alt="Dokumentasi Data Engineer" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="KanwilDesc1">• Secara rutin menerapkan pembaruan sistem operasi (patching), firmware, dan upgrade perangkat lunak untuk menjaga keamanan dan kinerja.</p>
                     <p class="full-desc" id="KanwilDesc2">• Melakukan perencanaan kapasitas (capacity planning) untuk memastikan sumber daya server dan storage cukup.</p>
                     <p class="full-desc" id="KanwilDesc3">• Melakukan audit berkala terhadap perangkat keras dan perangkat lunak untuk memastikan kepatuhan dan mendeteksi kerentanan.</p>
@@ -413,7 +437,7 @@
                 <h3 id="IdolaTitle">Milkshake Idola & Seblak Seuhah</h3>
                 <p class="short-desc">F&B Stand Operator</p>
                 <div class="journey-detail">
-                    <img src="journey5.jpg" loading="lazy" alt="Dokumentasi F&B">
+                    <img src="journey5.jpg" loading="lazy" alt="Dokumentasi F&B" onerror="this.style.opacity='0.3'">
                     <p class="full-desc"  id="IdolaDesc1">• Mengelola dan merekapitulasi seluruh transaksi penjualan harian dan memastikan akurasi dan perhitungan dan keseimbangan kas akhir hari.</p>
                     <p class="full-desc"  id="IdolaDesc2">• Mencatat data penjualan dan permintaan pelanggan untuk dianalisis sebagai masukan peningkatan stok dan menu.</p>
                     <p class="full-desc"  id="IdolaDesc3">• Berinteraksi langsung dengan pelanggan untuk memahami kebutuhan mengelola keluhan, dan memastikan kepuasan layanan.</p>
@@ -425,7 +449,7 @@
                 <h3 id="UDINUSTitle">Universitas Dian Nuswantoro</h3>
                 <p class="short-desc">D3 Teknik Informatika | IPK 3,51</p>
                 <div class="journey-detail">
-                    <img src="wisuda.png" loading="lazy" alt="Dokumentasi UDINUS">
+                    <img src="wisuda.png" loading="lazy" alt="Dokumentasi UDINUS" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="UDINUSDesc1">• Menjadi Panitia Workshop HMDTI Tahun 2023.</p>
                     <p class="full-desc" id="UDINUSDesc2">• Mengikuti UKM Catur.</p>
                     <p class="full-desc" id="UDINUSDesc3">• Menjadi Anggota dan ikut serta aktif dalam kegiatan HMDTI.</p>
@@ -436,7 +460,7 @@
                 <h3 id="BBPLKTitle">BBPLK Semarang</h3>
                 <p class="short-desc">Pelatihan Kerja Menjahit Pakaian Pria | A</p>
                 <div class="journey-detail">
-                    <img src="BBPLK.png" loading="lazy" alt="Dokumentasi BBPLK">
+                    <img src="BBPLK.png" loading="lazy" alt="Dokumentasi BBPLK" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="BBPLKDesc1">• Menjahit dengan Alat Jahit Tangan</p>
                     <p class="full-desc" id="BBPLKDesc2">• Menjahit dengan Mesin.</p>
                     <p class="full-desc" id="BBPLKDesc3">• Mengikuti Prosedur Keselamatan & Kesehatan di Tempat Kerja (K3).</p>
@@ -447,7 +471,7 @@
                 <h3 id="SMA10Title">SMA N 10 Semarang</h3>
                 <p class="short-desc">Jurusan MIPA | 82,60</p>
                 <div class="journey-detail">
-                    <img src="SMA 10.png" loading="lazy" alt="Dokumentasi SMA">
+                    <img src="SMA 10.png" loading="lazy" alt="Dokumentasi SMA" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="SMA10Desc1">• Mengikuti Ekstrakurikuler Palang Merah Remaja</p>
                     <p class="full-desc" id="SMA10Desc2">• Mengikuti Ekstrakurikuler Olimpiade Kimia</p>
                     <p class="full-desc" id="SMA10Desc3">• Mengikuti Lomba di Sakura No Matsuri Hino Tahun 2017, lomba OSN Ekonomi, lomba Mural Art.</p>
@@ -458,7 +482,7 @@
                 <h3 id="SMP6Title">SMP N 6 Semarang</h3>
                 <p class="short-desc">84,00</p>
                 <div class="journey-detail">
-                    <img src="smp.jpeg" loading="lazy" alt="Dokumentasi SMP">
+                    <img src="smp.jpeg" loading="lazy" alt="Dokumentasi SMP" onerror="this.style.opacity='0.3'">
                     <p class="full-desc" id="SMP6Desc1">• Mengikuti Ekstrakurikuler Karya Ilmiah Remaja</p>
                     <p class="full-desc" id="SMP6Desc2">• Mengikuti Ekstrakurikuler Catur</p>
                     <p class="full-desc" id="SMP6Desc3">• Mengikuti Lomba Menulis Cerpen.</p>
@@ -483,7 +507,7 @@
     </div>
 
     <!-- 2. TENGAH: gambar screenshot -->
-    <img src="tokosejati.JPG" alt="Preview Toko Sejati" class="card-preview" loading="lazy">
+    <img src="tokosejati.JPG" alt="Preview Toko Sejati" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
 
     <!-- 3. BAWAH: deskripsi + tech stack -->
     <p id="SejatiDesc">Website untuk E-Commerce Toko Sejati Cosmetics</p>
@@ -498,7 +522,7 @@
             <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="bra.JPG" alt="Preview BRA Warehouse" class="card-preview" loading="lazy">
+    <img src="bra.JPG" alt="Preview BRA Warehouse" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
     <p id="BRADescPro">Sistem Pencatatan detail kendaraan mulai dari Nomor WO, Plat Nomor, hingga Tipe Kendaraan dan Nama Customer secara terstruktur</p>
     <p class="tech-stack">Tech Stack: Firebase, Javascript, CSS, HTML</p>
 </div>
@@ -511,7 +535,7 @@
             <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="kanwil.JPG" alt="Preview SI-INKA" class="card-preview" loading="lazy">
+    <img src="kanwil.JPG" alt="Preview SI-INKA" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
     <p id="INKADesc">Sistem Inventaris Barang Kanwil ATR/BPN berbasis Website & Mobile</p>
     <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL</p>
 </div>
@@ -524,7 +548,7 @@
             <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="jambi.JPG" alt="Preview GIS Jambi" class="card-preview" loading="lazy">
+    <img src="jambi.JPG" alt="Preview GIS Jambi" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
     <p id="GISDesc">Sistem Informasi Geografis Persebaran Rumah Sakit Pada Wilayah Kota Jambi Tahun 2016</p>
     <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL, QGIS</p>
 </div>
@@ -537,7 +561,7 @@
             <a href="https://github.com/Lyferaa/Lyfera" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
         </div>
     </div>
-    <img src="lyfera.jpeg" alt="Preview Lyfera's Art" class="card-preview" loading="lazy">
+    <img src="lyfera.jpeg" alt="Preview Lyfera's Art" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
     <p id="LyferaDesc">Kumpulan berbagai karya seni ku dalam bentuk website yang interaktif</p>
     <p class="tech-stack">Tech Stack: Javascript, CSS, HTML</p>
 </div>
@@ -559,7 +583,7 @@
         <td>2</td><td id="cert2">Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>BNSP</td><td>2024</td>
     </tr>
     <tr class="type-pro">
-        <td>3</td><td id="cert3">TOEFL PREPARATION</td><td>UDINUS</td><td>2024</td>
+        <td>3</td><td id="cert3">TOEFL PREPARATION</td><td>UDINUS</td><td>2023</td>
     </tr>
     <tr class="type-pro">
         <td>4</td><td id="cert4">Sertifikat Seminar Nasional Teknik Informatika</td><td>UDINUS</td><td>2023</td>
@@ -571,10 +595,10 @@
         <td>2</td><td id="cert6">Sertifikat Kompetensi Menjahit Pakaian</td><td>BNSP</td><td>2020</td>
     </tr>
     <tr class="type-personal">
-        <td>1</td><td id="cert7">Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td><td>2019</td>
+        <td>1</td><td id="cert7">Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td><td>2023</td>
     </tr>
      <tr class="type-creative">
-        <td>3</td><td id="cert8">Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2019</td>
+        <td>3</td><td id="cert8">Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2022</td>
     </tr>
 </tbody>
             </table>
