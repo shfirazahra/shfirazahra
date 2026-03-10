@@ -154,11 +154,13 @@ function dandelionLoop() {
 
 function createParticles() {
     initDandelionCanvas();
-    // Refresh warna saat dark mode toggle
+    const isDark = document.body.classList.contains('dark-mode');
+    const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
+    // Refresh warna semua partikel saat dark mode toggle
     dandelionParticles.forEach(p => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
         p.color = palette[Math.floor(Math.random() * palette.length)];
+        // Di dark mode naikkan alpha sedikit agar partikel terlihat
+        p.targetAlpha = isDark ? Math.random() * 0.6 + 0.4 : Math.random() * 0.5 + 0.3;
     });
     if (dandelionParticles.length === 0) {
         dandelionParticles = Array.from({length: 55}, (_, i) => new DandelionParticle(i < 30));
@@ -277,13 +279,13 @@ const translations = {
     'btn-send': ['Kirim Pesan 💌', 'Send Message 💌'],
 
     // Sidebar navigation
-    'nav-home':             ['🏠 Home / Lobby',       '🏠 Home / Lobby'],
-    'nav-skills':           ['🛠 Technical Skills',    '🛠 Technical Skills'],
-    'nav-projects-pro':     ['💻 IT Projects',         '💻 IT Projects'],
-    'nav-certs':            ['📜 IT Certifications',   '📜 IT Certifications'],
-    'nav-projects-creative':['🎨 Art & Sewing',        '🎨 Art & Sewing'],
-    'nav-journey':          ['🌸 My Story',            '🌸 My Story'],
-    'nav-contact':          ['📧 Contact',             '📧 Contact'],
+    'nav-home':             ['Home / Lobby',       'Home / Lobby'],
+    'nav-skills':           ['Technical Skills',    'Technical Skills'],
+    'nav-projects-pro':     ['IT Projects',         'IT Projects'],
+    'nav-certs':            ['IT Certifications',   'IT Certifications'],
+    'nav-projects-creative':['Art & Sewing',        'Art & Sewing'],
+    'nav-journey':          ['My Story',            'My Story'],
+    'nav-contact':          ['Contact',             'Contact'],
 };
 
 const htmlTranslations = {
