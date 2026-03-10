@@ -68,11 +68,11 @@ const DANDELION_COLORS_LIGHT = [
     'rgba(255,245,160,',
 ];
 const DANDELION_COLORS_DARK = [
-    'rgba(255,230,100,',
-    'rgba(255,210,70,',
-    'rgba(200,170,40,',
-    'rgba(255,245,180,',
-    'rgba(230,190,60,',
+    'rgba(255,235,100,',  // bright gold - lebih terang
+    'rgba(255,220,80,',   // gold
+    'rgba(255,200,50,',   // deep gold
+    'rgba(255,250,200,',  // almost white yellow
+    'rgba(240,200,80,',   // warm gold
 ];
 
 class DandelionParticle {
@@ -87,7 +87,9 @@ class DandelionParticle {
         this.swayAmp   = Math.random() * 1.1 + 0.3;
         this.swaySpeed = Math.random() * 0.018 + 0.007;
         this.swayOff   = Math.random() * Math.PI * 2;
-        this.alpha     = Math.random() * 0.5 + 0.3;
+        const isDark = document.body.classList.contains('dark-mode');
+        // Di dark mode alpha lebih tinggi agar terlihat jelas
+        this.alpha     = isDark ? Math.random() * 0.5 + 0.5 : Math.random() * 0.5 + 0.3;
         this.targetAlpha = this.alpha;
         this.fadeSpeed = Math.random() * 0.004 + 0.002;
         this.rotation  = Math.random() * Math.PI * 2;
@@ -95,7 +97,6 @@ class DandelionParticle {
         this.type      = Math.random() > 0.4 ? 'circle' : 'wisp';
         this.wispLen   = Math.random() * 6 + 3;
         this.age = 0;
-        const isDark = document.body.classList.contains('dark-mode');
         const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
         this.color = palette[Math.floor(Math.random() * palette.length)];
     }
