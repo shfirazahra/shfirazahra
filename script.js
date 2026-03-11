@@ -72,18 +72,6 @@ const DANDELION_COLORS_DARK = [
     'rgba(255,200,100,',
 ];
 
-// Warna partikel per tema — dipakai oleh DandelionParticle.reset()
-const THEME_PARTICLE_COLORS_MAP = {
-    pink:   ['rgba(255,215,60,',  'rgba(255,195,40,',  'rgba(255,235,120,'],
-    peach:  ['rgba(255,160,80,',  'rgba(255,140,60,',  'rgba(255,200,140,'],
-    blue:   ['rgba(120,180,255,', 'rgba(100,160,240,', 'rgba(180,220,255,'],
-    sage:   ['rgba(120,200,130,', 'rgba(100,180,110,', 'rgba(180,230,190,'],
-    lilac:  ['rgba(180,130,255,', 'rgba(160,110,240,', 'rgba(210,180,255,'],
-    butter: ['rgba(255,230,80,',  'rgba(240,210,60,',  'rgba(255,245,160,'],
-    grey:   ['rgba(180,180,180,', 'rgba(160,160,160,', 'rgba(210,210,210,'],
-    mocha:  ['rgba(200,150,100,', 'rgba(180,130,80,',  'rgba(230,190,150,'],
-};
-
 class DandelionParticle {
     constructor(initial) { this.reset(initial); }
     reset(initial = false) {
@@ -105,11 +93,7 @@ class DandelionParticle {
         this.type      = Math.random() > 0.4 ? 'circle' : 'wisp';
         this.wispLen   = Math.random() * 6 + 3;
         this.age = 0;
-        // Gunakan warna tema saat ini jika tersedia
-        const themeKey = typeof currentTheme !== 'undefined' ? currentTheme : 'pink';
-        const themeColors = THEME_PARTICLE_COLORS_MAP[themeKey] || DANDELION_COLORS_LIGHT;
-        const darkColors = themeColors.map(c => c); // sama tapi alpha lebih tinggi di dark
-        const palette = themeColors;
+        const palette = isDark ? DANDELION_COLORS_DARK : DANDELION_COLORS_LIGHT;
         this.color = palette[Math.floor(Math.random() * palette.length)];
     }
     update() {
@@ -167,12 +151,10 @@ function dandelionLoop() {
 
 function createParticles() {
     initDandelionCanvas();
-    // Stop loop lama dulu
     if (dandelionAnimId) {
         cancelAnimationFrame(dandelionAnimId);
         dandelionAnimId = null;
     }
-    // Spawn ulang semua partikel dengan warna mode saat ini
     dandelionParticles = Array.from({length: 60}, (_, i) => new DandelionParticle(i < 40));
     dandelionLoop();
 }
@@ -180,21 +162,17 @@ function createParticles() {
 // 5. Logika Dark Mode
 const btnDark = document.getElementById('darkModeToggle');
 
-// Apply dark mode saat load
 if (localStorage.getItem('darkMode') === 'on') {
     document.body.classList.add('dark-mode');
 }
 
 if (btnDark) {
-    // Set ikon awal sesuai state: kalau dark mode aktif → tampilkan ☀️ (untuk balik ke light)
     const isDarkOnLoad = document.body.classList.contains('dark-mode');
     btnDark.innerText = isDarkOnLoad ? '☀️' : '🌙';
 
     btnDark.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        // Kalau sekarang dark → tampilkan ☀️ (tombol untuk balik ke light)
-        // Kalau sekarang light → tampilkan 🌙 (tombol untuk ke dark)
         btnDark.innerText = isDark ? '☀️' : '🌙';
         localStorage.setItem('darkMode', isDark ? 'on' : 'off');
         createParticles();
@@ -317,16 +295,13 @@ const shortDescMap = [
 ];
 
 // 7. FUNGSI TERAPKAN BAHASA
-// ID nav sidebar yang punya SVG — update text node saja, jangan overwrite SVG
 const SVG_NAV_IDS = new Set(['nav-home','nav-skills','nav-projects-pro','nav-certs','nav-projects-creative','nav-journey','nav-contact']);
 
 function applyLanguage(langIndex) {
     for (const [id, texts] of Object.entries(translations)) {
         const el = document.getElementById(id);
         if (!el) continue;
-
         if (SVG_NAV_IDS.has(id)) {
-            // Cari text node (setelah SVG) dan update teksnya saja
             const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
             if (textNodes.length > 0) {
                 textNodes[textNodes.length - 1].textContent = ' ' + texts[langIndex];
@@ -337,7 +312,6 @@ function applyLanguage(langIndex) {
             el.innerText = texts[langIndex];
         }
     }
-
     const heroH1 = document.querySelector('.hero h1');
     if (heroH1) heroH1.innerHTML = htmlTranslations['hero-h1'][langIndex];
 
@@ -396,7 +370,7 @@ if (btnLang) {
     });
 }
 
-// Jalankan partikel (kecuali reduced-motion)
+// Jalankan partikel
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReducedMotion) {
     createParticles();
@@ -414,210 +388,6 @@ if (!localStorage.getItem('darkMode')) {
         if (btn) btn.innerText = '☀️';
     }
 }
-
-// ============================================================
-// THEME SYSTEM — 8 warna + auto time-based
-// ============================================================
-
-const THEMES = {
-    pink:   { label: '🌸 Pink',   dark: { bg: '#2d1b1e', html: '#2d1b1e' } },
-    peach:  { label: '🧡 Peach',  dark: { bg: '#2d1a0e', html: '#2d1a0e' } },
-    blue:   { label: '🩵 Blue',   dark: { bg: '#0e1a2d', html: '#0e1a2d' } },
-    sage:   { label: '🌿 Sage',   dark: { bg: '#0e2010', html: '#0e2010' } },
-    lilac:  { label: '💜 Lilac',  dark: { bg: '#1a0e2d', html: '#1a0e2d' } },
-    butter: { label: '🌼 Butter', dark: { bg: '#2a2000', html: '#2a2000' } },
-    grey:   { label: '🩶 Grey',   dark: { bg: '#1a1a1a', html: '#1a1a1a' } },
-    mocha:  { label: '☕ Mocha',  dark: { bg: '#200e00', html: '#200e00' } },
-};
-
-// Partikel warna per tema
-const THEME_PARTICLE_COLORS = {
-    pink:   ['rgba(255,215,60,', 'rgba(255,195,40,', 'rgba(255,235,120,'],
-    peach:  ['rgba(255,160,80,', 'rgba(255,140,60,', 'rgba(255,200,140,'],
-    blue:   ['rgba(120,180,255,', 'rgba(100,160,240,', 'rgba(180,220,255,'],
-    sage:   ['rgba(120,200,130,', 'rgba(100,180,110,', 'rgba(180,230,190,'],
-    lilac:  ['rgba(180,130,255,', 'rgba(160,110,240,', 'rgba(210,180,255,'],
-    butter: ['rgba(255,230,80,', 'rgba(240,210,60,', 'rgba(255,245,160,'],
-    grey:   ['rgba(180,180,180,', 'rgba(160,160,160,', 'rgba(210,210,210,'],
-    mocha:  ['rgba(200,150,100,', 'rgba(180,130,80,', 'rgba(230,190,150,'],
-};
-
-// 6 mode waktu (WIB — UTC+7)
-const TIME_MODES = [
-    { name: 'Subuh',   emoji: '🌙', start:  4, end:  6, theme: 'lilac',  darkMode: true  },
-    { name: 'Pagi',    emoji: '🌅', start:  6, end: 10, theme: 'butter', darkMode: false },
-    { name: 'Siang',   emoji: '☀️', start: 10, end: 15, theme: 'blue',   darkMode: false },
-    { name: 'Sore',    emoji: '🌤️', start: 15, end: 18, theme: 'peach',  darkMode: false },
-    { name: 'Maghrib', emoji: '🌇', start: 18, end: 20, theme: 'mocha',  darkMode: true  },
-    { name: 'Malam',   emoji: '🌃', start: 20, end: 28, theme: 'grey',   darkMode: true  }, // 28 = 4 next day
-];
-
-let currentTheme = localStorage.getItem('theme') || 'pink';
-let autoTimeMode = localStorage.getItem('autoTime') !== 'off'; // default ON
-
-function getTimeMode() {
-    // WIB = UTC+7
-    const now = new Date();
-    const wibHour = (now.getUTCHours() + 7) % 24;
-    // Handle jam malam lewat tengah malam (0-4 = malam)
-    const h = wibHour < 4 ? wibHour + 24 : wibHour;
-    return TIME_MODES.find(m => h >= m.start && h < m.end) || TIME_MODES[5];
-}
-
-function applyTheme(themeName, saveToStorage = true) {
-    currentTheme = themeName;
-    const root = document.documentElement;
-
-    // Set data-theme attribute
-    root.setAttribute('data-theme', themeName === 'pink' ? '' : themeName);
-    if (themeName === 'pink') root.removeAttribute('data-theme');
-
-    // Update dark mode bg color jika dark mode aktif
-    const isDark = document.body.classList.contains('dark-mode');
-    if (isDark && THEMES[themeName]) {
-        root.style.backgroundColor = THEMES[themeName].dark.html;
-    }
-
-    // Update partikel warna sesuai tema
-    if (typeof createParticles === 'function') createParticles();
-
-    // Update dot active state
-    document.querySelectorAll('.theme-dot').forEach(dot => {
-        dot.classList.toggle('active', dot.dataset.theme === themeName);
-    });
-
-    if (saveToStorage) localStorage.setItem('theme', themeName);
-}
-
-function applyAutoTimeTheme() {
-    if (!autoTimeMode) return;
-    const mode = getTimeMode();
-    const badge = document.getElementById('time-badge');
-    if (badge) badge.textContent = mode.emoji + ' ' + mode.name;
-
-    applyTheme(mode.theme, false); // jangan overwrite manual theme storage
-
-    // Terapkan dark/light sesuai waktu — hanya jika belum ada preferensi manual
-    if (localStorage.getItem('darkMode') === null) {
-        const shouldDark = mode.darkMode;
-        document.body.classList.toggle('dark-mode', shouldDark);
-        const btn = document.getElementById('darkModeToggle');
-        if (btn) btn.innerText = shouldDark ? '☀️' : '🌙';
-    }
-}
-
-function toggleAutoTime() {
-    autoTimeMode = !autoTimeMode;
-    localStorage.setItem('autoTime', autoTimeMode ? 'on' : 'off');
-    const badge = document.getElementById('time-badge');
-    if (badge) {
-        badge.style.opacity = autoTimeMode ? '1' : '0.4';
-        badge.title = autoTimeMode ? 'Auto tema aktif — klik untuk matikan' : 'Auto tema mati — klik untuk aktifkan';
-    }
-    if (autoTimeMode) applyAutoTimeTheme();
-}
-
-// Override DANDELION_COLORS agar mengikuti tema saat ini
-
-
-
-
-
-// ============================================================
-// INISIALISASI THEME PICKER DI NAVBAR
-// ============================================================
-function initThemePicker() {
-    const navControls = document.querySelector('.nav-controls');
-    if (!navControls) return;
-
-    // Buat container theme picker
-    const picker = document.createElement('div');
-    picker.className = 'theme-picker';
-    picker.setAttribute('aria-label', 'Pilih tema warna');
-
-    // Dots untuk setiap tema
-    const themeList = [
-        { key: 'pink',   color: '#e5a4b4', title: 'Pink Rose (Default)' },
-        { key: 'peach',  color: '#e8824a', title: 'Peach Oranye' },
-        { key: 'blue',   color: '#5a9fd4', title: 'Baby Blue' },
-        { key: 'sage',   color: '#6a9e72', title: 'Sage Green' },
-        { key: 'lilac',  color: '#9b72cf', title: 'Soft Lilac' },
-        { key: 'butter', color: '#d4a800', title: 'Butter Yellow' },
-        { key: 'grey',   color: '#888888', title: 'Pale Grey' },
-        { key: 'mocha',  color: '#a0714f', title: 'Mocha' },
-    ];
-
-    themeList.forEach(({ key, color, title }) => {
-        const dot = document.createElement('button');
-        dot.className = 'theme-dot';
-        dot.dataset.theme = key;
-        dot.style.background = color;
-        dot.title = title;
-        dot.setAttribute('aria-label', 'Tema ' + title);
-        dot.addEventListener('click', () => {
-            autoTimeMode = false;
-            localStorage.setItem('autoTime', 'off');
-            localStorage.setItem('theme', key);
-            const badge = document.getElementById('time-badge');
-            if (badge) { badge.style.opacity = '0.4'; badge.title = 'Auto tema mati — klik untuk aktifkan'; }
-            applyTheme(key);
-        });
-        picker.appendChild(dot);
-    });
-
-    // Time badge
-    const badge = document.createElement('span');
-    badge.id = 'time-badge';
-    badge.title = 'Auto tema aktif — klik untuk matikan';
-    badge.style.cursor = 'pointer';
-    badge.addEventListener('click', toggleAutoTime);
-
-    // Masukkan sebelum darkModeToggle
-    const darkBtn = document.getElementById('darkModeToggle');
-    if (darkBtn) {
-        navControls.insertBefore(badge, darkBtn);
-        navControls.insertBefore(picker, badge);
-    } else {
-        navControls.appendChild(picker);
-        navControls.appendChild(badge);
-    }
-}
-
-// ============================================================
-// JALANKAN THEME SYSTEM
-// ============================================================
-initThemePicker();
-
-// Cek apakah ada manual theme tersimpan atau pakai auto
-const savedTheme = localStorage.getItem('theme');
-const savedAutoTime = localStorage.getItem('autoTime');
-
-if (savedAutoTime === 'off' && savedTheme) {
-    // Manual mode — pakai tema tersimpan
-    applyTheme(savedTheme);
-    const badge = document.getElementById('time-badge');
-    if (badge) {
-        const mode = getTimeMode();
-        badge.textContent = mode.emoji + ' ' + mode.name;
-        badge.style.opacity = '0.4';
-        badge.title = 'Auto tema mati — klik untuk aktifkan';
-    }
-} else {
-    // Auto mode — pakai tema sesuai waktu
-    applyAutoTimeTheme();
-}
-
-// Update time badge setiap menit
-setInterval(() => {
-    if (autoTimeMode) applyAutoTimeTheme();
-    else {
-        const badge = document.getElementById('time-badge');
-        if (badge) {
-            const mode = getTimeMode();
-            badge.textContent = mode.emoji + ' ' + mode.name;
-        }
-    }
-}, 60000);
 
 // Copyright tahun otomatis
 const yearEl = document.getElementById('currentYear');
