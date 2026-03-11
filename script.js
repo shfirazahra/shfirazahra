@@ -574,21 +574,26 @@ if (!isTouchDevice) {
 }
 
 // ============================================================
-// THEME SYSTEM — ditambahkan terpisah, tidak ganggu kode lama
+// THEME SYSTEM v2 — Settings Panel di ikon ⚙️
 // ============================================================
 
-const THEME_DOTS = [
-    { key: 'pink',   color: '#e5a4b4', label: 'Pink Rose' },
-    { key: 'peach',  color: '#e8824a', label: 'Peach' },
-    { key: 'blue',   color: '#5a9fd4', label: 'Baby Blue' },
-    { key: 'sage',   color: '#6a9e72', label: 'Sage Green' },
-    { key: 'lilac',  color: '#9b72cf', label: 'Soft Lilac' },
+const THEME_LIST = [
+    { key: 'pink',   color: '#e5a4b4', label: 'Pink Rose'     },
+    { key: 'peach',  color: '#e8824a', label: 'Peach'         },
+    { key: 'blue',   color: '#5a9fd4', label: 'Baby Blue'     },
+    { key: 'sage',   color: '#6a9e72', label: 'Sage Green'    },
+    { key: 'lilac',  color: '#9b72cf', label: 'Soft Lilac'    },
     { key: 'butter', color: '#d4a800', label: 'Butter Yellow' },
-    { key: 'grey',   color: '#888888', label: 'Pale Grey' },
-    { key: 'mocha',  color: '#a0714f', label: 'Mocha' },
+    { key: 'grey',   color: '#888888', label: 'Pale Grey'     },
+    { key: 'mocha',  color: '#a0714f', label: 'Mocha'         },
 ];
 
-// Warna partikel per tema
+const THEME_DARK_BG = {
+    pink:   '#2d1b1e', peach:  '#2d1a0e', blue:   '#0e1a2d',
+    sage:   '#0e2010', lilac:  '#1a0e2d', butter: '#2a2000',
+    grey:   '#1a1a1a', mocha:  '#200e00',
+};
+
 const THEME_PARTICLES = {
     pink:   ['rgba(255,215,60,',  'rgba(255,195,40,',  'rgba(255,235,120,'],
     peach:  ['rgba(255,160,80,',  'rgba(255,140,60,',  'rgba(255,200,140,'],
@@ -600,22 +605,6 @@ const THEME_PARTICLES = {
     mocha:  ['rgba(200,150,100,', 'rgba(180,130,80,',  'rgba(230,190,150,'],
 };
 
-// Dark bg per tema
-const THEME_DARK_BG = {
-    pink:   '#2d1b1e',
-    peach:  '#2d1a0e',
-    blue:   '#0e1a2d',
-    sage:   '#0e2010',
-    lilac:  '#1a0e2d',
-    butter: '#2a2000',
-    grey:   '#1a1a1a',
-    mocha:  '#200e00',
-};
-
-let activeTheme = localStorage.getItem('theme') || 'pink';
-let autoTime    = localStorage.getItem('autoTime') !== 'off';
-
-// Waktu WIB
 const TIME_MODES = [
     { name: 'Subuh',   emoji: '🌙', start:  4, end:  6, theme: 'lilac',  dark: true  },
     { name: 'Pagi',    emoji: '🌅', start:  6, end: 10, theme: 'butter', dark: false },
@@ -625,142 +614,201 @@ const TIME_MODES = [
     { name: 'Malam',   emoji: '🌃', start: 20, end: 28, theme: 'grey',   dark: true  },
 ];
 
-function getCurrentTimeMode() {
+let activeTheme = localStorage.getItem('theme') || 'pink';
+let autoTime    = localStorage.getItem('autoTime') !== 'off';
+
+function getTimeMode() {
     const wibHour = (new Date().getUTCHours() + 7) % 24;
     const h = wibHour < 4 ? wibHour + 24 : wibHour;
     return TIME_MODES.find(m => h >= m.start && h < m.end) || TIME_MODES[5];
 }
 
-function setTheme(key, updateDots = true) {
+function setTheme(key, save = true) {
     activeTheme = key;
     const html = document.documentElement;
+    if (key === 'pink') html.removeAttribute('data-theme');
+    else html.setAttribute('data-theme', key);
 
-    // Set data-theme di <html>
-    if (key === 'pink') {
-        html.removeAttribute('data-theme');
-    } else {
-        html.setAttribute('data-theme', key);
-    }
+    // Update html bg jika dark mode aktif
+    const isDark = document.body.classList.contains('dark-mode');
+    html.style.backgroundColor = isDark ? (THEME_DARK_BG[key] || '#2d1b1e') : '';
 
-    // Update bg html jika dark mode aktif
-    if (document.body.classList.contains('dark-mode')) {
-        html.style.backgroundColor = THEME_DARK_BG[key] || '#2d1b1e';
-    } else {
-        html.style.backgroundColor = '';
-    }
-
-    // Update warna partikel — patch palette global sementara
+    // Update warna partikel
     const colors = THEME_PARTICLES[key] || THEME_PARTICLES['pink'];
-    // Respawn partikel dengan warna baru
     if (typeof dandelionParticles !== 'undefined' && dandelionParticles.length > 0) {
         dandelionParticles.forEach(p => {
             p.color = colors[Math.floor(Math.random() * colors.length)] +
-                      (document.body.classList.contains('dark-mode') ? '0.8)' : '0.6)');
+                (isDark ? '0.85)' : '0.6)');
         });
     }
 
-    // Update dot aktif
-    if (updateDots) {
-        document.querySelectorAll('.theme-dot').forEach(d => {
-            d.classList.toggle('active', d.dataset.theme === key);
-        });
-    }
-}
+    if (save) localStorage.setItem('theme', key);
 
-function buildThemePicker() {
-    const navControls = document.querySelector('.nav-controls');
-    if (!navControls) return;
-
-    // Container dots
-    const picker = document.createElement('div');
-    picker.className = 'theme-picker';
-
-    THEME_DOTS.forEach(({ key, color, label }) => {
-        const btn = document.createElement('button');
-        btn.className = 'theme-dot' + (key === activeTheme ? ' active' : '');
-        btn.dataset.theme = key;
-        btn.style.backgroundColor = color;
-        btn.title = label;
-        btn.setAttribute('aria-label', 'Tema ' + label);
-        btn.addEventListener('click', () => {
-            autoTime = false;
-            localStorage.setItem('autoTime', 'off');
-            localStorage.setItem('theme', key);
-            setTheme(key);
-            updateTimeBadge();
-        });
-        picker.appendChild(btn);
-    });
-
-    // Time badge
-    const badge = document.createElement('span');
-    badge.id = 'time-badge';
-    badge.title = autoTime ? 'Auto tema aktif — klik untuk matikan' : 'Auto tema mati — klik untuk aktifkan';
-    badge.style.opacity = autoTime ? '1' : '0.45';
-    badge.addEventListener('click', () => {
-        autoTime = !autoTime;
-        localStorage.setItem('autoTime', autoTime ? 'on' : 'off');
-        badge.style.opacity = autoTime ? '1' : '0.45';
-        badge.title = autoTime ? 'Auto tema aktif — klik untuk matikan' : 'Auto tema mati — klik untuk aktifkan';
-        if (autoTime) applyAutoTime();
-    });
-
-    // Sisipkan sebelum darkModeToggle
-    const darkBtn = document.getElementById('darkModeToggle');
-    if (darkBtn) {
-        navControls.insertBefore(badge, darkBtn);
-        navControls.insertBefore(picker, badge);
-    } else {
-        navControls.appendChild(picker);
-        navControls.appendChild(badge);
-    }
-}
-
-function updateTimeBadge() {
-    const badge = document.getElementById('time-badge');
-    if (!badge) return;
-    const mode = getCurrentTimeMode();
-    badge.textContent = mode.emoji + ' ' + mode.name;
+    // Update dot aktif di settings panel
+    document.querySelectorAll('.sp-dot').forEach(d =>
+        d.classList.toggle('active', d.dataset.theme === key)
+    );
 }
 
 function applyAutoTime() {
-    const mode = getCurrentTimeMode();
-    setTheme(mode.theme);
-    updateTimeBadge();
-    // Auto dark/light hanya jika belum ada preferensi manual
+    const mode = getTimeMode();
+    setTheme(mode.theme, false);
+
+    // Update waktu di panel
+    const timeLabel = document.getElementById('sp-time-label');
+    if (timeLabel) timeLabel.textContent = mode.emoji + ' ' + mode.name;
+
+    // Dark/light otomatis hanya jika belum ada preferensi manual darkMode
     if (!localStorage.getItem('darkMode')) {
         const shouldDark = mode.dark;
         document.body.classList.toggle('dark-mode', shouldDark);
         const btn = document.getElementById('darkModeToggle');
         if (btn) btn.innerText = shouldDark ? '☀️' : '🌙';
+        document.documentElement.style.backgroundColor =
+            shouldDark ? (THEME_DARK_BG[mode.theme] || '#2d1b1e') : '';
     }
 }
 
-// Patch dark mode toggle agar update bg warna tema juga
-const _origDarkBtn = document.getElementById('darkModeToggle');
-if (_origDarkBtn) {
-    _origDarkBtn.addEventListener('click', () => {
-        // Setelah toggle (yg sudah dihandle listener asli), update html bg
+// ── Build Settings Panel ────────────────────────────────────
+function buildSettingsPanel() {
+    // ① Panel overlay (klik luar = tutup)
+    const overlay = document.createElement('div');
+    overlay.id = 'sp-overlay';
+    overlay.addEventListener('click', closeSettingsPanel);
+
+    // ② Panel box
+    const panel = document.createElement('div');
+    panel.id = 'settings-panel';
+    panel.setAttribute('aria-label', 'Pengaturan tampilan');
+    panel.addEventListener('click', e => e.stopPropagation());
+
+    // Waktu sekarang
+    const mode = getTimeMode();
+
+    panel.innerHTML = `
+        <div class="sp-header">
+            <span>⚙️ Pengaturan</span>
+            <button class="sp-close" onclick="closeSettingsPanel()" aria-label="Tutup">✕</button>
+        </div>
+
+        <div class="sp-section">
+            <div class="sp-label">🎨 Tema Warna</div>
+            <div class="sp-dots" id="sp-dots"></div>
+            <div class="sp-theme-name" id="sp-theme-name"></div>
+        </div>
+
+        <div class="sp-section">
+            <div class="sp-label">🕐 Auto Tema Waktu</div>
+            <div class="sp-row">
+                <span id="sp-time-label" style="font-size:13px">${mode.emoji} ${mode.name}</span>
+                <label class="sp-toggle">
+                    <input type="checkbox" id="sp-auto-check" ${autoTime ? 'checked' : ''}>
+                    <span class="sp-slider"></span>
+                </label>
+            </div>
+            <div class="sp-hint" id="sp-auto-hint">${autoTime ? 'Tema & mode ikut waktu WIB' : 'Pilih tema manual di atas'}</div>
+        </div>
+    `;
+
+    // Buat dots
+    const dotsContainer = panel.querySelector('#sp-dots');
+    THEME_LIST.forEach(({ key, color, label }) => {
+        const btn = document.createElement('button');
+        btn.className = 'sp-dot' + (key === activeTheme ? ' active' : '');
+        btn.dataset.theme = key;
+        btn.style.backgroundColor = color;
+        btn.title = label;
+        btn.setAttribute('aria-label', label);
+        btn.addEventListener('click', () => {
+            autoTime = false;
+            localStorage.setItem('autoTime', 'off');
+            localStorage.setItem('theme', key);
+            setTheme(key);
+            // Update toggle & hint
+            const chk = document.getElementById('sp-auto-check');
+            const hint = document.getElementById('sp-auto-hint');
+            if (chk) chk.checked = false;
+            if (hint) hint.textContent = 'Pilih tema manual di atas';
+            // Update nama tema
+            const nameEl = document.getElementById('sp-theme-name');
+            const t = THEME_LIST.find(t => t.key === key);
+            if (nameEl && t) nameEl.textContent = t.label;
+        });
+        dotsContainer.appendChild(btn);
+    });
+
+    // Set nama tema awal
+    const initName = THEME_LIST.find(t => t.key === activeTheme);
+    const nameEl = panel.querySelector('#sp-theme-name');
+    if (nameEl && initName) nameEl.textContent = initName.label;
+
+    // Toggle auto time
+    const autoCheck = panel.querySelector('#sp-auto-check');
+    autoCheck.addEventListener('change', () => {
+        autoTime = autoCheck.checked;
+        localStorage.setItem('autoTime', autoTime ? 'on' : 'off');
+        const hint = document.getElementById('sp-auto-hint');
+        if (hint) hint.textContent = autoTime ? 'Tema & mode ikut waktu WIB' : 'Pilih tema manual di atas';
+        if (autoTime) applyAutoTime();
+    });
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(panel);
+
+    // ③ Pasang event ke tombol ⚙️ yang sudah ada di navbar
+    const gearBtn = document.querySelector('nav .hamburger + * + * .nav-btn, nav [onclick*="settings"], nav button[aria-label*="etting"]');
+    // Cari tombol ⚙️ berdasarkan konten
+    const navBtns = document.querySelectorAll('nav button, .nav-controls button');
+    navBtns.forEach(btn => {
+        if (btn.textContent.trim() === '⚙️' || btn.innerHTML.includes('⚙')) {
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleSettingsPanel();
+            });
+        }
+    });
+}
+
+function toggleSettingsPanel() {
+    const panel = document.getElementById('settings-panel');
+    const overlay = document.getElementById('sp-overlay');
+    if (!panel) return;
+    const open = panel.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('open', open);
+}
+
+function closeSettingsPanel() {
+    const panel = document.getElementById('settings-panel');
+    const overlay = document.getElementById('sp-overlay');
+    if (panel) panel.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+}
+
+// Patch dark mode toggle untuk update html bg per tema
+const _dmBtn = document.getElementById('darkModeToggle');
+if (_dmBtn) {
+    _dmBtn.addEventListener('click', () => {
         setTimeout(() => {
             const isDark = document.body.classList.contains('dark-mode');
-            const html = document.documentElement;
-            html.style.backgroundColor = isDark ? (THEME_DARK_BG[activeTheme] || '#2d1b1e') : '';
+            document.documentElement.style.backgroundColor =
+                isDark ? (THEME_DARK_BG[activeTheme] || '#2d1b1e') : '';
         }, 0);
     });
 }
 
-// Inisialisasi
-buildThemePicker();
-updateTimeBadge();
+// ── Init ────────────────────────────────────────────────────
+buildSettingsPanel();
 
 if (autoTime) {
     applyAutoTime();
 } else {
-    setTheme(activeTheme);
+    setTheme(activeTheme, false);
 }
 
-// Update badge setiap menit
+// Update setiap menit
 setInterval(() => {
-    updateTimeBadge();
+    const timeLabel = document.getElementById('sp-time-label');
+    const mode = getTimeMode();
+    if (timeLabel) timeLabel.textContent = mode.emoji + ' ' + mode.name;
     if (autoTime) applyAutoTime();
 }, 60000);
