@@ -293,8 +293,7 @@ body.dark-mode .card, body.dark-mode .sidebar, body.dark-mode .cert-table, body.
 }
 body.dark-mode nav { background: rgba(45, 27, 30, 0.9) !important; color: #fce4ec !important; }
 body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
-body.dark-mode .envelope { background-color: #4a2f33 !important; }
-body.dark-mode .envelope::before { border-bottom-color: #4a2f33 !important; }
+/* envelope warna di dark mode sudah diatur di blok amplop di bawah */
 body.dark-mode p, body.dark-mode h2, body.dark-mode b, body.dark-mode td { color: #fce4ec !important; }
 /* Mengubah warna semua kartu (Card) agar tidak putih lagi */
 body.dark-mode .card, 
@@ -1497,13 +1496,14 @@ body.dark-mode #time-badge {
     border-left-color: #FFE5ED !important;
     border-right-color: #FFE5ED !important;
 }
+/* Amplop tetap pink di dark mode — jangan ikut tema */
 body.dark-mode .envelope-overlay { background-color: #2d1b1e !important; }
-body.dark-mode .envelope { background-color: #4a2f33 !important; }
-body.dark-mode .envelope::before { border-top-color: #4a2f33 !important; }
+body.dark-mode .envelope { background: #FFE5ED !important; }
+body.dark-mode .envelope::before { border-top-color: #FFE5ED !important; }
 body.dark-mode .envelope::after {
-    border-bottom-color: #4a2f33 !important;
-    border-left-color: #4a2f33 !important;
-    border-right-color: #4a2f33 !important;
+    border-bottom-color: #FFE5ED !important;
+    border-left-color: #FFE5ED !important;
+    border-right-color: #FFE5ED !important;
 }
 
 /* ═══════════════════════════════════════════
