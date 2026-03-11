@@ -1,12 +1,160 @@
+/* ═══════════════════════════════
+   THEME SYSTEM — 8 tema warna
+═══════════════════════════════ */
 :root {
-            --pink-soft: #fffafa;
-            --pink-bg: #fdf2f5;
-            --rose-gold: #e5a4b4;
-            --text-color: #5d4037;
-            --white: #FEF6F8;
-            --env-color: #FFE5ED;
-            --env-dark: #FFE5ED;
-        }
+    /* Default: Pink Rose */
+    --pink-soft: #fffafa;
+    --pink-bg: #fdf2f5;
+    --rose-gold: #e5a4b4;
+    --text-color: #5d4037;
+    --white: #FEF6F8;
+    --env-color: #FFE5ED;
+    --env-dark: #FFE5ED;
+
+    /* Theme transition */
+    --theme-transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Peach */
+[data-theme="peach"] {
+    --pink-soft: #fff8f2;
+    --pink-bg: #fff0e6;
+    --rose-gold: #e8824a;
+    --text-color: #5c3a1e;
+    --white: #fff8f2;
+    --env-color: #ffe5cc;
+}
+/* Baby Blue */
+[data-theme="blue"] {
+    --pink-soft: #f2f8ff;
+    --pink-bg: #e6f2ff;
+    --rose-gold: #5a9fd4;
+    --text-color: #1a3a5c;
+    --white: #f2f8ff;
+    --env-color: #cce3f5;
+}
+/* Sage Green */
+[data-theme="sage"] {
+    --pink-soft: #f4f8f4;
+    --pink-bg: #e8f2e8;
+    --rose-gold: #6a9e72;
+    --text-color: #2d4a30;
+    --white: #f4f8f4;
+    --env-color: #cce5cc;
+}
+/* Soft Lilac */
+[data-theme="lilac"] {
+    --pink-soft: #faf6ff;
+    --pink-bg: #f2eaff;
+    --rose-gold: #9b72cf;
+    --text-color: #3d2060;
+    --white: #faf6ff;
+    --env-color: #e0ccf5;
+}
+/* Butter Yellow */
+[data-theme="butter"] {
+    --pink-soft: #fffdf0;
+    --pink-bg: #fffae0;
+    --rose-gold: #d4a800;
+    --text-color: #4a3800;
+    --white: #fffdf0;
+    --env-color: #fff0b3;
+}
+/* Pale Grey */
+[data-theme="grey"] {
+    --pink-soft: #f8f8f8;
+    --pink-bg: #f0f0f0;
+    --rose-gold: #888888;
+    --text-color: #2a2a2a;
+    --white: #f8f8f8;
+    --env-color: #e0e0e0;
+}
+/* Mocha */
+[data-theme="mocha"] {
+    --pink-soft: #faf6f2;
+    --pink-bg: #f2ece4;
+    --rose-gold: #a0714f;
+    --text-color: #3d2010;
+    --white: #faf6f2;
+    --env-color: #e8d8c8;
+}
+
+/* ═══════════════════════════════
+   THEME PICKER UI
+═══════════════════════════════ */
+.theme-picker {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 6px;
+}
+
+.theme-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.theme-dot:hover {
+    transform: scale(1.25);
+}
+
+.theme-dot.active {
+    border-color: var(--text-color);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 2px var(--rose-gold);
+}
+
+/* Warna tiap dot */
+.theme-dot[data-theme="pink"]   { background: #e5a4b4; }
+.theme-dot[data-theme="peach"]  { background: #e8824a; }
+.theme-dot[data-theme="blue"]   { background: #5a9fd4; }
+.theme-dot[data-theme="sage"]   { background: #6a9e72; }
+.theme-dot[data-theme="lilac"]  { background: #9b72cf; }
+.theme-dot[data-theme="butter"] { background: #d4a800; }
+.theme-dot[data-theme="grey"]   { background: #888888; }
+.theme-dot[data-theme="mocha"]  { background: #a0714f; }
+
+/* Dark mode — dot border terang */
+body.dark-mode .theme-dot.active {
+    border-color: #fff;
+}
+
+/* Responsif — sembunyikan label di mobile, dot tetap */
+@media (max-width: 520px) {
+    .theme-picker {
+        gap: 4px;
+    }
+    .theme-dot {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* ═══════════════════════════════
+   TIME-BASED AUTO THEME BADGE
+═══════════════════════════════ */
+#time-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.07);
+    color: var(--text-color);
+    white-space: nowrap;
+    transition: var(--theme-transition);
+    cursor: default;
+    user-select: none;
+}
+
+body.dark-mode #time-badge {
+    background: rgba(255,255,255,0.1);
+    color: #fce4ec;
+}
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         /* Background dipindah ke html agar canvas fixed z-index:-1 tetap terlihat di atas bg */
@@ -206,7 +354,7 @@ body.dark-mode span {
         .sidebar ul { list-style: none; padding: 0 30px; }
         .sidebar ul li { margin: 25px 0; border-bottom: 1px solid var(--pink-bg); padding-bottom: 10px; }
         .sidebar ul li a { font-weight: 600; font-size: 16px; }
-        .hero { display: flex; flex-direction: column; align-items: center; padding: 80px 10%; text-align: center; background: linear-gradient(135deg, #fdf2f5 0%, #fffafa 100%); }
+        .hero { display: flex; flex-direction: column; align-items: center; padding: 80px 10%; text-align: center; background: linear-gradient(135deg, var(--pink-bg) 0%, var(--pink-soft) 100%); transition: var(--theme-transition, background 0.4s); }
         .profile-img-hero { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 6px solid white; box-shadow: 0 10px 25px rgba(229,164,180,0.25); margin-bottom: 25px; transition: 0.5s; }
         .profile-img-hero:hover { transform: scale(1.05) rotate(5deg); }
         .hero h1 span { color: var(--rose-gold); border-bottom: 2px solid var(--rose-gold); }
@@ -1161,4 +1309,4 @@ body.dark-mode #certificates,
 body.dark-mode [style*="background-color: var(--pink-bg)"],
 body.dark-mode [style*="background-color:var(--pink-bg)"] {
     background-color: transparent !important;
-                    }
+}
