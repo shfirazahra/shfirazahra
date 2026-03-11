@@ -314,8 +314,53 @@ body.dark-mode .cert-table td {
 
 /* Mengubah warna Footer agar tidak terlalu kontras */
 body.dark-mode footer {
-    background-color: rgba(30, 15, 18, 0.9) !important;
-    border-top: 1px solid color-mix(in srgb, var(--rose-gold) 30%, #181818);
+    background-color: color-mix(in srgb, var(--rose-gold) 10%, #0e0e0e) !important;
+    border-top: 1px solid color-mix(in srgb, var(--rose-gold) 30%, transparent);
+}
+
+/* Footer selalu gelap — teks harus selalu kontras */
+footer h2 {
+    color: #fff !important;
+    text-shadow: 0 2px 12px color-mix(in srgb, var(--rose-gold) 40%, transparent);
+}
+footer p {
+    color: rgba(255,255,255,0.65) !important;
+}
+footer small, footer .copyright {
+    color: rgba(255,255,255,0.4) !important;
+    font-size: 12px;
+}
+/* Separator antara link footer */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 0;
+    margin: 24px 0 16px;
+}
+.footer-links a {
+    position: relative;
+    padding: 4px 16px;
+}
+.footer-links a:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 14px;
+    width: 1px;
+    background: rgba(255,255,255,0.2);
+}
+/* Input form di footer — pastikan kontras */
+.contact-form input,
+.contact-form textarea {
+    border-color: rgba(255,255,255,0.15);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--rose-gold);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--rose-gold) 20%, transparent);
 }
 
 /* Pastikan semua teks di dalam mode dark berwarna terang */
@@ -415,7 +460,7 @@ body.dark-mode span {
 
 /* Penyesuaian Dark Mode */
 body.dark-mode .skill-item {
-    background: rgba(61, 36, 40, 0.5);
+    background: color-mix(in srgb, var(--rose-gold) 12%, rgba(10,10,10,0.6));
 }
 body.dark-mode .skill-name {
     color: #fce4ec !important;
@@ -469,8 +514,8 @@ body.dark-mode .skill-name {
         .cert-table th { background: var(--rose-gold); color: white; padding: 12px; }
         .cert-table td { padding: 12px; border-bottom: 1px solid var(--pink-bg); text-align: left; }
         .cert-table tr:hover { background-color: var(--pink-soft); cursor: pointer; }
-        footer { padding: 60px; background: #2d2d2d; color: white; text-align: center; }
-        .footer-links a { display: inline-block; color: var(--rose-gold); margin: 0 15px; font-size: 16px; font-weight: 600; }
+        footer { padding: 60px; background: color-mix(in srgb, var(--rose-gold) 15%, #1a1a1a); color: white; text-align: center; }
+        .footer-links a { display: inline-block; color: rgba(255,255,255,0.85); margin: 0 15px; font-size: 16px; font-weight: 600; }
 /* --- Tambahan untuk Partikel & Dark Mode Burgundy --- */
 body.dark-mode { 
     background-color: transparent !important; 
@@ -573,8 +618,9 @@ body.dark-mode .btn-download {
 
 /* Dark Mode untuk Gateway */
 body.dark-mode .gateway-card {
-    background: rgba(61, 36, 40, 0.8);
+    background: color-mix(in srgb, var(--rose-gold) 12%, rgba(10,10,10,0.85));
     color: #fce4ec;
+    border-color: color-mix(in srgb, var(--rose-gold) 50%, transparent);
 }
 /* Memaksa baris tabel hilang saat difilter */
 tr.type-pro[style*="display: none"], 
@@ -1074,8 +1120,8 @@ button.hamburger:focus-visible {
 
 .btn-send:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(229, 164, 180, 0.4);
-    background: #d4849a;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--rose-gold) 50%, transparent);
+    background: color-mix(in srgb, var(--rose-gold) 80%, #fff);
 }
 
 .btn-send:focus-visible {
@@ -1211,8 +1257,9 @@ body.dark-mode #scrollTopBtn {
 }
 
 .footer-links a:hover {
-    color: var(--rose-gold);
+    color: #fff;
     opacity: 1 !important;
+    text-shadow: 0 0 12px color-mix(in srgb, var(--rose-gold) 80%, white);
 }
 
 /* FIX 4: Print CSS — sembunyikan dekorasi saat print/save PDF */
