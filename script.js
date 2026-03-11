@@ -755,18 +755,8 @@ function buildSettingsPanel() {
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
 
-    // ③ Pasang event ke tombol ⚙️ yang sudah ada di navbar
-    const gearBtn = document.querySelector('nav .hamburger + * + * .nav-btn, nav [onclick*="settings"], nav button[aria-label*="etting"]');
-    // Cari tombol ⚙️ berdasarkan konten
-    const navBtns = document.querySelectorAll('nav button, .nav-controls button');
-    navBtns.forEach(btn => {
-        if (btn.textContent.trim() === '⚙️' || btn.innerHTML.includes('⚙')) {
-            btn.addEventListener('click', e => {
-                e.stopPropagation();
-                toggleSettingsPanel();
-            });
-        }
-    });
+    // ③ Tombol ⚙️ sudah ada di HTML dengan id settingsToggle
+    // onclick="toggleSettingsPanel()" sudah dipasang langsung di HTML
 }
 
 function toggleSettingsPanel() {
