@@ -572,3 +572,195 @@ if (!isTouchDevice) {
 
     document.body.style.cursor = 'none';
 }
+
+// ============================================================
+// THEME SYSTEM — ditambahkan terpisah, tidak ganggu kode lama
+// ============================================================
+
+const THEME_DOTS = [
+    { key: 'pink',   color: '#e5a4b4', label: 'Pink Rose' },
+    { key: 'peach',  color: '#e8824a', label: 'Peach' },
+    { key: 'blue',   color: '#5a9fd4', label: 'Baby Blue' },
+    { key: 'sage',   color: '#6a9e72', label: 'Sage Green' },
+    { key: 'lilac',  color: '#9b72cf', label: 'Soft Lilac' },
+    { key: 'butter', color: '#d4a800', label: 'Butter Yellow' },
+    { key: 'grey',   color: '#888888', label: 'Pale Grey' },
+    { key: 'mocha',  color: '#a0714f', label: 'Mocha' },
+];
+
+// Warna partikel per tema
+const THEME_PARTICLES = {
+    pink:   ['rgba(255,215,60,',  'rgba(255,195,40,',  'rgba(255,235,120,'],
+    peach:  ['rgba(255,160,80,',  'rgba(255,140,60,',  'rgba(255,200,140,'],
+    blue:   ['rgba(120,180,255,', 'rgba(100,160,240,', 'rgba(180,220,255,'],
+    sage:   ['rgba(120,200,130,', 'rgba(100,180,110,', 'rgba(180,230,190,'],
+    lilac:  ['rgba(180,130,255,', 'rgba(160,110,240,', 'rgba(210,180,255,'],
+    butter: ['rgba(255,230,80,',  'rgba(240,210,60,',  'rgba(255,245,160,'],
+    grey:   ['rgba(180,180,180,', 'rgba(160,160,160,', 'rgba(210,210,210,'],
+    mocha:  ['rgba(200,150,100,', 'rgba(180,130,80,',  'rgba(230,190,150,'],
+};
+
+// Dark bg per tema
+const THEME_DARK_BG = {
+    pink:   '#2d1b1e',
+    peach:  '#2d1a0e',
+    blue:   '#0e1a2d',
+    sage:   '#0e2010',
+    lilac:  '#1a0e2d',
+    butter: '#2a2000',
+    grey:   '#1a1a1a',
+    mocha:  '#200e00',
+};
+
+let activeTheme = localStorage.getItem('theme') || 'pink';
+let autoTime    = localStorage.getItem('autoTime') !== 'off';
+
+// Waktu WIB
+const TIME_MODES = [
+    { name: 'Subuh',   emoji: '🌙', start:  4, end:  6, theme: 'lilac',  dark: true  },
+    { name: 'Pagi',    emoji: '🌅', start:  6, end: 10, theme: 'butter', dark: false },
+    { name: 'Siang',   emoji: '☀️', start: 10, end: 15, theme: 'blue',   dark: false },
+    { name: 'Sore',    emoji: '🌤️', start: 15, end: 18, theme: 'peach',  dark: false },
+    { name: 'Maghrib', emoji: '🌇', start: 18, end: 20, theme: 'mocha',  dark: true  },
+    { name: 'Malam',   emoji: '🌃', start: 20, end: 28, theme: 'grey',   dark: true  },
+];
+
+function getCurrentTimeMode() {
+    const wibHour = (new Date().getUTCHours() + 7) % 24;
+    const h = wibHour < 4 ? wibHour + 24 : wibHour;
+    return TIME_MODES.find(m => h >= m.start && h < m.end) || TIME_MODES[5];
+}
+
+function setTheme(key, updateDots = true) {
+    activeTheme = key;
+    const html = document.documentElement;
+
+    // Set data-theme di <html>
+    if (key === 'pink') {
+        html.removeAttribute('data-theme');
+    } else {
+        html.setAttribute('data-theme', key);
+    }
+
+    // Update bg html jika dark mode aktif
+    if (document.body.classList.contains('dark-mode')) {
+        html.style.backgroundColor = THEME_DARK_BG[key] || '#2d1b1e';
+    } else {
+        html.style.backgroundColor = '';
+    }
+
+    // Update warna partikel — patch palette global sementara
+    const colors = THEME_PARTICLES[key] || THEME_PARTICLES['pink'];
+    // Respawn partikel dengan warna baru
+    if (typeof dandelionParticles !== 'undefined' && dandelionParticles.length > 0) {
+        dandelionParticles.forEach(p => {
+            p.color = colors[Math.floor(Math.random() * colors.length)] +
+                      (document.body.classList.contains('dark-mode') ? '0.8)' : '0.6)');
+        });
+    }
+
+    // Update dot aktif
+    if (updateDots) {
+        document.querySelectorAll('.theme-dot').forEach(d => {
+            d.classList.toggle('active', d.dataset.theme === key);
+        });
+    }
+}
+
+function buildThemePicker() {
+    const navControls = document.querySelector('.nav-controls');
+    if (!navControls) return;
+
+    // Container dots
+    const picker = document.createElement('div');
+    picker.className = 'theme-picker';
+
+    THEME_DOTS.forEach(({ key, color, label }) => {
+        const btn = document.createElement('button');
+        btn.className = 'theme-dot' + (key === activeTheme ? ' active' : '');
+        btn.dataset.theme = key;
+        btn.style.backgroundColor = color;
+        btn.title = label;
+        btn.setAttribute('aria-label', 'Tema ' + label);
+        btn.addEventListener('click', () => {
+            autoTime = false;
+            localStorage.setItem('autoTime', 'off');
+            localStorage.setItem('theme', key);
+            setTheme(key);
+            updateTimeBadge();
+        });
+        picker.appendChild(btn);
+    });
+
+    // Time badge
+    const badge = document.createElement('span');
+    badge.id = 'time-badge';
+    badge.title = autoTime ? 'Auto tema aktif — klik untuk matikan' : 'Auto tema mati — klik untuk aktifkan';
+    badge.style.opacity = autoTime ? '1' : '0.45';
+    badge.addEventListener('click', () => {
+        autoTime = !autoTime;
+        localStorage.setItem('autoTime', autoTime ? 'on' : 'off');
+        badge.style.opacity = autoTime ? '1' : '0.45';
+        badge.title = autoTime ? 'Auto tema aktif — klik untuk matikan' : 'Auto tema mati — klik untuk aktifkan';
+        if (autoTime) applyAutoTime();
+    });
+
+    // Sisipkan sebelum darkModeToggle
+    const darkBtn = document.getElementById('darkModeToggle');
+    if (darkBtn) {
+        navControls.insertBefore(badge, darkBtn);
+        navControls.insertBefore(picker, badge);
+    } else {
+        navControls.appendChild(picker);
+        navControls.appendChild(badge);
+    }
+}
+
+function updateTimeBadge() {
+    const badge = document.getElementById('time-badge');
+    if (!badge) return;
+    const mode = getCurrentTimeMode();
+    badge.textContent = mode.emoji + ' ' + mode.name;
+}
+
+function applyAutoTime() {
+    const mode = getCurrentTimeMode();
+    setTheme(mode.theme);
+    updateTimeBadge();
+    // Auto dark/light hanya jika belum ada preferensi manual
+    if (!localStorage.getItem('darkMode')) {
+        const shouldDark = mode.dark;
+        document.body.classList.toggle('dark-mode', shouldDark);
+        const btn = document.getElementById('darkModeToggle');
+        if (btn) btn.innerText = shouldDark ? '☀️' : '🌙';
+    }
+}
+
+// Patch dark mode toggle agar update bg warna tema juga
+const _origDarkBtn = document.getElementById('darkModeToggle');
+if (_origDarkBtn) {
+    _origDarkBtn.addEventListener('click', () => {
+        // Setelah toggle (yg sudah dihandle listener asli), update html bg
+        setTimeout(() => {
+            const isDark = document.body.classList.contains('dark-mode');
+            const html = document.documentElement;
+            html.style.backgroundColor = isDark ? (THEME_DARK_BG[activeTheme] || '#2d1b1e') : '';
+        }, 0);
+    });
+}
+
+// Inisialisasi
+buildThemePicker();
+updateTimeBadge();
+
+if (autoTime) {
+    applyAutoTime();
+} else {
+    setTheme(activeTheme);
+}
+
+// Update badge setiap menit
+setInterval(() => {
+    updateTimeBadge();
+    if (autoTime) applyAutoTime();
+}, 60000);
