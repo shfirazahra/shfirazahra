@@ -175,9 +175,24 @@ if (btnDark) {
         const isDark = document.body.classList.contains('dark-mode');
         btnDark.innerText = isDark ? '☀️' : '🌙';
         localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+        // Update html background sesuai tema aktif
+        setTimeout(() => {
+            document.documentElement.style.backgroundColor =
+                isDark ? (THEME_DARK_BG[activeTheme] || '#2d1b1e') : '';
+        }, 0);
         createParticles();
     });
 }
+
+// Setup WhatsApp link (nomor tidak terekspos di HTML source)
+(function() {
+    const waEl = document.getElementById('wa-link');
+    if (waEl) {
+        const p1 = '6289731';
+        const p2 = '79630';
+        waEl.href = 'https://wa.me/' + p1 + p2;
+    }
+})();
 
 // 6. DATA TERJEMAHAN
 const translations = {
@@ -772,18 +787,6 @@ function closeSettingsPanel() {
     const overlay = document.getElementById('sp-overlay');
     if (panel) panel.classList.remove('open');
     if (overlay) overlay.classList.remove('open');
-}
-
-// Patch dark mode toggle untuk update html bg per tema
-const _dmBtn = document.getElementById('darkModeToggle');
-if (_dmBtn) {
-    _dmBtn.addEventListener('click', () => {
-        setTimeout(() => {
-            const isDark = document.body.classList.contains('dark-mode');
-            document.documentElement.style.backgroundColor =
-                isDark ? (THEME_DARK_BG[activeTheme] || '#2d1b1e') : '';
-        }, 0);
-    });
 }
 
 // ── Init ────────────────────────────────────────────────────
