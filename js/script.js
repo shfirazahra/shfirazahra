@@ -1,5 +1,25 @@
-// 1. Inisialisasi Animasi AOS
-AOS.init({ duration: 1000, once: true });
+// 1. Inisialisasi Animasi AOS — durasi lebih pendek di mobile agar terasa lebih cepat
+const isMobile = window.innerWidth < 768;
+AOS.init({ duration: isMobile ? 600 : 1000, once: true, offset: 50 });
+
+// Decode gambar penting di awal agar tidak lambat saat muncul
+['assets/images/foto-profil.jpeg'].forEach(src => {
+    const img = new Image();
+    img.src = src;
+    img.decode().catch(() => {});
+});
+
+// Skeleton loading — tambah class 'loaded' setelah gambar selesai
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img.card-preview, .journey-detail img').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('loaded'));
+            img.addEventListener('error', () => img.classList.add('loaded'));
+        }
+    });
+});
 
 // 2. Fungsi Untuk Buka Amplop Vintage
 function openEnvelope() {
@@ -805,3 +825,86 @@ setInterval(() => {
     if (timeLabel) timeLabel.textContent = mode.emoji + ' ' + mode.name;
     if (autoTime) applyAutoTime();
 }, 60000);
+
+// ── URL REF DETECTION ──────────────────────────────────────
+// ?ref=pro      → skip amplop, langsung konten IT + kerja
+// ?ref=creative → amplop tetap, setelah dibuka auto jalur Seni + Umum
+// tanpa ref     → normal seperti biasa
+(function() {
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (!ref) return;
+
+    if (ref === 'pro') {
+        // Sembunyikan amplop sepenuhnya
+        const overlay = document.getElementById('envelopeOverlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+        // Izinkan scroll
+        document.body.classList.remove('no-scroll');
+
+        // Tampilkan langsung konten IT
+        // Tunggu DOM siap lalu jalankan filterContent
+        filterContent('pro');
+
+        // Ganti judul halaman dan hero agar terasa profesional
+        document.title = 'Shafira Zahra | IT Professional';
+        const heroDesc = document.getElementById('hero-desc');
+        if (heroDesc) {
+            heroDesc.innerHTML = 'Fresh Graduate D3 Teknik Informatika UDINUS &bull; Front-End Developer &bull; Data Entry &amp; Admin &bull; Akurasi 99% terbukti di lapangan.';
+        }
+
+        // Tambahkan banner "Open to Work" di bawah foto profil
+        const profileImg = document.querySelector('.profile-img-hero');
+        if (profileImg && !document.getElementById('open-to-work-badge')) {
+            const badge = document.createElement('div');
+            badge.id = 'open-to-work-badge';
+            badge.innerHTML = '🟢 Open to Work';
+            badge.style.cssText = [
+                'display:inline-block',
+                'margin-top: -10px',
+                'margin-bottom: 12px',
+                'background: #1D9E75',
+                'color: white',
+                'font-size: 13px',
+                'font-weight: 600',
+                'padding: 5px 16px',
+                'border-radius: 20px',
+                'letter-spacing: 0.03em',
+            ].join(';');
+            profileImg.insertAdjacentElement('afterend', badge);
+        }
+
+        // Tampilkan hero section (tidak disembunyikan seperti biasa)
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.classList.remove('section-hidden');
+            hero.style.display = 'flex';
+        }
+
+        // Sembunyikan tombol gateway — tidak relevan untuk HRD
+        const gatewayContainer = document.querySelector('.gateway-container');
+        if (gatewayContainer) gatewayContainer.style.display = 'none';
+
+        // Tampilkan tombol back to lobby
+        const backBtn = document.getElementById('backToLobby');
+        if (backBtn) backBtn.style.display = 'none';
+
+    } else if (ref === 'creative') {
+        // Amplop tetap tampil, tapi setelah dibuka langsung masuk jalur Creative
+        const originalOpenEnvelope = window.openEnvelope;
+        window.openEnvelope = function() {
+            originalOpenEnvelope();
+            // Setelah animasi amplop selesai, langsung filter ke creative
+            setTimeout(() => {
+                filterContent('creative');
+                // Tampilkan hero sebentar lalu hide
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.classList.remove('section-hidden');
+                    hero.style.display = 'flex';
+                }
+            }, 2600);
+        };
+    }
+})();
