@@ -1,4 +1,19 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ═══════════════════════════════════════════
+   ROOT VARIABLES — Tema default Pink Rose
+═══════════════════════════════════════════ */
+:root {
+    --pink-soft: #fffafa;
+    --pink-bg: #fdf2f5;
+    --rose-gold: #e5a4b4;
+    --text-color: #5d4037;
+    --white: #FEF6F8;
+    --env-color: #FFE5ED;
+    --env-dark: #FFE5ED;
+    --theme-transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
         /* Background dipindah ke html agar canvas fixed z-index:-1 tetap terlihat di atas bg */
         html { background-color: var(--pink-soft); }
         body { font-family: 'Poppins', sans-serif; background-color: transparent; color: var(--text-color); scroll-behavior: smooth; overflow-x: hidden; position: relative; }
@@ -138,6 +153,14 @@ body.dark-mode .sidebar {
     color: #fce4ec !important;
     border: 1px solid color-mix(in srgb, var(--rose-gold) 40%, transparent) !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+
+/* Fix: teks link di sidebar harus tetap terang di dark mode */
+body.dark-mode .sidebar ul li a {
+    color: #fce4ec !important;
+}
+body.dark-mode .sidebar ul li {
+    border-bottom-color: rgba(252, 228, 236, 0.15) !important;
 }
 
 /* Mengubah warna tabel sertifikat agar senada */
