@@ -39,12 +39,13 @@
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
-            /* Hapus transform scale yang bikin geser di mobile */
             display: flex;
             justify-content: center;
             align-items: center;
             width: 300px;
             height: 200px;
+            touch-action: manipulation; /* Hilangkan delay 300ms tap di HP */
+            -webkit-tap-highlight-color: transparent; /* Hilangkan highlight biru saat tap */
         }
 
         .envelope {
@@ -570,6 +571,29 @@ body.dark-mode .card-actions a {
     border-radius: 8px;
     margin-bottom: 10px;
     display: block;
+    background: linear-gradient(90deg, var(--pink-bg) 25%, var(--pink-soft) 50%, var(--pink-bg) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+}
+.card-preview.loaded {
+    animation: none;
+    background: none;
+}
+
+.journey-detail img {
+    background: linear-gradient(90deg, var(--pink-bg) 25%, var(--pink-soft) 50%, var(--pink-bg) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+    min-height: 120px;
+}
+.journey-detail img.loaded {
+    animation: none;
+    background: none;
+}
+
+@keyframes skeleton-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 /* ═══════════════════════════════════════
@@ -1408,6 +1432,23 @@ body.dark-mode .envelope::after {
     border-bottom-color: #FFE5ED !important;
     border-left-color: #FFE5ED !important;
     border-right-color: #FFE5ED !important;
+}
+
+/* ── REF=PRO MODE — tampilan profesional ── */
+body.ref-pro .hero {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fafbff 100%) !important;
+}
+body.ref-pro .profile-img-hero {
+    border-color: #e5a4b4;
+}
+
+/* Open to Work badge animasi subtle */
+#open-to-work-badge {
+    animation: pulse-green 2.5s ease-in-out infinite;
+}
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(29,158,117,0.4); }
+    50%       { box-shadow: 0 0 0 6px rgba(29,158,117,0); }
 }
 
 /* ═══════════════════════════════════════════
