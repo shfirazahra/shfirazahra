@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- FIX #1: Apply dark mode SEBELUM render agar tidak flicker/kedip -->
+    <!-- Buat Apply Dark Mode SEBELUM render agar tidak kedip -->
     <script>if(localStorage.getItem('darkMode')==='on'){document.documentElement.style.backgroundColor='#2d1b1e';}</script>
     
-    <!-- FIX: Apply lang dari localStorage SEBELUM render -->
+    <!-- ini Buat Apply lang dari localStorage SEBELUM render -->
     <script>
       const _sl = localStorage.getItem('lang');
       if(_sl === 'en') document.documentElement.setAttribute('lang','en');
@@ -16,7 +16,7 @@
     <meta name="description" content="Portofolio multidisiplin Shafira Zahra. Lulusan IT UDINUS yang ahli dalam Front-End Development, Administrasi Sistem, dan Seni Kreatif.">
     <meta name="keywords" content="Shafira Zahra, Web Developer, IT Portfolio, Art Portfolio, UDINUS, Front End Developer Semarang">
     <meta name="author" content="Shafira Zahra">
-    <!-- FIX: Canonical URL -->
+    <!-- Buat Canonical URL -->
     <link rel="canonical" href="https://shfirazahra.github.io/shfirazahra/">
 
     <meta property="og:type" content="website">
@@ -31,9 +31,9 @@
     <meta property="twitter:description" content="IT Professional & Creative Artist Portfolio.">
     <meta property="twitter:image" content="https://shfirazahra.github.io/shfirazahra/assets/images/foto-profil.jpeg">
 
-    <!-- FIX: Theme color untuk address bar di Android/Chrome -->
+    <!-- Ini buat Theme color untuk address bar di Android/Chrome -->
     <meta name="theme-color" content="#e5a4b4">
-    <!-- FIX: Preconnect mempercepat load Google Fonts -->
+    <!-- Buat Preconnect mempercepat load Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="assets/images/icon.png">
@@ -52,7 +52,7 @@
 
   gtag('config', 'G-RENN22NLL7');
 </script>
-    <!-- FIX 5: JSON-LD Structured Data — Google bisa tampilkan info kartu di hasil pencarian -->
+    <!-- JSON-LD Structured Data — Agar Google bisa tampilkan info kartu di hasil pencarian -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -76,7 +76,7 @@
 </head>
 <body class="no-scroll">
 
-    <!-- FIX 2: Skip-to-content untuk pengguna keyboard -->
+    <!-- Skip-to-content untuk pengguna keyboard -->
     <a href="#home" class="skip-to-content">Skip to content</a>
 
     <div class="envelope-overlay" id="envelopeOverlay">
@@ -94,7 +94,7 @@
 
 
     <nav>
-        <!-- FIX #3: Pakai <button> agar accessible via keyboard & screen reader -->
+        <!-- Pakai <button> agar accessible via keyboard & screen reader -->
         <button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu navigasi" aria-expanded="false">
             <div></div><div></div><div></div>
         </button>
@@ -639,7 +639,7 @@
         <h2 data-aos="fade-up">Get In Touch</h2>
         <p id="contact-subtitle" data-aos="fade-up" style="opacity:0.7; margin: 10px 0 30px; font-size: 14px;">Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨</p>
 
-        <!-- dari formspree.io  -->
+        <!-- ini untuk formspree.io  -->
         <div class="contact-form-wrapper" data-aos="fade-up">
             <form action="https://formspree.io/f/mojkeakg" method="POST" class="contact-form">
                 <div class="form-group">
