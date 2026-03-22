@@ -276,8 +276,8 @@ const translations = {
     'BRADescPro': ['Sistem Pencatatan detail kendaraan mulai dari Nomor WO, Plat Nomor, hingga Tipe Kendaraan dan Nama Customer secara terstruktur', 'Structured vehicle detail recording system covering WO Number, License Plate, Vehicle Type, and Customer Name.'],
     'INKATitle': ['SI-INKA', 'SI-INKA'],
     'INKADesc': ['Sistem Inventaris Barang Kanwil ATR/BPN berbasis Website & Mobile', 'Website & Mobile-based inventory system for Kanwil ATR/BPN'],
-    'GOBELTitlePro': ['GOBEL-GO BELAJAR', 'GOBEL-GO BELAJAR']
-    'GOBELDesc': ['Website GO-BELAJAR untuk bimbingan belajar', 'GO-BELAJAR website for study guidance']
+    'GOBELTitlePro': ['GOBEL-GO BELAJAR', 'GOBEL-GO BELAJAR'],
+    'GOBELDesc': ['Website GO-BELAJAR untuk bimbingan belajar', 'GO-BELAJAR website for study guidance'],
     'GISTitle': ['PETA PERSEBARAN WILAYAH JAMBI DALAM BENTUK WEB GIS', 'JAMBI DISTRIBUTION MAP IN WEB GIS FORMAT'],
     'GISDesc': ['Sistem Informasi Geografis Persebaran Rumah Sakit Pada Wilayah Kota Jambi Tahun 2016', 'Geographic Information System of Hospital Distribution in Jambi City 2016'],
     'LyferaTitle': ["Lyfera's Art", "Lyfera's Art"],
