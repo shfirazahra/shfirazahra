@@ -1,695 +1,649 @@
 <!DOCTYPE html>
-<html lang="id" id="htmlRoot">
+<html lang="id" id="html-root">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Buat Apply Dark Mode SEBELUM render agar tidak kedip -->
-    <script>if(localStorage.getItem('darkMode')==='on'){document.documentElement.style.backgroundColor='#2d1b1e';}</script>
-    
-    <!-- ini Buat Apply lang dari localStorage SEBELUM render -->
-    <script>
-      const _sl = localStorage.getItem('lang');
-      if(_sl === 'en') document.documentElement.setAttribute('lang','en');
-    </script>
-    <title>Shafira Zahra | IT Professional & Creative Artist</title>
-    <meta name="title" content="Shafira Zahra | IT Professional & Creative Artist">
-    <meta name="description" content="Portofolio multidisiplin Shafira Zahra. Lulusan IT UDINUS yang ahli dalam Front-End Development, Administrasi Sistem, dan Seni Kreatif.">
-    <meta name="keywords" content="Shafira Zahra, Web Developer, IT Portfolio, Art Portfolio, UDINUS, Front End Developer Semarang">
-    <meta name="author" content="Shafira Zahra">
-    <!-- Buat Canonical URL -->
-    <link rel="canonical" href="https://shfirazahra.github.io/shfirazahra/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shafira Zahra — Full-Stack Developer</title>
+  <meta name="description" content="Portofolio IT Shafira Zahra. Lulusan D3 Teknik Informatika UDINUS, berpengalaman membangun sistem nyata untuk instansi pemerintah dan perusahaan swasta.">
+  <meta name="keywords" content="Shafira Zahra, Front-End Developer, Web Developer, Semarang, Portfolio IT, CodeIgniter, Firebase, PHP">
+  <meta name="author" content="Shafira Zahra">
+  <link rel="canonical" href="https://shfirazahra.github.io/portfolio-it/">
 
-    <meta property="og:type" content="website">
-    <meta property="fb:app_id" content="966242223397117">
-    <meta property="og:url" content="https://shfirazahra.github.io/shfirazahra/">
-    <meta property="og:title" content="Shafira Zahra | Portfolio">
-    <meta property="og:description" content="Menghubungkan ketelitian sistem IT dengan estetika visual. Lihat proyek IT dan karya seni saya.">
-    <meta property="og:image" content="https://shfirazahra.github.io/shfirazahra/assets/images/foto-profil.jpeg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shfirazahra.github.io/portfolio-it/">
+  <meta property="og:title" content="Shafira Zahra — Front-End Developer">
+  <meta property="og:description" content="D3 Informatics Engineering graduate building real systems with clean code and sharp aesthetic eye.">
+  <meta property="og:image" content="assets/images/foto-profil.jpeg">
+  <meta name="theme-color" content="#D4A5C9">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Shafira Zahra | Portfolio">
-    <meta property="twitter:description" content="IT Professional & Creative Artist Portfolio.">
-    <meta property="twitter:image" content="https://shfirazahra.github.io/shfirazahra/assets/images/foto-profil.jpeg">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="apple-touch-icon" href="assets/images/icon.png">
+  <meta name="robots" content="index, follow">
 
-    <!-- Ini buat Theme color untuk address bar di Android/Chrome -->
-    <meta name="theme-color" content="#e5a4b4">
-    <!-- Buat Preconnect mempercepat load Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="assets/images/icon.png">
-    <link rel="apple-touch-icon" href="assets/images/icon.png">
-    <meta name="robots" content="index, follow">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RENN22NLL7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  gtag('config', 'G-RENN22NLL7');
-</script>
-    <!-- JSON-LD Structured Data — Agar Google bisa tampilkan info kartu di hasil pencarian -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Shafira Zahra",
-        "url": "https://shfirazahra.github.io/shfirazahra/",
-        "image": "https://shfirazahra.github.io/shfirazahra/assets/images/foto-profil.jpeg",
-        "jobTitle": "IT Professional & Creative Artist",
-        "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "Universitas Dian Nuswantoro"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/in/shfiraazhraa/",
-            "https://github.com/shfirazahra",
-            "https://instagram.com/shfiraazhraa._"
-        ],
-        "knowsAbout": ["Web Development", "Front-End Development", "Data Entry", "GIS", "PHP", "JavaScript", "CodeIgniter"]
-    }
-    </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shafira Zahra",
+    "url": "https://shfirazahra.github.io/portfolio-it/",
+    "image": "https://shfirazahra.github.io/portfolio-it/assets/images/foto-profil.jpeg",
+    "jobTitle": "Front-End Developer",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universitas Dian Nuswantoro" },
+    "sameAs": [
+      "https://www.linkedin.com/in/shfiraazhraa/",
+      "https://github.com/shfirazahra"
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="no-scroll">
+<body>
 
-    <!-- Skip-to-content untuk pengguna keyboard -->
-    <a href="#home" class="skip-to-content">Skip to content</a>
+  <a href="#main" class="skip-link" data-id="skip">Lewati navigasi</a>
 
-    <div class="envelope-overlay" id="envelopeOverlay">
-        <div class="envelope-wrapper" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Buka portfolio Shafira Zahra" onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()">
-            <div class="open-me-text">Open Me</div>
-            <div class="envelope">
-                <div class="wax-seal">❤</div>
-                <div class="letter">
-                    <img src="assets/images/foto-profil.jpeg" alt="Shafira" onerror="this.style.opacity='0.3'">
-                    <p>Welcome to my Portfolio ✨</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <nav>
-        <!-- Pakai <button> agar accessible via keyboard & screen reader -->
-        <button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu navigasi" aria-expanded="false">
-            <div></div><div></div><div></div>
-        </button>
-     <button class="logo" data-aos="fade-right" onclick="showLobby()" aria-label="Kembali ke Home">Shafira<span>Zahra</span></button>
-        <div style="width: 40px;"></div>
-        
-        <div class="nav-controls">
-        <button id="backToLobby" class="nav-btn" style="display: none; margin-right: 10px;" onclick="showLobby()">🏠 Lobby</button>
-        <button id="settingsToggle" class="nav-btn" aria-label="Pengaturan tampilan" onclick="toggleSettingsPanel()">⚙️</button>
-        <button id="darkModeToggle" class="nav-btn" aria-label="Toggle dark mode">🌙</button>
-        <button id="langToggle" class="nav-btn" aria-label="Ganti bahasa">EN</button>
-    </div>
-    </nav>
-
-    <div class="sidebar" id="sidebar">
-       <ul>
-    <li><a href="#home" id="nav-home" onclick="showLobby(); toggleMenu();">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Home / Lobby</a></li>
-    
-    <li><a href="#skills" id="nav-skills" onclick="navigateFromSidebar('pro', 'skills')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        Technical Skills</a></li>
-    <li><a href="#projects" id="nav-projects-pro" onclick="navigateFromSidebar('pro', 'projects')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        IT Projects</a></li>
-    <li><a href="#certificates" id="nav-certs" onclick="navigateFromSidebar('pro', 'certificates')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        IT Certifications</a></li>
-    
-    <li><a href="#projects" id="nav-projects-creative" onclick="navigateFromSidebar('creative', 'projects')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-        Art & Sewing</a></li>
-    
-    <li><a href="#journey" id="nav-journey" onclick="navigateFromSidebar('personal', 'journey')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        My Story</a></li>
-    
-    <li><a href="#contact" id="nav-contact" onclick="toggleMenu()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Contact</a></li>
-</ul>
-    </div>
-
-   <header class="hero" id="home">
-    <img src="assets/images/foto-profil.jpeg" alt="Shafira Zahra" class="profile-img-hero" data-aos="zoom-in" loading="eager" onerror="this.style.opacity='0.3'">
-    <h1 data-aos="fade-up">Halo, Aku <span>Shafira Zahra</span> ✨</h1>
-    <p data-aos="fade-up" data-aos-delay="200" style="max-width: 650px; margin-top: 15px; line-height: 1.7;">
-        <b id="hero-desc">Seorang Multidisiplin Lulusan D3 Teknik Informatika UDINUS yang menghubungkan ketelitian Administrasi Servis dengan inovasi Front-End Development. Saya memadukan logika sistem, disiplin operasional, dan estetika visual untuk menciptakan solusi digital yang presisi dan intuitif.</b>
-    </p>
-    <div data-aos="fade-up" data-aos-delay="300" style="margin-top: 25px;">
-        <a href="assets/docs/CV_Shafira_Zahra_IT.pdf" download class="btn-download" id="CVText">
-            <span>📄</span> Download CV
-        </a>
-        <div class="gateway-container" data-aos="fade-up" data-aos-delay="400">
-    <!-- FIX #3: Pakai <button> agar accessible via keyboard -->
-    <button class="gateway-card" onclick="filterContent('pro')" aria-label="Lihat Professional Path">
-        <div class="icon">💼</div>
-        <h3 id="ProTitle">Professional Path</h3>
-        <p id="ProDesc">IT & Admin Portfolio</p>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <button class="nav-logo" onclick="scrollToTop()" aria-label="Kembali ke atas">
+      Shafira<span class="ac">.</span>
     </button>
-    <button class="gateway-card" onclick="filterContent('creative')" aria-label="Lihat Creative Hub">
-        <div class="icon">🎨</div>
-        <h3 id="CreTitle">Creative Hub</h3>
-        <p id="CreDesc">Art & Sewing Works</p>
-    </button>
-    <button class="gateway-card" onclick="filterContent('personal')" aria-label="Lihat The Story">
-        <div class="icon">📖</div>
-        <h3 id="PerTitle">The Story</h3>
-        <p id="PerDesc">My Life & Journey</p>
-    </button>
-</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#projects" data-id="nav-projects">Proyek</a>
+      <a href="#experience" data-id="nav-exp">Pengalaman</a>
+      <a href="#skills" data-id="nav-skills">Keahlian</a>
+      <a href="#education" data-id="nav-edu">Pendidikan</a>
+      <a href="#contact" data-id="nav-contact">Kontak</a>
     </div>
-</header>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="assets/docs/CV_Shafira_Zahra_IT.pdf" download class="btn-cv" id="nav-cv" aria-label="Download CV">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-id="nav-cv-txt">Unduh CV</span>
+      </a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <section id="skills" class="section">
-        <h2 class="section-title" data-aos="fade-down">Technical Skills</h2>
-        <p id="skills-note" style="text-align:center; font-size:13px; opacity:0.6; margin-bottom: 16px; font-style:italic;">Diekstrak dari proyek nyata, pengalaman kerja, dan sertifikasi ✨</p>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#projects" onclick="closeMenu()" data-id="nav-projects">Proyek</a>
+    <a href="#experience" onclick="closeMenu()" data-id="nav-exp">Pengalaman</a>
+    <a href="#skills" onclick="closeMenu()" data-id="nav-skills">Keahlian</a>
+    <a href="#education" onclick="closeMenu()" data-id="nav-edu">Pendidikan</a>
+    <a href="#contact" onclick="closeMenu()" data-id="nav-contact">Kontak</a>
+    <a href="assets/docs/CV_Shafira_Zahra_IT.pdf" download class="mobile-cv" data-id="nav-cv-txt">Unduh CV</a>
+  </div>
 
-        <!-- Legend inline — langsung terlihat sebelum scroll -->
-        <div class="skill-legend-top" data-aos="fade-up">
-            <div class="sll-item">
-                <span class="sktag proven" style="pointer-events:none; font-size:10px; padding:3px 9px;">Tag outline</span>
-                <span id="legend-proven">= terbukti dari kerja / proyek nyata</span>
-            </div>
-            <div class="sll-item">
-                <span class="sktag" style="pointer-events:none; font-size:10px; padding:3px 9px;">Tag biasa</span>
-                <span id="legend-familiar">= familiar / pernah dipelajari</span>
-            </div>
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="badge-open">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span data-id="badge-txt">Terbuka untuk kerja</span>
+          </div>
+          <h1 class="hero-name">
+            Front-End<br>Developer<span class="ac">.</span>
+          </h1>
+          <p class="hero-role">Shafira Zahra &nbsp;·&nbsp; Semarang, Indonesia</p>
+          <p class="hero-desc" data-id="hero-desc">Lulusan D3 Teknik Informatika UDINUS dengan pengalaman nyata membangun sistem untuk instansi pemerintah dan perusahaan swasta. Menulis kode yang bersih dan peduli pada setiap detail.</p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn-primary" data-id="btn-projects">Lihat Proyek</a>
+            <a href="#contact" class="btn-ghost" data-id="btn-contact">Hubungi Saya</a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/shfirazahra" target="_blank" rel="noopener noreferrer" class="soc-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank" rel="noopener noreferrer" class="soc-link">LinkedIn</a>
+            <a href="mailto:shafira@email.com" class="soc-link">Email</a>
+          </div>
         </div>
-
-        <div class="skillcard-grid">
-
-            <!-- 1. Web Frontend -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#c96a3a; --sc-light:#fdf0e9;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Web Frontend Development</div>
-                        <div class="skillcard-level">Proficient · Certified (APTI)</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">HTML5</span>
-                    <span class="sktag proven">CSS3</span>
-                    <span class="sktag proven">JavaScript</span>
-                    <span class="sktag proven">Responsive Design</span>
-                    <span class="sktag proven">GitHub Pages</span>
-                    <span class="sktag">Bootstrap</span>
-                </div>
+        <div class="hero-right">
+          <div class="photo-wrap">
+            <div class="photo-corner tl" aria-hidden="true"></div>
+            <div class="photo-corner tr" aria-hidden="true"></div>
+            <div class="photo-corner bl" aria-hidden="true"></div>
+            <div class="photo-corner br" aria-hidden="true"></div>
+            <img
+              src="assets/images/foto-profil.jpeg"
+              alt="Shafira Zahra — Front-End Developer"
+              class="hero-photo"
+              loading="eager"
+              onerror="this.parentElement.classList.add('photo-fallback')"
+            >
+            <div class="photo-placeholder" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Shafira Zahra</span>
             </div>
-
-            <!-- 2. Backend & Framework + GIS -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#3a7cc9; --sc-light:#e9f2fc;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Backend, Framework & GIS</div>
-                        <div class="skillcard-level">Intermediate · Project-Proven</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">PHP</span>
-                    <span class="sktag proven">CodeIgniter 3</span>
-                    <span class="sktag proven">MVC Architecture</span>
-                    <span class="sktag proven">Firebase</span>
-                    <span class="sktag proven">Web App Deployment</span>
-                    <span class="sktag proven">QGIS</span>
-                    <span class="sktag proven">Web GIS</span>
-                </div>
-            </div>
-
-            <!-- 3. Database -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#4e9e6a; --sc-light:#eaf6ef;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Database Management</div>
-                        <div class="skillcard-level">Intermediate · Project-Proven</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">MySQL</span>
-                    <span class="sktag proven">Firebase Realtime DB</span>
-                    <span class="sktag proven">Schema Design</span>
-                    <span class="sktag proven">Data Integrity</span>
-                    <span class="sktag">Query Optimization</span>
-                </div>
-            </div>
-
-            <!-- 4. Data Entry -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#b8922e; --sc-light:#fdf4e3;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Data Entry & Management</div>
-                        <div class="skillcard-level">Proficient · 99% Accuracy Record</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Microsoft Excel</span>
-                    <span class="sktag proven">Data Cleaning</span>
-                    <span class="sktag proven">Data Validation</span>
-                    <span class="sktag proven">Cross-checking</span>
-                    <span class="sktag proven">Digital Archiving</span>
-                    <span class="sktag proven">Proprietary Systems</span>
-                </div>
-            </div>
-
-            <!-- 5. IT Infrastructure -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#2e9eaa; --sc-light:#e5f7f9;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">IT Infrastructure & Ops</div>
-                        <div class="skillcard-level">Intermediate · BPN Data Center</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Server Management</span>
-                    <span class="sktag proven">OS Patching</span>
-                    <span class="sktag proven">Capacity Planning</span>
-                    <span class="sktag proven">Hardware Audit</span>
-                    <span class="sktag proven">IT Support</span>
-                    <span class="sktag proven">Vulnerability Detection</span>
-                </div>
-            </div>
-
-            <!-- 6. Mobile Dev -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#8a5ec9; --sc-light:#f3eefb;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Mobile Development</div>
-                        <div class="skillcard-level">Familiar · BNSP Certified</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Mobile App Basics</span>
-                    <span class="sktag proven">BNSP Certified</span>
-                    <span class="sktag">Cross-platform Concept</span>
-                </div>
-            </div>
-
-            <!-- 7. Admin -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#5a6e8a; --sc-light:#edf0f5;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Administrative Management</div>
-                        <div class="skillcard-level">Proficient · 3 Companies</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Document Archiving</span>
-                    <span class="sktag proven">Warranty Claim Processing</span>
-                    <span class="sktag proven">Inventory Management</span>
-                    <span class="sktag proven">SOP Compliance</span>
-                    <span class="sktag proven">Report Writing</span>
-                    <span class="sktag proven">Workflow Design</span>
-                </div>
-            </div>
-
-            <!-- 8. Creative -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="60" style="--sc:#c93a6a; --sc-light:#fceef4;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Creative & Visual Design</div>
-                        <div class="skillcard-level">Proficient · Awarded (UDINUS)</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Mural Art</span>
-                    <span class="sktag proven">Visual Composition</span>
-                    <span class="sktag proven">Digital Portfolio Design</span>
-                    <span class="sktag proven">Creative Illustration</span>
-                    <span class="sktag">Canva</span>
-                </div>
-            </div>
-
-            <!-- 9. Sewing -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="120" style="--sc:#8a5ec9; --sc-light:#f3eefb;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Garment & Sewing</div>
-                        <div class="skillcard-level">Certified · Kemenaker RI + BNSP</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Hand Sewing</span>
-                    <span class="sktag proven">Machine Sewing</span>
-                    <span class="sktag proven">Garment Construction</span>
-                    <span class="sktag proven">K3 Workplace Safety</span>
-                    <span class="sktag proven">Kemenaker RI Certified</span>
-                </div>
-            </div>
-
-            <!-- 10. Soft Skills -->
-            <div class="skillcard" data-aos="fade-up" data-aos-delay="0" style="--sc:#2e9eaa; --sc-light:#e5f7f9;">
-                <div class="skillcard-head">
-                    <div class="skillcard-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <div>
-                        <div class="skillcard-title">Professional & Interpersonal</div>
-                        <div class="skillcard-level">Strong · Consistently Demonstrated</div>
-                    </div>
-                </div>
-                <div class="skillcard-tags">
-                    <span class="sktag proven">Cross-team Coordination</span>
-                    <span class="sktag proven">Stakeholder Communication</span>
-                    <span class="sktag proven">Attention to Detail</span>
-                    <span class="sktag proven">Problem Solving</span>
-                    <span class="sktag proven">Customer Service</span>
-                    <span class="sktag proven">TOEFL Preparation</span>
-                </div>
-            </div>
-
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="journey" class="section" style="background-color: var(--pink-bg);">
-        <h2 class="section-title" data-aos="fade-down">My Journey</h2>
-        <p id="journey-hint" style="margin-bottom: 20px; font-style: italic; font-size: 13px; opacity: 0.7;">(Klik nama tempat untuk detail dokumentasi ✨)</p>
-        <div class="journey-container">
-            <div class="journey-item type-pro" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2025-2026</span>
-                <h3 id="BRATitle">PT Bumen Redja Abadi</h3>
-                <p class="short-desc">Warranty Service & Systems Developer</p>
-                <div class="journey-detail">
-                    <img src="assets/images/fotobra.jpg" loading="lazy" alt="Dokumentasi PT BRA" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="BRADesc1">• Internal System Development: Merancang dan membangun aplikasi BRA - Warehouse Service berbasis Cloud (Firebase) untuk digitalisasi manajemen gudang servis.</p>
-                    <p class="full-desc" id="BRADesc2">• Operational Efficiency: Mengoptimalkan alur permintaan suku cadang dari teknisi melalui sistem inventaris digital, mempercepat proses Service Supply Chain (SSC).</p>
-                    <p class="full-desc" id="BRADesc3">• Data Integrity & Quality Control: Mengelola input dan validasi data pada sistem Product Quality Report (PQR) serta Warranty Service Claim (WSC) dengan tingkat akurasi tinggi.</p>
-                    <p class="full-desc" id="BRADesc4">• System Monitoring: Melakukan audit berkala pada Greylite Data untuk memastikan kelengkapan informasi teknis dan integritas database operasional.</p>
-                    <p class="full-desc" id="BRADesc5">• Technical Reporting: Menyusun laporan performa layanan harian dan status klaim garansi.</p>
-                </div>
-            </div>
-            <div class="journey-item type-pro" data-aos="fade-left" data-aos-delay="100" onclick="this.classList.toggle('active')">
-                <span class="year">2024-2025</span>
-                <h3 id="BPNTitle">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
-                <p class="short-desc" id="BPNClear">Operations & Inventory System Administrator</p>
-                <div class="journey-detail">
-                    <img src="assets/images/Koperasi.jpg" loading="lazy" alt="Dokumentasi ATR BPN" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="BPNDesc1">• Inventory Management: Mengelola database stok kebutuhan kantor menggunakan workflow terstruktur, berhasil mengurangi potensi stockout hingga 15%.</p>
-                    <p class="full-desc" id="BPNDesc2">• Financial Data Reporting: Bertanggung jawab atas pencatatan transaksi kas harian, rekonsiliasi pendapatan, dan analisis keuntungan bulanan secara sistematis.</p>
-                    <p class="full-desc" id="BPNDesc3">• ​Supply Chain Coordination: Menangani siklus pengadaan barang mulai dari pemilihan vendor, pembelian aset, hingga distribusi ke unit kerja terkait.</p>
-                    <p class="full-desc" id="BPNDesc4">• Asset Auditing: Melakukan pengecekan fisik barang (stock opname) secara berkala untuk dicocokkan dengan data digital guna menjamin validitas saldo inventaris.</p>
-                </div>
-            </div>
-            <div class="journey-item type-pro" data-aos="fade-left" data-aos-delay="200" onclick="this.classList.toggle('active')">
-                <span class="year">2024-2024</span>
-                <h3 id="SIMTitle">PT Swakarya Insan Mandiri</h3>
-                <p class="short-desc">Data Entry Clerk</p>
-                <div class="journey-detail">
-                    <img src="assets/images/SIM.png" loading="lazy" alt="Dokumentasi SIM" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="SIMDesc1">• High-Volume Data Entry: Memproses entri data skala besar (840+ dokumen KK) secara konsisten dengan fokus pada kecepatan dan ketepatan target harian.</p>
-                    <p class="full-desc" id="SIMDesc2">• ​Quality Assurance: Mencapai tingkat akurasi 99% melalui mekanisme verifikasi silang dan data cleaning untuk meminimalkan error rate pada database mitra.</p>
-                    <p class="full-desc" id="SIMDesc3">• Error Remediation: Melakukan perbaikan dan validasi data secara mandiri menggunakan Microsoft Excel sebelum tenggat waktu pengiriman laporan harian.</p>
-                    <p class="full-desc" id="SIMDesc4">• System Efficiency: Beradaptasi dengan ritme kerja dinamis untuk menjaga performa input data tetap stabil di atas standar minimum perusahaan.</p>
-                </div>
-            </div>
-            <div class="journey-item type-pro" data-aos="fade-left" data-aos-delay="300" onclick="this.classList.toggle('active')">
-                <span class="year">2023-2024</span>
-                <h3 id="KanwilTitle">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</h3>
-                <p class="short-desc">Full-Stack Developer & Digital Operations</p>
-                <div class="journey-detail">
-                    <img src="assets/images/BPN.png" loading="lazy" alt="Dokumentasi Data Engineer" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="KanwilDesc1">• Full-Stack Development: Merancang dan mengembangkan aplikasi Web & Mobile berjudul SI-INKA yang terintegrasi sebagai solusi digital inventaris instansi.</p>
-                    <p class="full-desc" id="KanwilDesc2">• Digital Asset Management: Mengelola administrasi aset digital dan kurasi konten informasi publik pada platform digital instansi untuk menjaga keterbukaan informasi.</p>
-                    <p class="full-desc" id="KanwilDesc3">• Infrastructure Support: Mendukung operasional unit Data Center dalam melakukan audit perangkat, capacity planning, dan troubleshooting sistem dasar.</p>
-                    <p class="full-desc" id="KanwilDesc4">• System Documentation: Menyusun manual penggunaan aplikasi dan dokumentasi teknis sebagai standar operasional prosedur bagi pengguna internal.</p>
-                    <p class="full-desc" id="KanwilDesc5">• Data Verification: Melakukan verifikasi data teknis dan pemeliharaan arsip digital untuk menjamin keamanan informasi di lingkungan Data Center.</p>
-                </div>
-            </div>
-            <div class="journey-item type-personal" data-aos="fade-left" data-aos-delay="400" onclick="this.classList.toggle('active')">
-                <span class="year">2022-2022</span>
-                <h3 id="IdolaTitle">Milkshake Idola & Seblak Seuhah</h3>
-                <p class="short-desc">F&B Stand Operator</p>
-                <div class="journey-detail">
-                    <img src="assets/images/journey5.jpg" loading="lazy" alt="Dokumentasi F&B" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc"  id="IdolaDesc1">• Mengelola dan merekapitulasi seluruh transaksi penjualan harian dan memastikan akurasi dan perhitungan dan keseimbangan kas akhir hari.</p>
-                    <p class="full-desc"  id="IdolaDesc2">• Mencatat data penjualan dan permintaan pelanggan untuk dianalisis sebagai masukan peningkatan stok dan menu.</p>
-                    <p class="full-desc"  id="IdolaDesc3">• Berinteraksi langsung dengan pelanggan untuk memahami kebutuhan mengelola keluhan, dan memastikan kepuasan layanan.</p>
-                    <p class="full-desc"  id="IdolaDesc4">• Bertanggung jawab atas stock management dan kerapian operasional untuk memastikan kualitas layanan yang tinggi.</p>
-                </div>
-            </div>
-            <div class="journey-item type-pro" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2021-2024</span>
-                <h3 id="UDINUSTitle">Universitas Dian Nuswantoro</h3>
-                <p class="short-desc">D3 Teknik Informatika | IPK 3,51</p>
-                <div class="journey-detail">
-                    <img src="assets/images/wisuda.png" loading="lazy" alt="Dokumentasi UDINUS" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="UDINUSDesc1">• Menjadi Panitia Workshop HMDTI Tahun 2023.</p>
-                    <p class="full-desc" id="UDINUSDesc2">• Mengikuti UKM Catur.</p>
-                    <p class="full-desc" id="UDINUSDesc3">• Menjadi Anggota dan ikut serta aktif dalam kegiatan HMDTI.</p>
-                </div>
-            </div>
-            <div class="journey-item type-creative" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2020-2020</span>
-                <h3 id="BBPLKTitle">BBPLK Semarang</h3>
-                <p class="short-desc">Pelatihan Kerja Menjahit Pakaian Pria | A</p>
-                <div class="journey-detail">
-                    <img src="assets/images/BBPLK.png" loading="lazy" alt="Dokumentasi BBPLK" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="BBPLKDesc1">• Menjahit dengan Alat Jahit Tangan</p>
-                    <p class="full-desc" id="BBPLKDesc2">• Menjahit dengan Mesin.</p>
-                    <p class="full-desc" id="BBPLKDesc3">• Mengikuti Prosedur Keselamatan & Kesehatan di Tempat Kerja (K3).</p>
-                </div>
-            </div>
-            <div class="journey-item type-personal" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2017-2020</span>
-                <h3 id="SMA10Title">SMA N 10 Semarang</h3>
-                <p class="short-desc">Jurusan MIPA | 82,60</p>
-                <div class="journey-detail">
-                    <img src="assets/images/SMA 10.png" loading="lazy" alt="Dokumentasi SMA" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="SMA10Desc1">• Mengikuti Ekstrakurikuler Palang Merah Remaja</p>
-                    <p class="full-desc" id="SMA10Desc2">• Mengikuti Ekstrakurikuler Olimpiade Kimia</p>
-                    <p class="full-desc" id="SMA10Desc3">• Mengikuti Lomba di Sakura No Matsuri Hino Tahun 2017, lomba OSN Ekonomi, lomba Mural Art.</p>
-                </div>
-            </div>
-            <div class="journey-item type-personal" data-aos="fade-left" onclick="this.classList.toggle('active')">
-                <span class="year">2014-2017</span>
-                <h3 id="SMP6Title">SMP N 6 Semarang</h3>
-                <p class="short-desc">84,00</p>
-                <div class="journey-detail">
-                    <img src="assets/images/smp.jpeg" loading="lazy" alt="Dokumentasi SMP" onerror="this.style.opacity='0.3'">
-                    <p class="full-desc" id="SMP6Desc1">• Mengikuti Ekstrakurikuler Karya Ilmiah Remaja</p>
-                    <p class="full-desc" id="SMP6Desc2">• Mengikuti Ekstrakurikuler Catur</p>
-                    <p class="full-desc" id="SMP6Desc3">• Mengikuti Lomba Menulis Cerpen.</p>
-                </div>
-            </div>
+    <!-- STATS -->
+    <div class="stats-bar" aria-label="Statistik singkat">
+      <div class="stat">
+        <div class="stat-num">4<em>+</em></div>
+        <div class="stat-lbl" data-id="s1">Perusahaan</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<em>+</em></div>
+        <div class="stat-lbl" data-id="s2">Proyek Live</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">99<em>%</em></div>
+        <div class="stat-lbl" data-id="s3">Akurasi Data</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3<em>+</em></div>
+        <div class="stat-lbl" data-id="s4">Sertifikasi</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="sec-label" data-id="lbl-proj">Karya</p>
+          <h2 class="sec-title" data-id="title-proj">Proyek Pilihan</h2>
         </div>
+        <div class="proj-grid">
+
+          <article class="proj-card" tabindex="0">
+            <div class="proj-preview">
+              <img src="assets/images/bra.jpg" alt="Preview BRA Warehouse Service" class="proj-img" loading="lazy">
+              <div class="proj-preview-overlay">
+                <a href="https://bra-servicewarehouse.web.app/index.html" target="_blank" rel="noopener noreferrer" class="overlay-btn" data-id="btn-demo">Live Demo</a>
+                <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" rel="noopener noreferrer" class="overlay-btn outline">GitHub</a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-top">
+                <div class="proj-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="proj-links">
+                  <a href="https://bra-servicewarehouse.web.app/index.html" target="_blank" rel="noopener noreferrer" aria-label="Live demo BRA Warehouse">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </a>
+                  <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" rel="noopener noreferrer" aria-label="Kode sumber BRA Warehouse">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  </a>
+                </div>
+              </div>
+              <h3 class="proj-name">BRA Warehouse Service</h3>
+              <p class="proj-desc" data-id="pd1">Sistem manajemen gudang berbasis cloud untuk PT Bumen Redja Abadi. Sinkronisasi real-time, pencetakan slip pemesanan spare part otomatis, tracking kendaraan terstruktur.</p>
+              <div class="proj-tags">
+                <span class="ptag">Firebase</span>
+                <span class="ptag">JavaScript</span>
+                <span class="ptag">HTML/CSS</span>
+                <span class="ptag live" data-id="tag-live">Live</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card" tabindex="0">
+            <div class="proj-preview">
+              <img src="assets/images/kanwil.jpg" alt="Preview SI-INKA" class="proj-img" loading="lazy">
+              <div class="proj-preview-overlay">
+                <a href="https://appinventorykanwilbpn.42web.io/" target="_blank" rel="noopener noreferrer" class="overlay-btn" data-id="btn-demo">Live Demo</a>
+                <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" rel="noopener noreferrer" class="overlay-btn outline">GitHub</a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-top">
+                <div class="proj-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <div class="proj-links">
+                  <a href="https://appinventorykanwilbpn.42web.io/" target="_blank" rel="noopener noreferrer" aria-label="Live demo SI-INKA">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </a>
+                  <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" rel="noopener noreferrer" aria-label="Kode sumber SI-INKA">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  </a>
+                </div>
+              </div>
+              <h3 class="proj-name">SI-INKA</h3>
+              <p class="proj-desc" data-id="pd2">Sistem inventaris berbasis web & mobile untuk Kanwil ATR/BPN Jawa Tengah. Digunakan staf pemerintah setiap hari untuk pengelolaan aset instansi.</p>
+              <div class="proj-tags">
+                <span class="ptag">CodeIgniter 3</span>
+                <span class="ptag">PHP</span>
+                <span class="ptag">MySQL</span>
+                <span class="ptag live" data-id="tag-live">Live</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card" tabindex="0">
+            <div class="proj-preview">
+              <img src="assets/images/jambi.jpg" alt="Preview Jambi Web GIS" class="proj-img" loading="lazy">
+              <div class="proj-preview-overlay">
+                <a href="https://petapersebarankotajambi.42web.io/" target="_blank" rel="noopener noreferrer" class="overlay-btn" data-id="btn-demo">Live Demo</a>
+                <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" rel="noopener noreferrer" class="overlay-btn outline">GitHub</a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-top">
+                <div class="proj-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="proj-links">
+                  <a href="https://petapersebarankotajambi.42web.io/" target="_blank" rel="noopener noreferrer" aria-label="Live demo Jambi Web GIS">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </a>
+                  <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" rel="noopener noreferrer" aria-label="Kode sumber Jambi GIS">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  </a>
+                </div>
+              </div>
+              <h3 class="proj-name">Jambi Web GIS</h3>
+              <p class="proj-desc" data-id="pd3">Sistem informasi geografis persebaran rumah sakit dan penyakit di Kota Jambi. Data QGIS diintegrasikan ke dalam peta web interaktif.</p>
+              <div class="proj-tags">
+                <span class="ptag">QGIS</span>
+                <span class="ptag">CodeIgniter</span>
+                <span class="ptag">MySQL</span>
+                <span class="ptag live" data-id="tag-live">Live</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card" tabindex="0">
+            <div class="proj-preview">
+              <img src="assets/images/tokosejati.jpg" alt="Preview Toko Sejati Cosmetics" class="proj-img" loading="lazy">
+              <div class="proj-preview-overlay">
+                <a href="https://tokosejatikosmetik.42web.io/" target="_blank" rel="noopener noreferrer" class="overlay-btn" data-id="btn-demo">Live Demo</a>
+                <a href="https://github.com/shfirazahra/TokoSejati" target="_blank" rel="noopener noreferrer" class="overlay-btn outline">GitHub</a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-top">
+                <div class="proj-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </div>
+                <div class="proj-links">
+                  <a href="https://tokosejatikosmetik.42web.io/" target="_blank" rel="noopener noreferrer" aria-label="Live demo Toko Sejati">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </a>
+                  <a href="https://github.com/shfirazahra/TokoSejati" target="_blank" rel="noopener noreferrer" aria-label="Kode sumber Toko Sejati">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  </a>
+                </div>
+              </div>
+              <h3 class="proj-name">Toko Sejati Cosmetics</h3>
+              <p class="proj-desc" data-id="pd4">Platform e-commerce kosmetik dengan katalog produk, manajemen inventaris, dan tampilan responsif yang bersih dan mudah digunakan.</p>
+              <div class="proj-tags">
+                <span class="ptag">CodeIgniter 3</span>
+                <span class="ptag">PHP</span>
+                <span class="ptag">MySQL</span>
+                <span class="ptag live" data-id="tag-live">Live</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
 
-   <section id="projects" class="section">
-    <h2 class="section-title" data-aos="fade-down">Featured Projects</h2>
-    <div class="grid">
-        
-      <div class="card type-pro" data-aos="fade-up">
+    <div class="divider"></div>
 
-    <!-- 1. BARIS ATAS: judul kiri, ikon kanan -->
-    <div class="card-header">
-        <h3 id="SejatiTitle">Toko Sejati Cosmetics</h3>
-        <div class="card-actions">
-            <a href="https://tokosejatikosmetik.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/TokoSejati" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="sec-label" data-id="lbl-exp">Pengalaman</p>
+          <h2 class="sec-title" data-id="title-exp">Riwayat Kerja</h2>
         </div>
-    </div>
+        <div class="exp-list">
 
-    <!-- 2. TENGAH: gambar screenshot -->
-    <img src="assets/images/tokosejati.jpg" alt="Preview Toko Sejati" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2025 — <span data-id="now-txt">skrg</span></span>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role-row">
+                <button class="exp-role-btn" onclick="toggleExp(this)" aria-expanded="false">
+                  <h3 class="exp-role" data-id="role1">Warranty Service & Systems Developer</h3>
+                  <span class="exp-now" data-id="now-badge">Sekarang</span>
+                  <span class="exp-chevron" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+              </div>
+              <p class="exp-co">PT Bumen Redja Abadi</p>
+              <p class="exp-hint" data-id="exp-hint">↓ klik judul untuk lihat dokumentasi</p>
+                <li data-id="e1a">Merancang dan membangun aplikasi BRA Warehouse Service berbasis Firebase untuk digitalisasi manajemen gudang servis</li>
+                <li data-id="e1b">Mengelola integritas data sistem PQR dan WSC dengan akurasi tinggi</li>
+                <li data-id="e1c">Mengoptimalkan alur supply chain spare part — mempercepat proses permintaan dari teknisi</li>
+              </ul>
+              <div class="exp-accordion" aria-hidden="true">
+                <img src="assets/images/fotobra.jpg" alt="Dokumentasi PT Bumen Redja Abadi" class="exp-photo" loading="lazy">
+              </div>
+            </div>
+          </div>
 
-    <!-- 3. BAWAH: deskripsi + tech stack -->
-    <p id="SejatiDesc">Website untuk E-Commerce Toko Sejati Cosmetics</p>
-    <p id="SejatiDesc">• Memudahkan pelanggan untuk melihat katalog produk kosmetik secara sistematis dan melakukan transaksi dengan alur yang jelas.</p>
-    <p id="SejatiDesc">• Mengelola inventaris produk, kategori, dan detail harga secara efisien, sehingga informasi yang sampai ke pelanggan selalu akurat.</p>
-    <p id="SejatiDesc">• Fokus utama pengembangan adalah pada kemudahan navigasi. Saya memastikan tampilan website bersih dan responsif menggunakan CSS dan HTML.</p>
-    <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL</p>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2024 — 2025</span>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role-row">
+                <button class="exp-role-btn" onclick="toggleExp(this)" aria-expanded="false">
+                  <h3 class="exp-role" data-id="role2">Operations & Inventory System Administrator</h3>
+                  <span class="exp-chevron" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+              </div>
+              <p class="exp-co">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</p>
+              <ul class="exp-pts">
+                <li data-id="e2a">Mengelola database stok kebutuhan kantor — berhasil mengurangi potensi stockout hingga 15%</li>
+                <li data-id="e2b">Menangani siklus pengadaan barang dari pemilihan vendor hingga distribusi ke unit kerja</li>
+                <li data-id="e2c">Melakukan stock opname berkala dan rekonsiliasi data digital untuk validitas inventaris</li>
+              </ul>
+              <div class="exp-accordion" aria-hidden="true">
+                <img src="assets/images/Koperasi.jpg" alt="Dokumentasi ATR/BPN Admin" class="exp-photo" loading="lazy">
+              </div>
+            </div>
+          </div>
 
-</div>
-        <div class="card type-pro" data-aos="fade-up">
-    <div class="card-header">
-        <h3 id="BRATitlePro">BRA-WAREHOUSE SERVICE</h3>
-        <div class="card-actions">
-            <a href="https://bra-servicewarehouse.web.app/index.html" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/BRA-WarehouseService" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2023 — 2024</span>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role-row">
+                <button class="exp-role-btn" onclick="toggleExp(this)" aria-expanded="false">
+                  <h3 class="exp-role" data-id="role3">Full-Stack Developer & Digital Operations</h3>
+                  <span class="exp-chevron" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+              </div>
+              <p class="exp-co">Kantor Wilayah ATR/BPN Provinsi Jawa Tengah</p>
+              <ul class="exp-pts">
+                <li data-id="e3a">Mengembangkan SI-INKA — sistem inventaris web & mobile terintegrasi untuk instansi pemerintah</li>
+                <li data-id="e3b">Mendukung operasional Data Center: OS patching, audit hardware, capacity planning, vulnerability detection</li>
+                <li data-id="e3c">Menyusun dokumentasi teknis dan manual pengguna sebagai SOP internal</li>
+              </ul>
+              <div class="exp-accordion" aria-hidden="true">
+                <img src="assets/images/BPN.png" alt="Dokumentasi ATR/BPN Developer" class="exp-photo" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2024</span>
+            </div>
+            <div class="exp-body">
+              <div class="exp-role-row">
+                <button class="exp-role-btn" onclick="toggleExp(this)" aria-expanded="false">
+                  <h3 class="exp-role" data-id="role4">Data Entry Clerk</h3>
+                  <span class="exp-chevron" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </button>
+              </div>
+              <p class="exp-co">PT Swakarya Insan Mandiri</p>
+              <ul class="exp-pts">
+                <li data-id="e4a">Memproses 840+ dokumen Kartu Keluarga dengan tingkat akurasi 99%</li>
+                <li data-id="e4b">Melakukan verifikasi silang dan data cleaning menggunakan Microsoft Excel sebelum tenggat harian</li>
+              </ul>
+              <div class="exp-accordion" aria-hidden="true">
+                <img src="assets/images/SIM.png" alt="Dokumentasi PT Swakarya Insan Mandiri" class="exp-photo" loading="lazy">
+              </div>
+            </div>
+          </div>
+
         </div>
-    </div>
-    <img src="assets/images/bra.jpg" alt="Preview BRA Warehouse" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
-    <p id="BRADescPro">Sistem Pencatatan detail kendaraan mulai dari Nomor WO, Plat Nomor, hingga Tipe Kendaraan dan Nama Customer secara terstruktur</p>
-    <p id="BRADescPro">• Real Time Data Processing -> Sinkronisasi data instan antara bagian input dan dashboard rekap.</p>
-    <p id="BRADescPro">• Smart Inventory Tracking -> Sistem Pencatatan detail kendaraan mulai dari Nomor WO, Plat Nomor, hingga Tipe Kendaraan dan Nama Customer.</p>
-    <p id="BRADescPro">• Automated Slip Generation -> Fitur pencetakan otomatis "Slip Pemesanan Spare Part" yang presisi, membantu mengurangi kesalahan manusia dalam penulisan data.</p>
-    <p class="tech-stack">Tech Stack: Firebase, Javascript, CSS, HTML</p>
-</div>
-
-<div class="card type-pro" data-aos="fade-up">
-    <div class="card-header">
-        <h3 id="INKATitle">SI-INKA</h3>
-        <div class="card-actions">
-            <a href="https://appinventorykanwilbpn.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/SI-INKA" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
-        </div>
-    </div>
-    <img src="assets/images/kanwil.jpg" alt="Preview SI-INKA" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
-    <p id="INKADesc">Sistem Inventaris Barang Kanwil ATR/BPN berbasis Website & Mobile</p>
-    <p id="INKADesc">• Memudahkan sistem inventaris di Kantor Wilayah ATR/BPN Provinsi Jawa Tengah.</p>
-    <p id="INKADesc">• Memudahkan para pegawai melakukan pengecekan Inventaris Barang di Kantor Wilayah ATR/BPN Provinsi Jawa Tengah.</p>
-    <p id="INKADesc">• Mengurangi kesalahan pendataan Inventaris Barang di Kantor Wilayah ATR/BPN Provinsi Jawa Tengah.</p>
-    <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL</p>
-</div>
-
-<div class="card type-pro" data-aos="fade-up">
-    <div class="card-header">
-        <h3 id="GOBELTitle">GOBEL-GO BELAJAR</h3>
-        <div class="card-actions">
-            <a href="https://gobel.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://gobel.42web.io/" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
-        </div>
-    </div>
-    <img src="assets/images/Gobel.png" alt="Preview SI-INKA" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
-    <p id="GOBELDesc">Website GO-BELAJAR untuk bimbingan Belajar</p>
-    <p id="GOBELDesc">• Pemilihan Bimbingan Belajar berdasarkan Kategori Mata Pelajaran.</p> 
-    <p id="GOBELDesc">• Memudahkan User melakukan transaksi sesuai Bimbingan Belajar yang dipilih.</p>
-    <p id="GOBELDesc">• Tampilan dinamis di browser PC dan Android memudahkan user untuk bertransaksi di G0BEL.</p>
-    <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL</p>
-</div>
-
-<div class="card type-pro" data-aos="fade-up">
-    <div class="card-header">
-        <h3 id="GISTitle">PETA PERSEBARAN WILAYAH JAMBI DALAM BENTUK WEB GIS</h3>
-        <div class="card-actions">
-            <a href="https://petapersebarankotajambi.42web.io/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://github.com/shfirazahra/JambiGIS" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
-        </div>
-    </div>
-    <img src="assets/images/jambi.jpg" alt="Preview GIS Jambi" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
-    <p id="GISDesc">Sistem Informasi Geografis Persebaran Rumah Sakit Pada Wilayah Kota Jambi Tahun 2016</p>
-    <p id="GISDesc">• Website untuk mengetahui data persebaran rumah sakit di Jambi pada tahun 2016.</p>
-    <p id="GISDesc">• Website untuk mengetahui data persebaran penyakit pneumonia di Jambi pada tahun 2016.</p>
-    <p id="GISDesc">• Website untuk mengetahui peta di Jambi pada tahun 2016.</p>
-    <p class="tech-stack">Tech Stack: Code Igniter 3, PHP, CSS, HTML, MYSQL, QGIS</p>
-</div>
-
-<div class="card type-creative" data-aos="fade-up">
-    <div class="card-header">
-        <h3 id="LyferaTitle">Lyfera's Art</h3>
-        <div class="card-actions">
-            <a href="https://lyferaa.github.io/Lyfera/" target="_blank" rel="noopener noreferrer" title="Live Demo">🌐</a>
-            <a href="https://github.com/Lyferaa/Lyfera" target="_blank" rel="noopener noreferrer" title="View Code">📂</a>
-        </div>
-    </div>
-    <img src="assets/images/lyfera.jpeg" alt="Preview Lyfera's Art" class="card-preview" loading="lazy" onerror="this.style.opacity='0.3'">
-    <p id="LyferaDesc">Kumpulan berbagai karya seni ku dalam bentuk website yang interaktif</p>
-    <p class="tech-stack">Tech Stack: Javascript, CSS, HTML</p>
-</div>
-        </div>
+      </div>
     </section>
 
-    <section id="certificates" class="section" style="background-color: var(--pink-bg);">
-        <h2 class="section-title" data-aos="zoom-in">Certifications</h2>
-        <div style="overflow-x: auto; max-width: 800px; margin: 0 auto;" data-aos="fade-up">
-            <table class="cert-table">
-                <thead>
-                    <tr><th>No</th><th id="cert-header-name">Nama Sertifikat</th><th id="cert-header-issuer">Penyelenggara</th><th id="cert-header-year">Tahun</th></tr>
-                </thead>
-             <tbody>
-    <tr class="type-pro cert-category-header">
-        <td colspan="4" style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:8px 12px; opacity:0.65;">💼 IT &amp; Technology</td>
-    </tr>
-    <tr class="type-pro">
-        <td>1</td><td id="cert1">Sertifikat Kompetensi Keahlian Pemrograman Web</td><td>APTI</td><td>2024</td>
-    </tr>
-    <tr class="type-pro">
-        <td>2</td><td id="cert2">Sertifikat Kompetensi Pemrograman Mobil Pratama</td><td>BNSP</td><td>2024</td>
-    </tr>
-    <tr class="type-pro">
-        <td>3</td><td id="cert3">TOEFL PREPARATION</td><td>UDINUS</td><td>2024</td>
-    </tr>
-    <tr class="type-pro">
-        <td>4</td><td id="cert4">Sertifikat Seminar Nasional Teknik Informatika</td><td>UDINUS</td><td>2023</td>
-    </tr>
-    <tr class="type-creative cert-category-header">
-        <td colspan="4" style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:8px 12px; opacity:0.65;">🎨 Creative &amp; Sewing</td>
-    </tr>
-    <tr class="type-creative">
-        <td>1</td><td id="cert5">Sertifikat Kompetensi Menjahit Pakaian</td><td>Kemenaker RI</td><td>2020</td>
-    </tr>
-    <tr class="type-creative">
-        <td>2</td><td id="cert6">Sertifikat Kompetensi Menjahit Pakaian</td><td>BNSP</td><td>2020</td>
-    </tr>
-    <tr class="type-creative">
-        <td>3</td><td id="cert8">Sertifikat Lomba Mural Art</td><td>UDINUS</td><td>2018</td>
-    </tr>
-    <tr class="type-personal cert-category-header">
-        <td colspan="4" style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:8px 12px; opacity:0.65;">⭐ Achievement</td>
-    </tr>
-    <tr class="type-personal">
-        <td>1</td><td id="cert7">Sertifikat Finalis 8 Besar Business Plan</td><td>UPGRIS</td><td>2019</td>
-    </tr>
-</tbody>
-            </table>
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="sec-label" data-id="lbl-sk">Keahlian</p>
+          <h2 class="sec-title" data-id="title-sk">Tech Stack</h2>
         </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <p class="sg-title" data-id="sg1">Frontend</p>
+            <div class="chips">
+              <span class="chip hi">HTML5</span>
+              <span class="chip hi">CSS3</span>
+              <span class="chip hi">JavaScript</span>
+              <span class="chip hi">Responsive Design</span>
+              <span class="chip hi">GitHub Pages</span>
+              <span class="chip">Bootstrap</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="sg-title" data-id="sg2">Backend & Database</p>
+            <div class="chips">
+              <span class="chip hi">PHP</span>
+              <span class="chip hi">CodeIgniter 3</span>
+              <span class="chip hi">MySQL</span>
+              <span class="chip hi">Firebase</span>
+              <span class="chip hi">MVC Architecture</span>
+              <span class="chip hi">Web App Deployment</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="sg-title" data-id="sg3">Tools & Infrastruktur</p>
+            <div class="chips">
+              <span class="chip hi">QGIS</span>
+               <span class="chip hi">Android Studio</span>
+                <span class="chip hi">Mikrotik</span>
+              <span class="chip hi">Server Management</span>
+              <span class="chip hi">OS Patching</span>
+              <span class="chip hi">Hardware Audit</span>
+              <span class="chip hi">IT Support</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="sg-title" data-id="sg4">Data & Administrasi</p>
+            <div class="chips">
+              <span class="chip hi">Microsoft Excel</span>
+              <span class="chip hi">Data Validation</span>
+              <span class="chip hi">Data Cleaning</span>
+              <span class="chip hi">Digital Archiving</span>
+              <span class="chip hi">Cross-checking</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-        
-    <!-- Scroll to top button -->
-    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">↑</button>
 
-    <footer id="contact">
-        <h2 data-aos="fade-up">Get In Touch</h2>
-        <p id="contact-subtitle" data-aos="fade-up" style="opacity:0.7; margin: 10px 0 30px; font-size: 14px;">Tertarik berkolaborasi atau punya pertanyaan? Kirim pesan langsung! ✨</p>
+    <div class="divider"></div>
 
-        <!-- ini untuk formspree.io  -->
-        <div class="contact-form-wrapper" data-aos="fade-up">
-            <form action="https://formspree.io/f/mojkeakg" method="POST" class="contact-form">
-                <div class="form-group">
-                    <input type="text" name="name" id="input-name" placeholder="Nama kamu" required aria-label="Nama">
-                    <input type="email" name="email" id="input-email" placeholder="Email kamu" required aria-label="Email">
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="sec-label" data-id="lbl-edu">Pendidikan</p>
+          <h2 class="sec-title" data-id="title-edu">Latar Belakang</h2>
+        </div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-left">
+              <div class="edu-logo" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+            </div>
+            <div class="edu-body">
+              <div class="edu-head">
+                <div>
+                  <h3 class="edu-degree" data-id="edu1-degree">D3 Teknik Informatika</h3>
+                  <p class="edu-school">Universitas Dian Nuswantoro (UDINUS)</p>
                 </div>
-                <textarea name="message" id="input-message" placeholder="Pesan kamu..." rows="4" required aria-label="Pesan"></textarea>
-                <button type="submit" class="btn-send" id="btn-send">Kirim Pesan 💌</button>
-            </form>
+                <div class="edu-meta">
+                  <span class="edu-year">2021 — 2024</span>
+                  <span class="edu-gpa">Cumlaude - IPK 3.51</span>
+                </div>
+              </div>
+              <ul class="edu-pts">
+                <li data-id="edu1a">Aktif dalam Himpunan Mahasiswa D3 Teknik Informatika (HMDTI)</li>
+                <li data-id="edu1b">Panitia Workshop HMDTI 2023</li>
+                <li data-id="edu1c">Meraih penghargaan di lomba Mural Art UDINUS 2018</li>
+              </ul>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-left">
+              <div class="edu-logo" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              </div>
+            </div>
+            <div class="edu-body">
+              <div class="edu-head">
+                <div>
+                  <h3 class="edu-degree" data-id="edu2-degree">Pelatihan Kerja Menjahit Pakaian</h3>
+                  <p class="edu-school">BBPLK Semarang</p>
+                </div>
+                <div class="edu-meta">
+                  <span class="edu-year">2020</span>
+                  <span class="edu-gpa" data-id="edu2-grade">Nilai A</span>
+                </div>
+              </div>
+              <ul class="edu-pts">
+                <li data-id="edu2a">Bersertifikat Kompetensi Menjahit Pakaian — Kemenaker RI & BNSP</li>
+                <li data-id="edu2b">Menguasai prosedur K3 di lingkungan kerja</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CERTS -->
+    <section class="section" id="certifications">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="sec-label" data-id="lbl-cert">Kredensial</p>
+          <h2 class="sec-title" data-id="title-cert">Sertifikasi</h2>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <p class="cert-issuer">APTI</p>
+            <p class="cert-name" data-id="c1">Sertifikat Kompetensi Keahlian Pemrograman Web</p>
+            <p class="cert-year">2024</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-issuer">BNSP</p>
+            <p class="cert-name" data-id="c2">Sertifikat Kompetensi Pemrograman Mobile Pratama</p>
+            <p class="cert-year">2024</p>
+          </div>
+           <div class="cert-card">
+            <p class="cert-issuer">UDINUS</p>
+            <p class="cert-name" data-id="c2">Sertifikat TOEFL Preparation</p>
+            <p class="cert-year">2024</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-issuer">UDINUS</p>
+            <p class="cert-name" data-id="c3">Seminar Nasional Teknik Informatika</p>
+            <p class="cert-year">2023</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-issuer">Kemenaker RI</p>
+            <p class="cert-name" data-id="c4">Sertifikat Kompetensi Menjahit Pakaian</p>
+            <p class="cert-year">2020</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-issuer">UPGRIS</p>
+            <p class="cert-name" data-id="c5">Finalis 8 Besar Business Plan</p>
+            <p class="cert-year">2019</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-issuer">UDINUS</p>
+            <p class="cert-name" data-id="c6">Sertifikat Lomba Mural Art</p>
+            <p class="cert-year">2018</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTISTIC NOTE -->
+    <div class="artistic-note">
+      <div class="section-inner">
+        <p data-id="artistic-txt">Di luar kode — aku juga membuat <a href="https://lyferaa.github.io/Lyfera/" target="_blank" rel="noopener noreferrer">mural, ilustrasi, dan karya jahit</a>. Aku percaya developer yang memahami estetika membangun antarmuka yang lebih baik. Desain bukan dekorasi — desain adalah kejelasan.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section class="section contact-sec" id="contact">
+      <div class="section-inner contact-inner">
+        <p class="sec-label" data-id="lbl-con">Kontak</p>
+        <h2 class="contact-title" data-id="con-title">Mari berkolaborasi.</h2>
+        <p class="contact-sub" data-id="con-sub">Terbuka untuk posisi full-time, proyek freelance, dan kolaborasi kreatif.</p>
+
+        <!-- CONTACT FORM -->
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojkeakg" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-name" data-id="label-name">Nama</label>
+              <input type="text" id="input-name" name="name" required autocomplete="name" data-placeholder-id="ph-name" data-placeholder-en="Your name">
+            </div>
+            <div class="form-group">
+              <label for="input-email" data-id="label-email">Email</label>
+              <input type="email" id="input-email" name="email" required autocomplete="email" data-placeholder-id="Email kamu" data-placeholder-en="Your email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="input-message" data-id="label-msg">Pesan</label>
+            <textarea id="input-message" name="message" rows="5" required data-placeholder-id="Ceritakan proyekmu atau posisi yang tersedia..." data-placeholder-en="Tell me about your project or the role..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="btn-submit">
+            <span id="btn-submit-txt" data-id="btn-send">Kirim Pesan</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+
+        <div class="contact-divider">
+          <span data-id="or-txt">atau hubungi langsung</span>
         </div>
 
-        <!-- Social Links + Email langsung -->
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-            <a href="https://github.com/shfirazahra" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
-            <a href="https://instagram.com/shfiraazhraa._" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-            <a href="/cdn-cgi/l/email-protection#7f0c171e19160d1e051e170d1e51464e463f18121e1613511c1012" aria-label="Email">Email</a>
+        <div class="contact-links">
+          <a href="https://github.com/shfirazahra" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://instagram.com/shfiraazhraa._" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="mailto:shafira@email.com">Email</a>
         </div>
-        <p style="font-size: 11px; opacity: 0.5; margin-top: 30px;">&copy; <span id="currentYear">2026</span> Shafira Zahra ✨ Built with Passion</p>
-    </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script src="js/script.js"></script>
-    
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-left">© <span id="year"></span> <span class="ac-txt">Shafira Zahra</span> — <span data-id="footer-txt"></span></p>
+    <p class="footer-right">shfirazahra.github.io</p>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" onclick="scrollToTop()" aria-label="Kembali ke atas">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
