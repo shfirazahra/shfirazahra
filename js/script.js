@@ -97,6 +97,7 @@ const T = {
     'pd3': 'Web & mobile inventory system for Kanwil ATR/BPN Central Java. Used by government staff daily for institutional asset management.',
     'pd4': 'Geographic information system mapping hospital and disease distribution across Jambi city. QGIS data integrated into interactive web map.',
     'pd5': 'Cosmetics e-commerce platform with product catalog, inventory management, and clean responsive UI.',
+    'pd6': 'Interactive digital illustration gallery with poetic storytelling aesthetics. Features original artwork with literary narration and a cinematic reading experience.',
     'lbl-exp': 'Experience', 'title-exp': 'Work History',
     'now-txt': 'now', 'now-badge': 'Current',
     'exp-hint': '↓ click title to see documentation',
