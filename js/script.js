@@ -20,6 +20,7 @@ const T = {
     'pd3': 'Sistem inventaris berbasis web & mobile untuk Kanwil ATR/BPN Jawa Tengah. Digunakan staf pemerintah setiap hari untuk pengelolaan aset instansi.',
     'pd4': 'Sistem informasi geografis persebaran rumah sakit dan penyakit di Kota Jambi. Data QGIS diintegrasikan ke dalam peta web interaktif.',
     'pd5': 'Platform e-commerce kosmetik dengan katalog produk, manajemen inventaris, dan tampilan responsif yang bersih dan mudah digunakan.',
+    'pd6': 'Galeri ilustrasi digital interaktif bergaya storytelling puitis. Menampilkan karya seni orisinal dengan narasi sastra dan pengalaman membaca yang sinematik.',
     'lbl-exp': 'Pengalaman', 'title-exp': 'Riwayat Kerja',
     'now-txt': 'skrg', 'now-badge': 'Sekarang',
     'exp-hint': '↓ klik judul untuk lihat dokumentasi',
