@@ -72,6 +72,9 @@ const T = {
     'label-name': 'Nama', 'label-email': 'Email', 'label-msg': 'Pesan',
     'btn-send': 'Kirim Pesan', 'or-txt': 'atau hubungi langsung',
     'form-sending': 'Mengirim...', 'form-success': 'Pesan Terkirim!', 'form-error': 'Gagal, coba lagi',
+    'lvl-expert': 'Mahir',
+    'lvl-familiar': 'Familiar',
+    'lvl-used': 'Pernah Pakai',
   },
   en: {
     'skip':         'Skip navigation',
@@ -145,6 +148,9 @@ const T = {
     'label-name': 'Name', 'label-email': 'Email', 'label-msg': 'Message',
     'btn-send': 'Send Message', 'or-txt': 'or reach out directly',
     'form-sending': 'Sending...', 'form-success': 'Message Sent!', 'form-error': 'Failed, try again',
+    'lvl-expert': 'Proficient',
+    'lvl-familiar': 'Familiar',
+    'lvl-used': 'Exposure',
   }
 };
 
@@ -368,3 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhotoFallback();
   initImageLoaders();
 });
+
+
+
+  
