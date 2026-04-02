@@ -16,7 +16,7 @@ const T = {
     'lbl-proj': 'Karya', 'title-proj': 'Proyek Pilihan',
     'btn-demo': 'Live Demo', 'tag-live': 'Live',
     'pd1': 'Sistem manajemen gudang berbasis cloud untuk PT Bumen Redja Abadi. Sinkronisasi real-time, pencetakan slip pemesanan spare part otomatis, tracking kendaraan terstruktur.',
-    'pd2': 'Penyedia Jasa Bimbingan Belajar Berbasis Website.', 
+    'pd2': 'Penyedia Jasa Bimbingan Belajar Berbasis Website.',
     'pd3': 'Sistem inventaris berbasis web & mobile untuk Kanwil ATR/BPN Jawa Tengah. Digunakan staf pemerintah setiap hari untuk pengelolaan aset instansi.',
     'pd4': 'Sistem informasi geografis persebaran rumah sakit dan penyakit di Kota Jambi. Data QGIS diintegrasikan ke dalam peta web interaktif.',
     'pd5': 'Platform e-commerce kosmetik dengan katalog produk, manajemen inventaris, dan tampilan responsif yang bersih dan mudah digunakan.',
@@ -28,23 +28,19 @@ const T = {
     'role2': 'Operations & Inventory System Administrator',
     'role3': 'Full-Stack Developer & Digital Operations',
     'role4': 'Data Entry Clerk',
-    // BRA
     'e1a': 'Merancang dan membangun aplikasi BRA - Warehouse Service berbasis Cloud (Firebase) untuk digitalisasi manajemen gudang servis.',
     'e1b': 'Mengoptimalkan alur permintaan suku cadang dari teknisi melalui sistem inventaris digital, mempercepat proses Service Supply Chain (SSC).',
     'e1c': 'Mengelola input dan validasi data pada sistem Product Quality Report (PQR) serta Warranty Service Claim (WSC) dengan tingkat akurasi tinggi.',
     'e1d': 'Melakukan audit berkala pada Greylite Data untuk memastikan kelengkapan informasi teknis dan integritas database operasional.',
     'e1e': 'Menyusun laporan performa layanan harian dan status klaim garansi.',
-    // BPN Admin
     'e2a': 'Mengelola database stok kebutuhan kantor menggunakan workflow terstruktur, berhasil mengurangi potensi stockout hingga 15%.',
     'e2b': 'Bertanggung jawab atas pencatatan transaksi kas harian, rekonsiliasi pendapatan, dan analisis keuntungan bulanan secara sistematis.',
     'e2c': 'Menangani siklus pengadaan barang mulai dari pemilihan vendor, pembelian aset, hingga distribusi ke unit kerja terkait.',
     'e2d': 'Melakukan pengecekan fisik barang (stock opname) secara berkala untuk dicocokkan dengan data digital guna menjamin validitas saldo inventaris.',
-    // Data Entry
     'e4a': 'Memproses entri data skala besar (840+ dokumen KK) secara konsisten dengan fokus pada kecepatan dan ketepatan target harian.',
     'e4b': 'Mencapai tingkat akurasi 99% melalui mekanisme verifikasi silang dan data cleaning untuk meminimalkan error rate pada database mitra.',
     'e4c': 'Melakukan perbaikan dan validasi data secara mandiri menggunakan Microsoft Excel sebelum tenggat waktu pengiriman laporan harian.',
     'e4d': 'Beradaptasi dengan ritme kerja dinamis untuk menjaga performa input data tetap stabil di atas standar minimum perusahaan.',
-    // BPN Developer
     'e3a': 'Merancang dan mengembangkan aplikasi Web & Mobile berjudul SI-INKA yang terintegrasi sebagai solusi digital inventaris instansi.',
     'e3b': 'Mengelola administrasi aset digital dan kurasi konten informasi publik pada platform digital instansi untuk menjaga keterbukaan informasi.',
     'e3c': 'Mendukung operasional unit Data Center dalam melakukan audit perangkat, capacity planning, dan troubleshooting sistem dasar.',
@@ -93,7 +89,7 @@ const T = {
     'lbl-proj': 'Work', 'title-proj': 'Selected Projects',
     'btn-demo': 'Live Demo', 'tag-live': 'Live',
     'pd1': 'Cloud-based warehouse management system for PT Bumen Redja Abadi. Real-time sync, automated spare part slip generation, structured vehicle tracking.',
-    'pd2': 'Website-Based Tutoring Service Provider.', 
+    'pd2': 'Website-Based Tutoring Service Provider.',
     'pd3': 'Web & mobile inventory system for Kanwil ATR/BPN Central Java. Used by government staff daily for institutional asset management.',
     'pd4': 'Geographic information system mapping hospital and disease distribution across Jambi city. QGIS data integrated into interactive web map.',
     'pd5': 'Cosmetics e-commerce platform with product catalog, inventory management, and clean responsive UI.',
@@ -152,6 +148,35 @@ const T = {
   }
 };
 
+// ── THEME TOGGLE ──────────────────────────────
+function initTheme() {
+  const saved = localStorage.getItem('sz-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('sz-theme', theme);
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.setAttribute('content', theme === 'light' ? '#f5f0f4' : '#0c0a0f');
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+// Sync with system preference (only if user hasn't manually chosen)
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  if (!localStorage.getItem('sz-theme')) {
+    applyTheme(e.matches ? 'dark' : 'light');
+  }
+});
+
 // ── LANG SYSTEM ───────────────────────────────
 let currentLang = localStorage.getItem('sz-lang') || 'id';
 
@@ -195,7 +220,6 @@ function toggleExp(btn) {
   const accordion = body.querySelector('.exp-accordion');
   const isOpen    = btn.getAttribute('aria-expanded') === 'true';
 
-  // Close all others
   document.querySelectorAll('.exp-role-btn[aria-expanded="true"]').forEach(b => {
     if (b === btn) return;
     b.setAttribute('aria-expanded', 'false');
@@ -203,7 +227,6 @@ function toggleExp(btn) {
     if (acc) { acc.classList.remove('open'); acc.setAttribute('aria-hidden', 'true'); }
   });
 
-  // Toggle this one
   const next = !isOpen;
   btn.setAttribute('aria-expanded', String(next));
   if (accordion) {
@@ -243,7 +266,7 @@ function initContactForm() {
   });
 }
 
-// ── PHOTO FALLBACK (initials SZ) ──────────────
+// ── PHOTO FALLBACK ─────────────────────────────
 function initPhotoFallback() {
   const wrap = document.querySelector('.photo-wrap');
   const img  = document.querySelector('.hero-photo');
@@ -298,23 +321,6 @@ window.addEventListener('scroll', () => {
 
 // ── NAV ACTIVE STATE ──────────────────────────
 const navLinks = document.querySelectorAll('.nav-links a');
-new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.style.color = link.getAttribute('href') === `#${entry.target.id}` ? 'var(--text)' : '';
-      });
-    }
-  });
-}, { rootMargin: '-40% 0px -50% 0px' }).observe.bind(
-  new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach(l => l.style.color = l.getAttribute('href') === `#${entry.target.id}` ? 'var(--text)' : '');
-    });
-  }, { rootMargin: '-40% 0px -50% 0px' })
-);
-// simpler nav observer
 ['home','projects','experience','skills','education','contact'].forEach(id => {
   const el = document.getElementById(id);
   if (!el) return;
@@ -351,6 +357,10 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ── INIT ──────────────────────────────────────
+// Jalankan initTheme() SEGERA (sebelum DOMContentLoaded) untuk
+// mencegah flash of wrong theme
+initTheme();
+
 document.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang);
   addReveal();
