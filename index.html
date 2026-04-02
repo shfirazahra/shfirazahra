@@ -7,7 +7,7 @@
   <meta name="description" content="Portofolio IT Shafira Zahra. Lulusan D3 Teknik Informatika UDINUS, berpengalaman membangun sistem nyata untuk instansi pemerintah dan perusahaan swasta.">
   <meta name="keywords" content="Shafira Zahra, Full Stack Developer, Web Developer, Semarang, Portfolio IT, CodeIgniter, Firebase, PHP">
   <meta name="author" content="Shafira Zahra">
-  <link rel="canonical" href="https://shfirazahra.github.io/portfolio-it/">
+  <link rel="canonical" href="https://shfirazahra.github.io/shfirazahra/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shfirazahra.github.io/portfolio-it/">
@@ -31,8 +31,8 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Shafira Zahra",
-    "url": "https://shfirazahra.github.io/portfolio-it/",
-    "image": "https://shfirazahra.github.io/portfolio-it/assets/images/foto-profil.jpeg",
+    "url": "https://shfirazahra.github.io/shfirazahra/",
+    "image": "https://shfirazahra.github.io/shfirazahra/assets/images/foto-profil.jpeg",
     "jobTitle": "Full-Stack Developer",
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universitas Dian Nuswantoro" },
     "sameAs": [
@@ -58,6 +58,7 @@
       <a href="#experience" data-id="nav-exp">Pengalaman</a>
       <a href="#skills" data-id="nav-skills">Keahlian</a>
       <a href="#education" data-id="nav-edu">Pendidikan</a>
+      <a href="#testimonials" data-id="nav-testi">Referensi</a>
       <a href="#contact" data-id="nav-contact">Kontak</a>
     </div>
     <div class="nav-right">
@@ -688,24 +689,26 @@
     <div class="divider"></div>
 
     <!-- TESTIMONIALS — tambahkan sebelum section contact -->
-<div class="divider"></div>
-<section class="section" id="testimonials">
-  <div class="section-inner">
-    <div class="section-header">
-      <p class="sec-label">Referensi</p>
-      <h2 class="sec-title">Yang Mereka Katakan</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <p class="testi-quote">"Shafira membangun SI-INKA dengan sangat profesional. Sistemnya langsung dipakai tim kami sehari-hari tanpa kendala berarti."</p>
-        <div class="testi-author">
-          <p class="testi-name">Pak Dimyati</p>
-          <p class="testi-role">Ketua Koperasi · Kanwil ATR/BPN Jawa Tengah</p>
-        </div>
-      </div>
+<div class="testi-card">
+  <div class="testi-quote-wrap">
+    <p class="testi-quote">"Shafira membangun SI-INKA dengan sangat profesional. Sistemnya langsung dipakai tim kami sehari-hari tanpa kendala."</p>
+  </div>
+  <div class="testi-author">
+    <!-- Ganti path foto sesuai nama file yang kamu simpan -->
+    <img 
+      src="assets/images/dimyati.jpg" 
+      alt="Pak Dimyati" 
+      class="testi-avatar"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    >
+    <!-- Fallback inisial kalau foto gagal load -->
+    <div class="testi-avatar testi-avatar-fallback" style="display:none;">DM</div>
+    <div>
+      <p class="testi-name">Pak Dimyati</p>
+      <p class="testi-role">Ketua Koperasi · Kanwil ATR/BPN Jawa Tengah</p>
     </div>
   </div>
-</section>
+</div>
 
     <!-- CONTACT -->
     <section class="section contact-sec" id="contact">
@@ -741,7 +744,7 @@
         </div>
 
         <div class="contact-links">
-          <a href="https://github.com/shfirazahra" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://shfirazahra.github.io/shfirazahra" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://instagram.com/shfiraazhraa._" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="mailto:shfirazhraa@gmail.com">Email</a>
