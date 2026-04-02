@@ -1284,3 +1284,53 @@ body {
   .btn-submit { width: 100%; justify-content: center; }
   .proj-preview { height: 150px; }
 }
+
+/* ── SKILL LEVELS ── */
+.skills-level-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+.skill-level-group {}
+.skill-level-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.skill-level-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-mahir   { background: var(--ac); box-shadow: 0 0 6px rgba(212,165,201,0.5); }
+.dot-familiar{ background: rgba(212,165,201,0.5); }
+.dot-used    { background: var(--border-hover); }
+
+.chip.mid {
+  border-color: rgba(212,165,201,0.2);
+  color: var(--text-muted);
+  background: rgba(212,165,201,0.06);
+  opacity: 0.9;
+}
+.chip.lo {
+  border-color: var(--border);
+  color: var(--text-faint);
+  background: transparent;
+  opacity: 0.7;
+}
+
+.skill-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--border);
+  font-size: 11px;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+.skill-legend span:nth-child(odd) { flex-shrink: 0; }
