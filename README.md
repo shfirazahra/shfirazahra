@@ -38,6 +38,7 @@ Situs ini dirancang untuk menampilkan perjalanan profesional, proyek IT, serta s
 | Nama Proyek | Deskripsi | Tech Stack |
 | :--- | :--- | :--- |
 | **Toko Sejati Cosmetics** | E-Commerce untuk produk kosmetik. | CI3, PHP, MySQL |
+| **GOBEL- GO BELAJAR** | Sistem Penyedia Jasa Bimbingan Belajar Online. | CI3, PHP, MySQL |
 | **BRA-Warehouse Service** | Sistem pencatatan kendaraan operasional. | Firebase, JS, HTML |
 | **SI-INKA** | Sistem Inventaris Barang Kanwil ATR/BPN. | CI3, PHP |
 | **Web GIS Jambi** | Peta persebaran RS di Jambi (2016). | QGIS, CI3, PHP |
