@@ -85,7 +85,10 @@ Terbuka untuk **posisi full-time, proyek freelance, dan kolaborasi kreatif**.
 - 📜 Sertifikat Kompetensi Pemrograman Mobile Pratama — *BNSP (2024)*
 - 📜 Sertifikat TOEFL Preparation — *UDINUS (2024)*
 - 📜 Seminar Nasional Teknik Informatika — *UDINUS (2023)*
+- 📜 Sertifikat Kompetensi Keahlian Menjahit — *BNSP & KEMNAKER RI (2020)*
 - 📜 Finalis 8 Besar Business Plan — *UPGRIS (2019)*
+- 📜 Sertifikat Mural Art — *UDINUS (2019)*
+
 
 ---
 
