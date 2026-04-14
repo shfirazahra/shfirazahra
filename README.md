@@ -59,6 +59,7 @@ Situs ini dirancang untuk menampilkan perjalanan profesional, proyek IT, serta s
 
 * Sertifikat Kompetensi Pemrograman Web (APTI).
 * Sertifikat Kompetensi Pemrograman Mobil Pratama (BNSP).
+
 * Sertifikat Kompetensi Menjahit Pakaian (Kemenaker RI & BNSP).
 * TOEFL Preparation - UDINUS.
 
