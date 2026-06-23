@@ -234,6 +234,174 @@
     @media (max-width: 900px) {
       .testi-grid { grid-template-columns: 1fr !important; }
     }
+
+/* ── CERT CARD ENHANCEMENTS ── */
+.cert-card.cert-clickable {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cert-card.cert-clickable:hover,
+.cert-card.cert-clickable:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--ac-border);
+  box-shadow: 0 8px 24px rgba(212,165,201,0.12);
+  outline: none;
+}
+.cert-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--ac-dim);
+  border: 0.5px solid var(--ac-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ac);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+.cert-view-hint {
+  font-size: 10px;
+  color: var(--ac);
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-top: auto;
+}
+.cert-card.cert-clickable:hover .cert-view-hint,
+.cert-card.cert-clickable:focus-visible .cert-view-hint {
+  opacity: 1;
+}
+
+/* ── CERT MODAL ── */
+.cert-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.cert-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.cert-modal-box {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-hover);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 32px;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s ease;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+}
+.cert-modal-overlay.open .cert-modal-box {
+  transform: translateY(0) scale(1);
+}
+.cert-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--ac-dim);
+  border: 0.5px solid var(--ac-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition);
+}
+.cert-modal-close:hover { color: var(--text); background: var(--bg-hover); }
+.cert-modal-header {
+  margin-bottom: 20px;
+  padding-right: 40px;
+}
+.cert-modal-issuer {
+  font-size: 11px;
+  color: var(--ac);
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.cert-modal-title {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+.cert-modal-year {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--mono);
+}
+.cert-modal-img-wrap {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 0.5px solid var(--ac-border);
+  background: var(--ac-dim);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cert-modal-img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  max-height: 65vh;
+  transition: opacity 0.3s ease;
+}
+.cert-modal-img.hidden { display: none; }
+.cert-modal-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 24px;
+  color: var(--text-faint);
+  text-align: center;
+  font-size: 12px;
+  font-family: var(--mono);
+  line-height: 1.7;
+}
+.cert-modal-placeholder svg { stroke: var(--ac-border); opacity: 0.5; }
+.cert-modal-placeholder code {
+  background: var(--ac-dim);
+  border: 0.5px solid var(--ac-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  color: var(--ac);
+}
+.cert-modal-placeholder.hidden { display: none; }
+
+@media (max-width: 480px) {
+  .cert-modal-box { padding: 20px 16px; }
+}
   </style>
 </head>
 <body>
@@ -935,25 +1103,334 @@
 
     <div class="divider"></div>
 
-    <!-- CERTS -->
-    <section class="section" id="certifications">
-      <div class="section-inner">
-        <div class="section-header">
-          <p class="sec-label" data-id="lbl-cert">Kredensial</p>
-          <h2 class="sec-title" data-id="title-cert">Sertifikasi</h2>
+<section class="section" id="certifications">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="sec-label" data-id="lbl-cert">Kredensial</p>
+      <h2 class="sec-title" data-id="title-cert">Sertifikasi</h2>
+    </div>
+    <div class="cert-grid">
+
+      <!-- 1 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Sertifikat Kompetensi Junior Mobile Programmer"
+           data-cert-issuer="BNSP"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/bnsp-mobile.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
         </div>
-        <div class="cert-grid">
-          <div class="cert-card"><p class="cert-issuer">APTI</p><p class="cert-name" data-id="c1">Sertifikat Kompetensi Keahlian Pemrograman Web</p><p class="cert-year">2024</p></div>
-          <div class="cert-card"><p class="cert-issuer">BNSP</p><p class="cert-name" data-id="c2">Sertifikat Kompetensi Pemrograman Mobile Pratama</p><p class="cert-year">2024</p></div>
-          <div class="cert-card"><p class="cert-issuer">UDINUS</p><p class="cert-name" data-id="c3">Sertifikat TOEFL Preparation</p><p class="cert-year">2024</p></div>
-          <div class="cert-card"><p class="cert-issuer">UDINUS</p><p class="cert-name" data-id="c4">Sertifikat Seminar Nasional Teknik Informatika</p><p class="cert-year">2023</p></div>
-          <div class="cert-card"><p class="cert-issuer">Kemenaker RI</p><p class="cert-name" data-id="c5">Sertifikat Kompetensi Menjahit Pakaian</p><p class="cert-year">2020</p></div>
-           <div class="cert-card"><p class="cert-issuer">BNSP</p><p class="cert-name" data-id="c6">Sertifikat Kompetensi Menjahit Pakaian</p><p class="cert-year">2020</p></div>
-          <div class="cert-card"><p class="cert-issuer">UPGRIS</p><p class="cert-name" data-id="c7">Finalis 8 Besar Business Plan</p><p class="cert-year">2019</p></div>
-          <div class="cert-card"><p class="cert-issuer">UDINUS</p><p class="cert-name" data-id="c8">Sertifikat Lomba Mural Art</p><p class="cert-year">2018</p></div>
-        </div>
+        <p class="cert-issuer">BNSP</p>
+        <p class="cert-name" data-id="c1">Sertifikat Kompetensi Junior Mobile Programmer</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
       </div>
-    </section>
+
+      <!-- 2 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Google AI Essentials Specialization"
+           data-cert-issuer="Google"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/google-ai.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <p class="cert-issuer">Google</p>
+        <p class="cert-name" data-id="c2">Google AI Essentials Specialization</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 3 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Meta Android Developer Professional Certificate"
+           data-cert-issuer="Meta"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/meta-android.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <p class="cert-issuer">Meta</p>
+        <p class="cert-name" data-id="c3">Meta Android Developer Professional Certificate</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 4 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Microsoft UX Design Professional Certificate"
+           data-cert-issuer="Microsoft"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/microsoft-ux.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <p class="cert-issuer">Microsoft</p>
+        <p class="cert-name" data-id="c4">Microsoft UX Design Professional Certificate</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 5 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Sertifikat Kompetensi Pemrograman Web"
+           data-cert-issuer="APTI"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/apti-web.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <p class="cert-issuer">APTI</p>
+        <p class="cert-name" data-id="c5">Sertifikat Kompetensi Pemrograman Web</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 6 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="TOEFL Proficiency Test Certificate"
+           data-cert-issuer="Universal English"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/toefl-ue.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <p class="cert-issuer">Universal English</p>
+        <p class="cert-name" data-id="c6">TOEFL Proficiency Test Certificate</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 7 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Python Specialization"
+           data-cert-issuer="Scrimba"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/scrimba-python.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <p class="cert-issuer">Scrimba</p>
+        <p class="cert-name" data-id="c7">Python Specialization</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 8 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="SOLID Programming Principles Certificate"
+           data-cert-issuer="Dicoding Indonesia"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/dicoding-solid.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <p class="cert-issuer">Dicoding Indonesia</p>
+        <p class="cert-name" data-id="c8">SOLID Programming Principles Certificate</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 9 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Artificial Intelligence Learning Path Certificate"
+           data-cert-issuer="MySkill"
+           data-cert-year="2024"
+           data-cert-img="assets/images/cert/myskill-ai.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <p class="cert-issuer">MySkill</p>
+        <p class="cert-name" data-id="c9">Artificial Intelligence Learning Path Certificate</p>
+        <p class="cert-year">2024</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 10 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Sertifikat Seminar Nasional Teknik Informatika"
+           data-cert-issuer="HMTI UDINUS"
+           data-cert-year="2023"
+           data-cert-img="assets/images/cert/hmti-semnas.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="cert-issuer">Himpunan Mahasiswa Teknik Informatika UDINUS</p>
+        <p class="cert-name" data-id="c10">Sertifikat Seminar Nasional Teknik Informatika</p>
+        <p class="cert-year">2023</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+      <!-- 11 -->
+      <div class="cert-card cert-clickable" tabindex="0" role="button"
+           data-cert-title="Top 8 Finalist in Business Plan Competition"
+           data-cert-issuer="Universitas PGRI Semarang"
+           data-cert-year="2019"
+           data-cert-img="assets/images/cert/upgris-bplan.jpg"
+           onclick="openCertModal(this)" onkeydown="if(event.key==='Enter')openCertModal(this)">
+        <div class="cert-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="cert-issuer">Universitas PGRI Semarang</p>
+        <p class="cert-name" data-id="c11">Top 8 Finalist in Business Plan Competition</p>
+        <p class="cert-year">2019</p>
+        <span class="cert-view-hint" data-id="cert-view-hint">Lihat →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+    
+<div class="cert-modal-overlay" id="cert-modal" role="dialog" aria-modal="true" aria-label="Certificate viewer" onclick="closeCertModal(event)">
+  <div class="cert-modal-box">
+    <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Tutup">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="cert-modal-header">
+      <p class="cert-modal-issuer" id="modal-issuer"></p>
+      <h3 class="cert-modal-title" id="modal-title"></h3>
+      <p class="cert-modal-year" id="modal-year"></p>
+    </div>
+    <div class="cert-modal-img-wrap">
+      <img id="modal-img" src="" alt="" class="cert-modal-img">
+      <div class="cert-modal-placeholder" id="modal-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span id="modal-placeholder-txt">Gambar sertifikat belum tersedia.<br>Tambahkan file ke <code>assets/images/cert/</code></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ 4. JS PATCH (for script.js) ══════════════ -->
+<!--
+  In script.js, find the cert keys (c1–c8) inside T.id and T.en,
+  then REPLACE them with the following:
+
+  ── Inside T.id (Indonesian translations):
+  ──────────────────────────────────────────
+    'lbl-cert': 'Kredensial', 'title-cert': 'Sertifikasi',
+    'c1':  'Sertifikat Kompetensi Junior Mobile Programmer',
+    'c2':  'Google AI Essentials Specialization',
+    'c3':  'Meta Android Developer Professional Certificate',
+    'c4':  'Microsoft UX Design Professional Certificate',
+    'c5':  'Sertifikat Kompetensi Pemrograman Web',
+    'c6':  'TOEFL Proficiency Test Certificate',
+    'c7':  'Python Specialization',
+    'c8':  'SOLID Programming Principles Certificate',
+    'c9':  'Artificial Intelligence Learning Path Certificate',
+    'c10': 'Sertifikat Seminar Nasional Teknik Informatika',
+    'c11': 'Top 8 Finalist in Business Plan Competition',
+    'cert-view-hint': 'Lihat →',
+
+  ── Inside T.en (English translations):
+  ──────────────────────────────────────────
+    'lbl-cert': 'Credentials', 'title-cert': 'Certifications',
+    'c1':  'Junior Mobile Programmer Competency Certificate',
+    'c2':  'Google AI Essentials Specialization',
+    'c3':  'Meta Android Developer Professional Certificate',
+    'c4':  'Microsoft UX Design Professional Certificate',
+    'c5':  'Web Programming Competency Certificate',
+    'c6':  'TOEFL Proficiency Test Certificate',
+    'c7':  'Python Specialization',
+    'c8':  'SOLID Programming Principles Certificate',
+    'c9':  'Artificial Intelligence Learning Path Certificate',
+    'c10': 'National Informatics Engineering Seminar Certificate',
+    'c11': 'Top 8 Finalist — Business Plan Competition',
+    'cert-view-hint': 'View →',
+
+  ── Add these new functions ANYWHERE in script.js:
+  ──────────────────────────────────────────────────
+  (see the <script> block below)
+-->
+
+<script>
+/* ── CERT MODAL FUNCTIONS — add these to script.js ── */
+
+function openCertModal(card) {
+  const modal      = document.getElementById('cert-modal');
+  const img        = document.getElementById('modal-img');
+  const placeholder= document.getElementById('modal-placeholder');
+  const placeholderTxt = document.getElementById('modal-placeholder-txt');
+
+  document.getElementById('modal-issuer').textContent = card.dataset.certIssuer || '';
+  document.getElementById('modal-title').textContent  = card.dataset.certTitle  || '';
+  document.getElementById('modal-year').textContent   = card.dataset.certYear   || '';
+
+  const src = card.dataset.certImg || '';
+  img.alt   = card.dataset.certTitle || 'Certificate';
+
+  // Reset state
+  img.classList.add('hidden');
+  placeholder.classList.remove('hidden');
+
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'id';
+  placeholderTxt.innerHTML = lang === 'en'
+    ? 'Certificate image not yet available.<br>Add the file to <code>assets/images/cert/</code>'
+    : 'Gambar sertifikat belum tersedia.<br>Tambahkan file ke <code>assets/images/cert/</code>';
+
+  if (src) {
+    img.src = src;
+    img.onload  = () => { img.classList.remove('hidden'); placeholder.classList.add('hidden'); };
+    img.onerror = () => { img.classList.add('hidden');    placeholder.classList.remove('hidden'); };
+  }
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('.cert-modal-close').focus();
+}
+
+function closeCertModal(e) {
+  if (e && e.target !== document.getElementById('cert-modal')) return;
+  const modal = document.getElementById('cert-modal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key — add to existing keydown listener or standalone
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('cert-modal');
+    if (modal && modal.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+</script>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  CERTIFICATE IMAGES
+  ═══════════════════════════════════════════════════════════════════
+  Create a folder:  assets/images/cert/
+  Then add your certificate image files with these exact names:
+
+    bnsp-mobile.jpg       → BNSP Junior Mobile Programmer
+    google-ai.jpg         → Google AI Essentials
+    meta-android.jpg      → Meta Android Developer
+    microsoft-ux.jpg      → Microsoft UX Design
+    apti-web.jpg          → APTI Web Programming
+    toefl-ue.jpg          → Universal English TOEFL
+    scrimba-python.jpg    → Scrimba Python
+    dicoding-solid.jpg    → Dicoding SOLID
+    myskill-ai.jpg        → MySkill AI
+    hmti-semnas.jpg       → HMTI Seminar
+    upgris-bplan.jpg      → UPGRIS Business Plan
+
+  Any JPG, PNG, or WEBP format is fine —
+  just rename the file to match the names above.
+  ═══════════════════════════════════════════════════════════════════
+-->
 
     <div class="divider"></div>
 
