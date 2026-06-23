@@ -384,7 +384,65 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhotoFallback();
   initImageLoaders();
 });
-
+/ ── BLOK 3: Tambahkan di bagian BAWAH script.js ──────────────────
+// (tempel sebelum baris paling akhir file)
+ 
+// ── CERT MODAL ────────────────────────────────────────────────────
+function openCertModal(card) {
+  const modal          = document.getElementById('cert-modal');
+  const img            = document.getElementById('modal-img');
+  const placeholder    = document.getElementById('modal-placeholder');
+  const placeholderTxt = document.getElementById('modal-placeholder-txt');
+ 
+  document.getElementById('modal-issuer').textContent = card.dataset.certIssuer || '';
+  document.getElementById('modal-title').textContent  = card.dataset.certTitle  || '';
+  document.getElementById('modal-year').textContent   = card.dataset.certYear   || '';
+ 
+  const src = card.dataset.certImg || '';
+  img.alt   = card.dataset.certTitle || 'Certificate';
+ 
+  // Reset tampilan
+  img.classList.add('hidden');
+  placeholder.classList.remove('hidden');
+ 
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'id';
+  placeholderTxt.innerHTML = lang === 'en'
+    ? 'Certificate image not yet available.<br>Add the file to <code>assets/images/cert/</code>'
+    : 'Gambar sertifikat belum tersedia.<br>Tambahkan file ke <code>assets/images/cert/</code>';
+ 
+  if (src) {
+    img.src     = src;
+    img.onload  = () => { img.classList.remove('hidden'); placeholder.classList.add('hidden'); };
+    img.onerror = () => { img.classList.add('hidden');    placeholder.classList.remove('hidden'); };
+  }
+ 
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('.cert-modal-close').focus();
+}
+ 
+function closeCertModal(e) {
+  // Kalau dipanggil dari klik overlay, pastikan yang diklik adalah overlay-nya,
+  // bukan konten di dalamnya
+  if (e && e.target !== document.getElementById('cert-modal')) return;
+  const modal = document.getElementById('cert-modal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+ 
+// Tutup modal dengan tombol Escape
+// (listener ini aman digabung dengan listener keydown yang sudah ada —
+//  kalau sudah ada satu listener keydown di script.js, cukup tambahkan
+//  blok if di dalamnya saja, tidak perlu addEventListener baru)
+document.addEventListener('keydown', function certModalEsc(e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('cert-modal');
+    if (modal && modal.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
 
 
   
