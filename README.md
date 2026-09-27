@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://shfirazahra.github.io/shfirazahra/" target="_blank">🌐 Portfolio</a> ·
+  <a href="https://shafirazahra.my.id/" target="_blank">🌐 Portfolio</a> ·
   <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank">💼 LinkedIn</a> ·
   <a href="mailto:shfirazhraa@gmail.com">📧 Email</a>
 </p>
