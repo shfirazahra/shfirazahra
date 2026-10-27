@@ -1,108 +1,64 @@
-<h1 align="center">Hi there, I'm Shafira Zahra 👋</h1>
+<div align="center">
 
-<p align="center">
-  <b>Full-Stack Developer · Semarang, Indonesia</b><br/>
-  <i>Spesialis membangun sistem web end-to-end — dari desain database hingga deployment.</i>
-</p>
+# Hi there, I'm Shafira Zahra! 👋
+### **Full-Stack Developer**
 
-<p align="center">
-  <a href="https://shafirazahra.my.id/" target="_blank">🌐 Portfolio</a> ·
-  <a href="https://www.linkedin.com/in/shfiraazhraa/" target="_blank">💼 LinkedIn</a> ·
-  <a href="mailto:shfirazhraa@gmail.com">📧 Email</a>
-</p>
+[![Website](https://img.shields.io/badge/Website-shafirazahra.my.id-4A0E4E?style=for-the-badge&logo=google-chrome&logoColor=white)](https://shafirazahra.my.id)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-shfiraazhraa-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/shfiraazhraa)
+[![Email](https://img.shields.io/badge/Email-shafirazahra.919%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:shafirazahra.919@gmail.com)
 
----
-
-## 👩‍💻 Tentang Saya
-
-Lulusan **Cumlaude D3 Teknik Informatika UDINUS (IPK 3.51)** dengan rekam jejak nyata di dunia kerja:
-- 🏛️ Sistem inventaris yang dipakai staf pemerintah setiap hari
-- ☁️ Warehouse management berbasis cloud untuk perusahaan swasta
-- 🚀 **6+ proyek live** · **3+ perusahaan** · **97,03% akurasi data**
-
-Terbuka untuk **posisi full-time, proyek freelance, dan kolaborasi kreatif**.
-
----
-
-## 🛠️ Tech Stack
-
-### Mahir
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)
-![CodeIgniter](https://img.shields.io/badge/CodeIgniter-EF4223?style=flat&logo=codeigniter&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-
-### Familiar
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-181717?style=flat&logo=github&logoColor=white)
-![QGIS](https://img.shields.io/badge/QGIS-589632?style=flat&logo=qgis&logoColor=white)
-![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat&logo=android-studio&logoColor=white)
-![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)
-
----
-
-## 🚀 Proyek Pilihan
-
-| Proyek | Deskripsi | Tech | Status |
-|--------|-----------|------|--------|
-| [**BRA Warehouse Service**](https://github.com/shfirazahra/BRA-WarehouseService) | Sistem manajemen gudang berbasis cloud dengan sinkronisasi real-time dan pencetakan slip otomatis untuk PT Bumen Redja Abadi | Firebase · JS · HTML/CSS | ✅ Live |
-| [**GO-Belajar**](https://github.com/shfirazahra/GOBEL) | Platform bimbingan belajar online yang menghubungkan siswa dengan tutor — manajemen kelas, jadwal, dan panel admin terintegrasi | CodeIgniter 3 · PHP · MySQL | ✅ Live |
-| [**SI-INKA**](https://github.com/shfirazahra/SI-INKA) | Sistem inventaris web & mobile untuk Kanwil ATR/BPN Jawa Tengah, digunakan staf pemerintah setiap hari | CodeIgniter 3 · PHP · MySQL | ✅ Live |
-| [**Jambi Web GIS**](https://github.com/shfirazahra/JambiGIS) | Sistem informasi geografis persebaran rumah sakit dan penyakit di Kota Jambi berbasis peta web interaktif | QGIS · CodeIgniter · MySQL | ✅ Live |
-| [**Toko Sejati Cosmetics**](https://github.com/shfirazahra/TokoSejati) | Platform e-commerce kosmetik dengan katalog produk dan manajemen inventaris | CodeIgniter 3 · PHP · MySQL | ✅ Live |
-
----
-
-## 💼 Pengalaman Kerja
-
-**Warranty Service & Systems Developer** — *PT Bumen Redja Abadi* (2025–sekarang)
-> Membangun BRA Warehouse Service berbasis Firebase, mengoptimalkan alur Service Supply Chain, dan mengelola validasi data PQR & WSC.
-
-**Operations & Inventory System Administrator** — *Kanwil ATR/BPN Jawa Tengah* (2024–2025)
-> Mengelola database stok kantor, mengurangi potensi stockout hingga 15%, dan menangani siklus pengadaan aset.
-
-**Data Entry Clerk** — *PT Swakarya Insan Mandiri* (2024)
-> Memproses 840+ dokumen dengan akurasi 99% melalui verifikasi silang dan data cleaning di Excel.
-
-**Full-Stack Developer & Digital Operations** — *Kanwil ATR/BPN Jawa Tengah* (2023–2024)
-> Merancang dan mengembangkan SI-INKA, mendukung operasional Data Center, dan menyusun dokumentasi teknis.
-
----
-
-## 🎓 Pendidikan
-
-🎓 **D3 Teknik Informatika** — Universitas Dian Nuswantoro (UDINUS), 2021–2024
-**Cumlaude · IPK 3.51**
-
----
-
-## 🏆 Sertifikasi
-
-- 📜 Sertifikat Kompetensi Keahlian Pemrograman Web — *APTI (2024)*
-- 📜 Sertifikat Kompetensi Pemrograman Mobile Pratama — *BNSP (2024)*
-- 📜 Sertifikat TOEFL Preparation — *UDINUS (2024)*
-- 📜 Seminar Nasional Teknik Informatika — *UDINUS (2023)*
-- 📜 Sertifikat Kompetensi Keahlian Menjahit — *BNSP & KEMNAKER RI (2020)*
-- 📜 Finalis 8 Besar Business Plan — *UPGRIS (2019)*
-- 📜 Sertifikat Mural Art — *UDINUS (2019)*
-
-
----
-
-## 🎨 Di Luar Kode
-
-Di luar dunia pengembangan, saya juga aktif berkarya di bidang **mural, ilustrasi digital, dan jahit**.
-Saya percaya bahwa developer yang memahami estetika membangun antarmuka yang lebih baik.
-> *"Desain bukan dekorasi — desain adalah kejelasan."*
-
-Lihat karya seni saya di [**Lyfera Art Gallery**](https://lyferaa.github.io/Lyfera/) 🎨
+📍 **Semarang, Jawa Tengah, Indonesia**
 
 ---
 
 <p align="center">
-  <i>✨ Terbuka untuk kolaborasi — jangan ragu untuk menghubungi saya!</i><br/>
-  <a href="mailto:shfirazhraa@gmail.com">shfirazhraa@gmail.com</a>
+  Lulusan D3 Teknik Informatika UDINUS (IPK 3.51 - Cumlaude) dengan pengalaman membangun aplikasi Web & Mobile sejak 2021. Terbiasa mengembangkan aplikasi Full-Stack dari antarmuka responsif hingga arsitektur database, dengan 2 aplikasi aktif di lingkungan produksi.
 </p>
+
+</div>
+
+---
+
+### 🛠️ Tech Stack & Tools
+
+| Kategori | Teknologi |
+| --- | --- |
+| **Front-End** | ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) |
+| **Back-End & DB** | ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white) ![CodeIgniter](https://img.shields.io/badge/CodeIgniter-EF4223?style=flat-square&logo=codeigniter&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black) ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) |
+| **Tools & Others** | ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-121011?style=flat-square&logo=github&logoColor=white) ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white) ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white) ![QGIS](https://img.shields.io/badge/QGIS-589632?style=flat-square&logo=qgis&logoColor=white) |
+
+---
+
+### 🚀 Proyek Unggulan
+
+<mark style="background-color: #bbf7d0; color: #000;">**🟢 Aktif di Produksi:**</mark>
+
+* 🏭 **[BRA Warehouse Service](https://bra-servicewarehouse.web.app)** — Digitalisasi manajemen gudang servis berbasis Cloud dengan Firebase & tracking kendaraan *real-time*.
+* 🏛️ **[SI-INKA](https://si-inka.domcloud.dev)** — Sistem inventaris instansi web & mobile (CodeIgniter 3 + Android Java) untuk Kanwil ATR/BPN Jawa Tengah.
+
+<mark style="background-color: #bfdbfe; color: #000;">**💻 Web Application & GIS:**</mark>
+
+* 🎓 **[GO-Belajar (Gobel)](https://gobel.domcloud.dev)** — Platform bimbingan belajar online (CI3, PHP, MySQL) lengkap dengan manajemen kelas & panel admin.
+* 🗺️ **[Jambi Web GIS](https://jambigis.domcloud.dev)** — Peta web interaktif persebaran rumah sakit dan penyakit Kota Jambi (QGIS + Web GIS).
+* 🛒 **[Web Toko Sejati Kosmetik](https://tokosejati.domcloud.dev)** — E-commerce penjualan harian kosmetik berbasis CodeIgniter 3.
+* 🎨 **[Lyfera Art Gallery](https://lyferaa.github.io/Lyfera)** — Galeri ilustrasi digital berbasis HTML, CSS, dan JavaScript.
+* 🌐 **[Personal Web Profile](https://shfirazahra.my.id)** — Website portofolio pribadi modern berbasis React.js & Vue.js.
+
+---
+
+### 📜 Sertifikasi Pilihan
+
+* 📱 **BNSP** — Junior Mobile Programmer (2024)
+* 🌐 **APTI** — Pemrograman Web (2024)
+* 🤖 **Google** — AI Essentials (2026)
+* 🎨 **Microsoft** — Professional UX Design (2026)
+* 🤖 **Meta** — Professional Android Developer (2026)
+
+---
+
+<div align="center">
+
+💬 *Feel free to reach out to me for collaboration or project inquiries!*  
+🌐 **[shafirazahra.my.id](https://shafirazahra.my.id)**
+
+</div>
