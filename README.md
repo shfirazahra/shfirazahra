@@ -12,7 +12,7 @@
 ---
 
 <p align="center">
-  Lulusan D3 Teknik Informatika UDINUS (IPK 3.51 - Cumlaude) dengan pengalaman membangun aplikasi Web & Mobile sejak 2021. Terbiasa mengembangkan aplikasi Full-Stack dari antarmuka responsif hingga arsitektur database, dengan 2 aplikasi aktif di lingkungan produksi.
+  Lulusan D3 Teknik Informatika UDINUS dengan pengalaman membangun aplikasi Web & Mobile. Terbiasa mengembangkan aplikasi Full-Stack dari antarmuka responsif hingga arsitektur database.
 </p>
 
 </div>
@@ -34,10 +34,10 @@
 <mark style="background-color: #bbf7d0; color: #000;">**🟢 Aktif di Produksi:**</mark>
 
 * 🏭 **[BRA Warehouse Service](https://bra-servicewarehouse.web.app)** — Digitalisasi manajemen gudang servis berbasis Cloud dengan Firebase & tracking kendaraan *real-time*.
-* 🏛️ **[SI-INKA](https://si-inka.domcloud.dev)** — Sistem inventaris instansi web & mobile (CodeIgniter 3 + Android Java) untuk Kanwil ATR/BPN Jawa Tengah.
+
 
 <mark style="background-color: #bfdbfe; color: #000;">**💻 Web Application & GIS:**</mark>
-
+* 🏛️ **[SI-INKA](https://si-inka.domcloud.dev)** — Sistem inventaris instansi web & mobile (CodeIgniter 3 + Android Java) untuk Kanwil ATR/BPN Jawa Tengah.
 * 🎓 **[GO-Belajar (Gobel)](https://gobel.domcloud.dev)** — Platform bimbingan belajar online (CI3, PHP, MySQL) lengkap dengan manajemen kelas & panel admin.
 * 🗺️ **[Jambi Web GIS](https://jambigis.domcloud.dev)** — Peta web interaktif persebaran rumah sakit dan penyakit Kota Jambi (QGIS + Web GIS).
 * 🛒 **[Web Toko Sejati Kosmetik](https://tokosejati.domcloud.dev)** — E-commerce penjualan harian kosmetik berbasis CodeIgniter 3.
